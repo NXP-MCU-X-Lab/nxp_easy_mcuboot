@@ -1,0 +1,2192 @@
+[5a a6]
+<5a>
+Ping responded in 1 attempt(s)
+<a7>
+<00 02 01 50 00 00 aa ea>
+Framing protocol version = 0x50010200, options = 0x0
+inject command 'get-property'
+[5a a4 0c 00 c4 d0 07 00 00 02 05 00 00 00 3e 1f 10 77]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<05 de>
+<a7 00 00 02 00 00 00 00 40 00 00 00>
+Successful response to command 'get-property(flash-sector-size)'
+  - took 0.012 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 f1 1b 07 00 00 02 03 00 00 00 0a 00 14 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<5b 5a>
+<a7 00 00 02 00 00 00 00 00 18 00 00>
+Successful response to command 'get-property(flash-start-address)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 cb 6b 07 00 00 02 04 00 00 00 00 00 0f 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<34 ad>
+<a7 00 00 02 00 00 00 00 00 40 00 00>
+Successful response to command 'get-property(flash-size-in-bytes)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 4b 33 07 00 00 02 01 00 00 00 00 00 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<c7 a6>
+<a7 00 00 02 00 00 00 00 00 04 01 4b>
+Successful response to command 'get-property(current-version)'
+  - took 0.120 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 34 d7 07 00 00 02 11 00 00 00 f8 f8 07 01]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<99 b0>
+<a7 00 00 02 00 00 00 00 00 00 00 00>
+Successful response to command 'get-property(flash-security-state)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 91 74 07 00 00 02 0f 00 00 00 f8 f8 07 01]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<38 19>
+<a7 00 00 02 00 00 00 00 00 08 00 00>
+Successful response to command 'get-property(ram-size-in-bytes)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 e4 bc 07 00 00 02 0c 00 00 00 f8 f8 07 01]
+<5a>
+<a1>
+<5a>
+<a4>
+<18 00>
+<b7 23>
+<a7 00 00 05 00 00 00 00 00 00 00 00 00 80 00 00 00 00 00 00 00 00 00 00>
+Successful response to command 'get-property(reserved-regions)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 04 8d 07 00 00 02 07 00 00 00 04 f9 07 01]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<59 34>
+<a7 00 00 02 00 00 00 00 ff ff 00 00>
+Successful response to command 'get-property(available-commands)'
+  - took 0.120 seconds
+[5a a1]
+[5a a6]
+<5a>
+Ping responded in 1 attempt(s)
+<a7>
+<00 02 01 50 00 00 aa ea>
+Framing protocol version = 0x50010200, options = 0x0
+inject command 'flash-erase-region'
+[5a a4 0c 00 26 f3 02 00 00 02 00 18 00 00 80 0b 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<ba 55>
+<a0 00 00 02 00 00 00 00 02 00 00 00>
+Successful generic response to command 'flash-erase-region'
+  - took 0.186 seconds
+inject command 'write-memory'
+[5a a1]
+[5a a4 0c 00 a3 42 04 01 00 02 00 18 00 00 54 0b 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<23 72>
+<a0 00 00 02 00 00 00 00 04 00 00 00>
+Successful generic response to command 'write-memory'
+[5a a1]
+[5a a5 20 00 22 0b 40 02 00 10 55 19 00 00 db 1b 00 00 5d 19 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00]
+<>
+<>
+<>
+<>
+<>
+Error: read_start_byte() timeout after 5.106 seconds
+Data phase write aborted by status 0x5 kStatus_Timeout
+<>
+<>
+<>
+<>
+<>
+Error: read_start_byte() timeout after 5.105 seconds
+processResponse: null packet
+  - took 10.431 seconds
+Inject command 'reset'
+[5a a4 04 00 6f 46 0b 00 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<cd a6>
+<a0 00 00 02 00 00 00 00 0b 00 00 00>
+Successful generic response to command 'reset'
+  - took 0.017 seconds
+[5a a1]
+[5a a6]
+<5a>
+Ping responded in 1 attempt(s)
+<a7>
+<00 02 01 50 00 00 aa ea>
+Framing protocol version = 0x50010200, options = 0x0
+inject command 'get-property'
+[5a a4 0c 00 c4 d0 07 00 00 02 05 00 00 00 3e 1f 10 77]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<05 de>
+<a7 00 00 02 00 00 00 00 40 00 00 00>
+Successful response to command 'get-property(flash-sector-size)'
+  - took 0.012 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 ed bc 07 00 00 02 03 00 00 00 00 00 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<5b 5a>
+<a7 00 00 02 00 00 00 00 00 18 00 00>
+Successful response to command 'get-property(flash-start-address)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 cb 6b 07 00 00 02 04 00 00 00 00 00 0f 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<34 ad>
+<a7 00 00 02 00 00 00 00 00 40 00 00>
+Successful response to command 'get-property(flash-size-in-bytes)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 4b 33 07 00 00 02 01 00 00 00 00 00 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<c7 a6>
+<a7 00 00 02 00 00 00 00 00 04 01 4b>
+Successful response to command 'get-property(current-version)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 34 d7 07 00 00 02 11 00 00 00 f8 f8 07 01]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<99 b0>
+<a7 00 00 02 00 00 00 00 00 00 00 00>
+Successful response to command 'get-property(flash-security-state)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 91 74 07 00 00 02 0f 00 00 00 f8 f8 07 01]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<38 19>
+<a7 00 00 02 00 00 00 00 00 08 00 00>
+Successful response to command 'get-property(ram-size-in-bytes)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 e4 bc 07 00 00 02 0c 00 00 00 f8 f8 07 01]
+<5a>
+<a1>
+<5a>
+<a4>
+<18 00>
+<b7 23>
+<a7 00 00 05 00 00 00 00 00 00 00 00 00 80 00 00 00 00 00 00 00 00 00 00>
+Successful response to command 'get-property(reserved-regions)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 04 8d 07 00 00 02 07 00 00 00 04 f9 07 01]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<59 34>
+<a7 00 00 02 00 00 00 00 ff ff 00 00>
+Successful response to command 'get-property(available-commands)'
+  - took 0.119 seconds
+[5a a1]
+[5a a6]
+<5a>
+Ping responded in 1 attempt(s)
+<a7>
+<00 02 01 50 00 00 aa ea>
+Framing protocol version = 0x50010200, options = 0x0
+[5a a6]
+<5a>
+Ping responded in 1 attempt(s)
+<a7>
+<00 02 01 50 00 00 aa ea>
+Framing protocol version = 0x50010200, options = 0x0
+inject command 'flash-erase-region'
+[5a a4 0c 00 26 f3 02 00 00 02 00 18 00 00 80 0b 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<ba 55>
+<a0 00 00 02 00 00 00 00 02 00 00 00>
+Successful generic response to command 'flash-erase-region'
+  - took 0.187 seconds
+inject command 'write-memory'
+[5a a1]
+[5a a4 0c 00 a3 42 04 01 00 02 00 18 00 00 54 0b 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<23 72>
+<a0 00 00 02 00 00 00 00 04 00 00 00>
+Successful generic response to command 'write-memory'
+[5a a1]
+[5a a5 20 00 22 0b 40 02 00 10 55 19 00 00 db 1b 00 00 5d 19 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00]
+<5a>
+<a1>
+[5a a5 20 00 9f ef 00 00 00 00 00 00 00 00 00 00 00 00 5f 19 00 00 00 00 00 00 00 00 00 00 61 19 00 00 63 19 00 00]
+<5a>
+<a1>
+[5a a5 20 00 f7 98 65 19 00 00 65 19 00 00 00 00 00 00 65 19 00 00 65 19 00 00 65 19 00 00 00 00 00 00 00 00 00 00]
+<5a>
+<a1>
+[5a a5 20 00 10 97 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 00 00 00 00 65 19 00 00]
+<5a>
+<a1>
+[5a a5 20 00 37 18 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00]
+<5a>
+<a1>
+[5a a5 20 00 a1 4e 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00]
+<5a>
+<a1>
+[5a a5 20 00 1c 5d 03 48 85 46 00 f0 56 fb 00 48 00 47 71 19 00 00 40 02 00 10 10 b5 1a 49 08 69 1a 4c 80 07 80 0f]
+<5a>
+<a1>
+[5a a5 20 00 78 22 10 d1 17 48 40 38 80 6a 80 07 80 0f 04 d0 01 28 04 d0 02 28 06 d1 03 e0 13 48 02 e0 13 48 00 e0]
+<5a>
+<a1>
+[5a a5 20 00 24 34 13 48 20 60 89 69 20 68 00 f0 c8 fa 20 60 10 bd 0b 48 40 38 81 6a 89 08 89 00 81 62 81 6a 02 22]
+<5a>
+<a1>
+[5a a5 20 00 df 93 11 43 81 62 06 48 01 69 89 08 89 00 01 61 41 69 41 61 42 69 01 21 0a 43 42 61 81 61 70 47 00 00]
+<5a>
+<a1>
+[5a a5 20 00 2e cc 40 80 04 40 00 00 00 10 40 54 89 00 00 1b b7 00 c0 e1 e4 00 04 48 80 47 04 48 00 47 fe e7 fe e7]
+<5a>
+<a1>
+[5a a5 20 00 53 e1 fe e7 fe e7 fe e7 00 00 11 19 00 00 c1 18 00 00 08 b5 ff f7 af ff 18 48 01 68 18 4a 11 43 01 60]
+<5a>
+<a1>
+[5a a5 20 00 6b 07 00 f0 be f8 0a 20 00 f0 bc f8 00 22 01 21 10 46 00 f0 4c f8 00 21 08 22 08 46 00 f0 47 f8 e1 21]
+<5a>
+<a1>
+[5a a5 20 00 d4 41 49 02 00 20 00 f0 6a f9 0d 49 0e a0 00 f0 16 fb 00 20 00 f0 33 f8 01 46 13 a0 00 f0 0f fb 69 46]
+<5a>
+<a1>
+[5a a5 20 00 17 41 00 20 00 f0 30 f9 00 28 f9 d1 68 46 01 78 00 20 00 f0 1a f9 f3 e7 00 00 80 80 04 40 80 40 04 00]
+<5a>
+<a1>
+[5a a5 20 00 f4 d4 71 19 00 00 65 78 61 6d 70 6c 65 20 61 70 70 3a 20 6d 61 69 6e 20 61 64 64 72 65 73 73 3a 30 78]
+<5a>
+<a1>
+[5a a5 20 00 5a 99 25 58 0d 0a 00 00 00 00 43 6f 72 65 43 6c 6f 63 6b 3a 25 64 48 7a 0d 0a 00 00 00 00 01 00 71 48]
+<5a>
+<a1>
+[5a a5 20 00 72 26 00 68 02 d0 01 29 00 d0 00 20 70 47 30 b5 6e 4b 1c 68 80 25 2c 43 1c 60 ff 24 94 40 6b 4d 91 40]
+<5a>
+<a1>
+[5a a5 20 00 74 a1 03 00 00 f0 db fa 08 05 0c 13 1a 21 28 2f 36 0b 28 68 a0 43 28 60 28 68 08 43 28 60 30 bd 68 68]
+<5a>
+<a1>
+[5a a5 20 00 f2 22 a0 43 68 60 68 68 08 43 68 60 30 bd a8 68 a0 43 a8 60 a8 68 08 43 a8 60 30 bd e8 68 a0 43 e8 60]
+<5a>
+<a1>
+[5a a5 20 00 6e 83 e8 68 08 43 e8 60 30 bd 28 69 a0 43 28 61 28 69 08 43 28 61 30 bd 68 69 a0 43 68 61 68 69 08 43]
+<5a>
+<a1>
+[5a a5 20 00 f8 d4 68 61 30 bd a8 69 a0 43 a8 61 a8 69 08 43 a8 61 30 bd e8 69 a0 43 e8 61 e8 69 08 43 e8 61 30 bd]
+<5a>
+<a1>
+[5a a5 20 00 8d 3d 49 49 10 b5 40 39 08 61 00 20 48 61 01 20 48 61 ff f7 00 ff 10 bd 10 b5 45 48 01 69 04 22 11 43]
+<5a>
+<a1>
+[5a a5 20 00 b6 52 01 61 44 49 41 61 00 20 ff f7 98 ff 42 4c 43 49 00 f0 d4 f9 7d 21 c9 00 20 60 48 43 60 60 10 bd]
+<5a>
+<a1>
+[5a a5 20 00 0f 90 e9 e7 08 b5 3c 49 3a 4a 49 68 51 61 11 69 05 23 19 43 11 61 00 21 91 61 07 e0 13 69 00 93 db 07]
+<5a>
+<a1>
+[5a a5 20 00 3f f3 02 d0 00 9b db 03 f8 d5 49 1c 81 42 f5 d3 08 bd 31 49 30 4a 09 68 48 43 2d 49 90 42 01 d9 4a 61]
+<5a>
+<a1>
+[5a a5 20 00 2f 7b 00 e0 48 61 00 20 88 61 08 69 05 22 10 43 08 61 70 47 27 49 02 22 00 28 08 69 01 d0 10 43 00 e0]
+<5a>
+<a1>
+[5a a5 20 00 d9 1e 90 43 08 61 70 47 24 4a 08 32 51 60 10 60 70 47 10 b5 21 49 04 46 08 31 08 68 00 28 02 d0 09 68]
+<5a>
+<a1>
+[5a a5 20 00 73 74 e0 b2 88 47 20 46 10 bd 1b 48 10 b5 08 30 41 68 00 29 03 d0 40 68 80 47 c0 b2 10 bd 00 20 10 bd]
+<5a>
+<a1>
+[5a a5 20 00 1e 6b 10 b5 06 c8 81 f3 08 88 81 f3 09 88 14 49 08 38 88 60 90 47 00 bf 10 bd bf f3 4f 8f 10 49 11 48]
+<5a>
+<a1>
+[5a a5 20 00 ce 5f c8 60 bf f3 4f 8f fe e7 07 48 80 38 80 6b 70 47 10 b5 00 f0 c4 f8 10 bd 70 47 10 b5 ff f7 fc ff]
+<5a>
+<a1>
+[5a a5 20 00 23 a3 10 bd 00 00 00 00 00 10 80 80 04 40 00 c0 00 40 00 e0 00 e0 ff ff ff 00 04 00 00 10 40 42 0f 00]
+<5a>
+<a1>
+[5a a5 20 00 97 78 00 ed 00 e0 04 00 fa 05 35 4a 80 00 10 58 82 68 52 07 fc d5 c1 61 70 47 00 b5 01 46 00 20 ff f7]
+<5a>
+<a1>
+[5a a5 20 00 ad bd f3 ff 00 20 00 bd 82 00 2d 48 80 58 82 68 d2 07 03 d0 40 69 08 70 00 20 70 47 01 20 70 47 08 b5]
+<5a>
+<a1>
+[5a a5 20 00 aa 32 69 46 00 20 ff f7 ef ff 00 28 f9 d1 68 46 00 78 08 bd 23 4b 81 00 59 58 01 23 00 2a 06 d0 cb 60]
+<5a>
+<a1>
+[5a a5 20 00 6c 07 20 49 00 28 04 d0 01 28 06 d1 03 e0 0b 61 03 e0 08 20 00 e0 10 20 08 60 00 20 70 47 70 b5 1a 48]
+<5a>
+<a1>
+[5a a5 20 00 dd 85 0c 46 01 68 03 22 92 03 11 43 01 60 16 4d 00 21 40 35 69 61 ff 21 29 61 02 21 01 61 00 20 ff f7]
+<5a>
+<a1>
+[5a a5 20 00 a9 fd bd fe 21 01 0e 46 00 f0 f9 f8 44 1e 00 20 ff f7 b5 fe 31 46 62 1c 51 43 00 f0 f0 f8 00 02 ff 38]
+<5a>
+<a1>
+[5a a5 20 00 61 75 01 38 68 61 09 48 04 62 81 15 41 60 08 49 81 60 05 21 01 60 07 49 08 48 ff f7 45 ff 00 20 70 bd]
+<5a>
+<a1>
+[5a a5 20 00 ea 27 10 23 00 00 00 e1 00 e0 80 80 04 40 00 40 06 40 ff ff 00 00 3f 1c 00 00 19 1c 00 00 80 0a 70 47]
+<5a>
+<a1>
+[5a a5 20 00 78 80 01 20 80 02 70 47 40 20 70 47 10 b5 00 20 ff f7 85 fe 7d 21 c9 00 00 f0 c1 f8 5d 49 08 60 10 bd]
+<5a>
+<a1>
+[5a a5 20 00 dd e7 f8 b5 84 0a 5b 4d 32 20 11 c5 29 46 0c 31 5a 4e 2c 60 0f 46 57 48 08 3d b0 47 68 69 00 28 0c d1]
+<5a>
+<a1>
+[5a a5 20 00 fb 77 34 20 11 c5 52 48 2c 60 00 68 68 60 39 46 51 48 08 3d b0 47 68 69 00 28 00 d0 01 20 f8 bd 10 b5]
+<5a>
+<a1>
+[5a a5 20 00 39 c9 4c 4c 3a 20 21 46 20 60 4b 4a 14 31 20 46 90 47 e1 69 a0 69 48 40 10 bd 10 b5 46 4c 39 20 21 46]
+<5a>
+<a1>
+[5a a5 20 00 d0 45 20 60 45 4a 14 31 20 46 90 47 60 69 00 28 00 d0 01 20 10 bd f8 b5 05 46 3e 4c 80 0a 32 21 60 60]
+<5a>
+<a1>
+[5a a5 20 00 71 2a 21 60 21 46 a0 60 14 31 3b 4e 0f 46 20 46 b0 47 60 69 00 28 0d d1 a8 09 3b 21 60 60 21 60 a0 60]
+<5a>
+<a1>
+[5a a5 20 00 11 64 33 48 39 46 00 68 e0 60 20 46 b0 47 60 69 00 28 00 d0 01 20 f8 bd f8 b5 05 46 2e 4c 0f 46 80 0a]
+<5a>
+<a1>
+[5a a5 20 00 f1 21 32 21 60 60 21 60 a0 60 21 46 14 31 2a 4e 20 46 00 91 b0 47 60 69 00 28 0d d1 33 20 a1 c4 40 20]
+<5a>
+<a1>
+[5a a5 20 00 53 ac 20 60 23 48 00 68 60 60 22 48 0c 3c 00 99 b0 47 60 69 00 28 00 d0 01 20 f8 bd f0 b5 91 b0 0e 46]
+<5a>
+<a1>
+[5a a5 20 00 56 b7 05 46 ff f7 72 ff ae 19 2d e0 28 46 ff f7 b2 ff 40 21 68 46 00 f0 63 f8 69 46 28 46 ff f7 cb ff]
+<5a>
+<a1>
+[5a a5 20 00 9e df 00 24 6f 46 ff 21 20 46 00 f0 3e f8 39 55 64 1c 40 2c f7 d3 28 46 ff f7 9d ff 69 46 28 46 ff f7]
+<5a>
+<a1>
+[5a a5 20 00 9b e9 ba ff 2f 46 00 24 ff 21 20 46 00 f0 2d f8 38 5d 81 42 01 d0 01 24 03 e0 64 1c 40 2c f3 d3 00 24]
+<5a>
+<a1>
+[5a a5 20 00 ed 2d 00 2c 02 d1 40 35 ae 42 cf d2 20 46 11 b0 f0 bd 18 00 00 10 1c 00 00 10 f1 1f 00 0f 30 b5 0b 46]
+<5a>
+<a1>
+[5a a5 20 00 5d 55 01 46 00 20 20 22 01 24 09 e0 0d 46 d5 40 9d 42 05 d3 1d 46 95 40 49 1b 25 46 95 40 40 19 15 46]
+<5a>
+<a1>
+[5a a5 20 00 0c 70 52 1e 00 2d f1 dc 30 bd 70 b5 00 24 25 46 00 28 01 da 01 24 40 42 00 29 01 da 01 25 49 42 ff f7]
+<5a>
+<a1>
+[5a a5 20 00 32 ef dd ff ac 42 00 d0 40 42 00 2c 00 d0 49 42 70 bd d2 b2 01 e0 02 70 40 1c 49 1e fb d2 70 47 00 22]
+<5a>
+<a1>
+[5a a5 20 00 d3 e6 f6 e7 10 b5 13 46 0a 46 04 46 19 46 ff f7 f0 ff 20 46 10 bd f0 b5 1f b4 06 46 00 20 82 b0 05 46]
+<5a>
+<a1>
+[5a a5 20 00 88 63 40 24 01 91 00 90 1b e0 01 99 22 46 0f 46 30 46 00 f0 42 f8 04 9a 05 9b 80 1a 99 41 10 d3 10 46]
+<5a>
+<a1>
+[5a a5 20 00 00 92 19 46 22 46 00 f0 28 f8 36 1a 8f 41 01 97 22 46 01 20 00 21 00 9f 00 f0 1f f8 38 18 4d 41 00 90]
+<5a>
+<a1>
+[5a a5 20 00 75 85 20 46 64 1e 00 28 df dc 01 9b 00 98 29 46 32 46 07 b0 f0 bd 06 4c 01 25 06 4e 05 e0 e3 68 07 cc]
+<5a>
+<a1>
+[5a a5 20 00 4c 54 2b 43 0c 3c 98 47 10 34 b4 42 f7 d3 ff f7 9c fc 18 23 00 00 38 23 00 00 10 b5 20 2a 04 db 01 46]
+<5a>
+<a1>
+[5a a5 20 00 58 3c 20 3a 91 40 00 20 10 bd 91 40 20 23 9c 1a 03 46 e3 40 19 43 90 40 10 bd 10 b5 20 2a 04 db 08 46]
+<5a>
+<a1>
+[5a a5 20 00 4b d6 20 3a d0 40 00 21 10 bd 0b 46 d3 40 d0 40 20 24 a2 1a 91 40 08 43 19 46 10 bd 00 00 0f b4 10 b5]
+<5a>
+<a1>
+[5a a5 20 00 2b dc 03 a9 04 4b 04 4a 02 98 00 f0 24 f8 10 bc 08 bc 04 b0 18 47 71 1b 00 00 14 00 00 10 30 b4 74 46]
+<5a>
+<a1>
+[5a a5 20 00 de 98 64 1e 25 78 64 1c ab 42 00 d2 1d 46 63 5d 5b 00 e3 18 30 bc 18 47 02 e0 08 c8 12 1f 08 c1 00 2a]
+<5a>
+<a1>
+[5a a5 20 00 16 f7 fa d1 70 47 70 47 00 20 01 e0 01 c1 12 1f 00 2a fb d1 70 47 ff b5 8f b0 0f 46 04 46 00 26 06 e0]
+<5a>
+<a1>
+[5a a5 20 00 b9 3c 25 28 0a d0 12 9a 11 99 90 47 64 1c 76 1c 20 78 00 28 f5 d1 30 46 13 b0 f0 bd 00 25 01 21 a1 4a]
+<5a>
+<a1>
+[5a a5 20 00 a5 64 00 95 00 e0 05 43 64 1c 23 78 08 46 20 3b 98 40 10 42 f7 d1 20 78 2e 28 15 d1 04 20 05 43 60 78]
+<5a>
+<a1>
+[5a a5 20 00 21 98 64 1c 2a 28 0a d1 01 cf 64 1c 00 90 0b e0 00 99 0a 22 51 43 30 39 40 18 64 1c 00 90 20 78 01 46]
+<5a>
+<a1>
+[5a a5 20 00 8d ad 30 39 09 29 f3 d9 20 78 6c 28 0e d0 04 dc 4c 28 13 d0 6a 28 12 d1 04 e0 74 28 0e d0 7a 28 0d d1]
+<5a>
+<a1>
+[5a a5 20 00 fc eb 0b e0 01 20 40 05 05 43 07 e0 01 21 09 05 62 78 0d 43 82 42 01 d1 6d 18 64 1c 64 1c 20 78 86 46]
+<5a>
+<a1>
+[5a a5 20 00 73 8c 69 28 4a d0 08 dc 00 28 b4 d0 58 28 6d d0 63 28 10 d0 64 28 08 d1 40 e0 70 28 6b d0 73 28 12 d0]
+<5a>
+<a1>
+[5a a5 20 00 9a 87 75 28 60 d0 78 28 60 d0 12 9a 70 46 11 99 90 47 76 1c e5 e0 38 78 69 46 08 72 00 20 48 72 02 a8]
+<5a>
+<a1>
+[5a a5 20 00 59 52 01 90 01 20 03 e0 38 68 01 90 00 20 c0 43 3f 1d 69 07 0c d5 00 25 00 e0 6d 1c 00 99 8d 42 0f da]
+<5a>
+<a1>
+[5a a5 20 00 40 e9 85 42 f9 db 01 99 49 5d 00 29 f5 d1 08 e0 00 25 00 e0 6d 1c 85 42 fc db 01 99 49 5d 00 29 f8 d1]
+<5a>
+<a1>
+[5a a5 20 00 28 ca 76 19 07 e0 01 98 01 99 00 78 49 1c 01 91 12 9a 11 99 90 47 6d 1e f5 d2 b2 e0 0a 20 02 90 00 21]
+<5a>
+<a1>
+[5a a5 20 00 2b c6 68 02 40 0f 03 91 02 28 0c d0 01 cf c1 17 84 46 00 29 0d da 62 46 08 46 52 42 00 21 81 41 94 46]
+<5a>
+<a1>
+[5a a5 20 00 16 bf 2d 20 08 e0 ff 1d ff 08 ff 00 03 cf 84 46 ef e7 28 05 04 d5 2b 20 6a 46 10 74 01 20 3c e0 e8 07]
+<5a>
+<a1>
+[5a a5 20 00 76 82 3a d0 20 20 f7 e7 0a 20 00 e0 10 20 00 21 03 91 02 90 07 e0 10 20 02 90 00 21 04 20 05 43 08 20]
+<5a>
+<a1>
+[5a a5 20 00 6a ce 03 91 00 90 68 02 40 0f 02 28 10 d0 01 cf 00 21 84 46 00 20 0d 90 28 07 1f d5 70 46 70 28 0c d0]
+<5a>
+<a1>
+[5a a5 20 00 d5 b1 02 9a 10 20 03 9b 42 40 1a 43 0c d0 15 e0 ff 1d ff 08 ff 00 03 cf 84 46 eb e7 40 20 6a 46 10 74]
+<5a>
+<a1>
+[5a a5 20 00 c8 64 01 20 0d 90 0c e0 60 46 08 43 06 d0 30 20 6a 46 10 74 70 46 50 74 02 20 0d 90 70 46 58 28 04 d0]
+<5a>
+<a1>
+[5a a5 20 00 52 ae 29 a0 01 90 0d a8 0e 90 0d e0 2c a0 f9 e7 60 46 03 9b 02 9a ff f7 5e fe 01 9b 84 46 9b 5c 0e 9a]
+<5a>
+<a1>
+[5a a5 20 00 99 35 52 1e 0e 92 13 70 60 46 08 43 f0 d1 0e 98 05 a9 08 1a 20 30 01 90 68 07 01 d5 00 98 01 e0 01 20]
+<5a>
+<a1>
+[5a a5 20 00 e5 a1 00 90 01 99 88 42 03 dd 01 46 01 98 08 1a 00 e0 00 20 00 25 00 90 06 e0 04 a8 12 9a 40 5d 11 99]
+<5a>
+<a1>
+[5a a5 20 00 30 84 90 47 6d 1c 76 1c 0d 98 85 42 f5 db 04 e0 12 9a 30 20 11 99 90 47 76 1c 00 99 48 1e 00 90 00 29]
+<5a>
+<a1>
+[5a a5 20 00 af 77 f5 dc 08 e0 0e 98 0e 99 00 78 49 1c 0e 91 12 9a 11 99 90 47 76 1c 01 99 48 1e 01 90 00 29 f1 dc]
+<5a>
+<a1>
+[5a a5 20 00 9c 2a 64 1c b4 e6 09 28 01 00 30 31 32 33 34 35 36 37 38 39 61 62 63 64 65 66 00 00 00 00 30 31 32 33]
+<5a>
+<a1>
+[5a a5 20 00 53 1e 34 35 36 37 38 39 41 42 43 44 45 46 00 00 00 00 00 40 06 40 00 80 06 40 38 23 00 00 00 00 00 10]
+<5a>
+<a1>
+[5a a5 20 00 a1 c9 1c 00 00 00 16 20 00 00 54 23 00 00 1c 00 00 10 24 02 00 00 26 20 00 00 80 c3 c9 01 00 00 00 00]
+<5a>
+<a1>
+[5a a5 14 00 50 86 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 e0 2e 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<23 72>
+<a0 00 00 02 00 00 00 00 04 00 00 00>
+Successful generic response to command 'write-memory'
+  - took 1.681 seconds
+Inject command 'reset'
+[5a a1]
+[5a a4 04 00 6f 46 0b 00 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<cd a6>
+<a0 00 00 02 00 00 00 00 0b 00 00 00>
+Successful generic response to command 'reset'
+  - took 0.119 seconds
+[5a a1]
+[5a a6]
+<5a>
+Ping responded in 1 attempt(s)
+<a7>
+<00 02 01 50 00 00 aa ea>
+Framing protocol version = 0x50010200, options = 0x0
+inject command 'get-property'
+[5a a4 0c 00 c4 d0 07 00 00 02 05 00 00 00 3e 1f 10 77]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<05 de>
+<a7 00 00 02 00 00 00 00 40 00 00 00>
+Successful response to command 'get-property(flash-sector-size)'
+  - took 0.011 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 ed bc 07 00 00 02 03 00 00 00 00 00 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<5b 5a>
+<a7 00 00 02 00 00 00 00 00 18 00 00>
+Successful response to command 'get-property(flash-start-address)'
+  - took 0.118 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 cb 6b 07 00 00 02 04 00 00 00 00 00 0f 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<34 ad>
+<a7 00 00 02 00 00 00 00 00 40 00 00>
+Successful response to command 'get-property(flash-size-in-bytes)'
+  - took 0.120 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 4b 33 07 00 00 02 01 00 00 00 00 00 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<c7 a6>
+<a7 00 00 02 00 00 00 00 00 04 01 4b>
+Successful response to command 'get-property(current-version)'
+  - took 0.118 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 34 d7 07 00 00 02 11 00 00 00 f8 f8 07 01]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<99 b0>
+<a7 00 00 02 00 00 00 00 00 00 00 00>
+Successful response to command 'get-property(flash-security-state)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 91 74 07 00 00 02 0f 00 00 00 f8 f8 07 01]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<38 19>
+<a7 00 00 02 00 00 00 00 00 08 00 00>
+Successful response to command 'get-property(ram-size-in-bytes)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 e4 bc 07 00 00 02 0c 00 00 00 f8 f8 07 01]
+<5a>
+<a1>
+<5a>
+<a4>
+<18 00>
+<b7 23>
+<a7 00 00 05 00 00 00 00 00 00 00 00 00 80 00 00 00 00 00 00 00 00 00 00>
+Successful response to command 'get-property(reserved-regions)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 04 8d 07 00 00 02 07 00 00 00 04 f9 07 01]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<59 34>
+<a7 00 00 02 00 00 00 00 ff ff 00 00>
+Successful response to command 'get-property(available-commands)'
+  - took 0.120 seconds
+inject command 'flash-erase-region'
+[5a a1]
+[5a a4 0c 00 26 f3 02 00 00 02 00 18 00 00 80 0b 00 00]
+<>
+<>
+<>
+<>
+<>
+Error: read_start_byte() timeout after 5.106 seconds
+sendCommandGetResponse.writePacket error 5.
+processResponse: null packet
+  - took 5.208 seconds
+Inject command 'reset'
+[5a a4 04 00 6f 46 0b 00 00 00]
+<>
+<>
+<>
+<>
+<>
+Error: read_start_byte() timeout after 5.107 seconds
+sendCommandGetResponse.writePacket error 5.
+Ignoring missing response from reset command.
+  - took 5.107 seconds
+[5a a6]
+<5a>
+Ping responded in 1 attempt(s)
+<a7>
+<00 02 01 50 00 00 aa ea>
+Framing protocol version = 0x50010200, options = 0x0
+inject command 'get-property'
+[5a a4 0c 00 c4 d0 07 00 00 02 05 00 00 00 3e 1f 10 77]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<05 de>
+<a7 00 00 02 00 00 00 00 40 00 00 00>
+Successful response to command 'get-property(flash-sector-size)'
+  - took 0.012 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 ed bc 07 00 00 02 03 00 00 00 00 00 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<5b 5a>
+<a7 00 00 02 00 00 00 00 00 18 00 00>
+Successful response to command 'get-property(flash-start-address)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 cb 6b 07 00 00 02 04 00 00 00 00 00 0f 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<34 ad>
+<a7 00 00 02 00 00 00 00 00 40 00 00>
+Successful response to command 'get-property(flash-size-in-bytes)'
+  - took 0.120 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 4b 33 07 00 00 02 01 00 00 00 00 00 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<c7 a6>
+<a7 00 00 02 00 00 00 00 00 04 01 4b>
+Successful response to command 'get-property(current-version)'
+  - took 0.118 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 34 d7 07 00 00 02 11 00 00 00 f8 f8 07 01]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<99 b0>
+<a7 00 00 02 00 00 00 00 00 00 00 00>
+Successful response to command 'get-property(flash-security-state)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 91 74 07 00 00 02 0f 00 00 00 f8 f8 07 01]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<38 19>
+<a7 00 00 02 00 00 00 00 00 08 00 00>
+Successful response to command 'get-property(ram-size-in-bytes)'
+  - took 0.120 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 e4 bc 07 00 00 02 0c 00 00 00 f8 f8 07 01]
+<5a>
+<a1>
+<5a>
+<a4>
+<18 00>
+<b7 23>
+<a7 00 00 05 00 00 00 00 00 00 00 00 00 80 00 00 00 00 00 00 00 00 00 00>
+Successful response to command 'get-property(reserved-regions)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 04 8d 07 00 00 02 07 00 00 00 04 f9 07 01]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<59 34>
+<a7 00 00 02 00 00 00 00 ff ff 00 00>
+Successful response to command 'get-property(available-commands)'
+  - took 0.120 seconds
+[5a a1]
+[5a a6]
+<5a>
+Ping responded in 1 attempt(s)
+<a7>
+<00 02 01 50 00 00 aa ea>
+Framing protocol version = 0x50010200, options = 0x0
+inject command 'flash-erase-region'
+[5a a4 0c 00 26 f3 02 00 00 02 00 18 00 00 80 0b 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<ba 55>
+<a0 00 00 02 00 00 00 00 02 00 00 00>
+Successful generic response to command 'flash-erase-region'
+  - took 0.185 seconds
+inject command 'write-memory'
+[5a a1]
+[5a a4 0c 00 a3 42 04 01 00 02 00 18 00 00 54 0b 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<23 72>
+<a0 00 00 02 00 00 00 00 04 00 00 00>
+Successful generic response to command 'write-memory'
+[5a a1]
+[5a a5 20 00 22 0b 40 02 00 10 55 19 00 00 db 1b 00 00 5d 19 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00]
+<5a>
+<a1>
+[5a a5 20 00 9f ef 00 00 00 00 00 00 00 00 00 00 00 00 5f 19 00 00 00 00 00 00 00 00 00 00 61 19 00 00 63 19 00 00]
+<5a>
+<a1>
+[5a a5 20 00 f7 98 65 19 00 00 65 19 00 00 00 00 00 00 65 19 00 00 65 19 00 00 65 19 00 00 00 00 00 00 00 00 00 00]
+<5a>
+<a1>
+[5a a5 20 00 10 97 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 00 00 00 00 65 19 00 00]
+<5a>
+<a1>
+[5a a5 20 00 37 18 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00]
+<5a>
+<a1>
+[5a a5 20 00 a1 4e 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00]
+<5a>
+<a1>
+[5a a5 20 00 1c 5d 03 48 85 46 00 f0 56 fb 00 48 00 47 71 19 00 00 40 02 00 10 10 b5 1a 49 08 69 1a 4c 80 07 80 0f]
+<5a>
+<a1>
+[5a a5 20 00 78 22 10 d1 17 48 40 38 80 6a 80 07 80 0f 04 d0 01 28 04 d0 02 28 06 d1 03 e0 13 48 02 e0 13 48 00 e0]
+<5a>
+<a1>
+[5a a5 20 00 24 34 13 48 20 60 89 69 20 68 00 f0 c8 fa 20 60 10 bd 0b 48 40 38 81 6a 89 08 89 00 81 62 81 6a 02 22]
+<5a>
+<a1>
+[5a a5 20 00 df 93 11 43 81 62 06 48 01 69 89 08 89 00 01 61 41 69 41 61 42 69 01 21 0a 43 42 61 81 61 70 47 00 00]
+<5a>
+<a1>
+[5a a5 20 00 2e cc 40 80 04 40 00 00 00 10 40 54 89 00 00 1b b7 00 c0 e1 e4 00 04 48 80 47 04 48 00 47 fe e7 fe e7]
+<5a>
+<a1>
+[5a a5 20 00 53 e1 fe e7 fe e7 fe e7 00 00 11 19 00 00 c1 18 00 00 08 b5 ff f7 af ff 18 48 01 68 18 4a 11 43 01 60]
+<5a>
+<a1>
+[5a a5 20 00 6b 07 00 f0 be f8 0a 20 00 f0 bc f8 00 22 01 21 10 46 00 f0 4c f8 00 21 08 22 08 46 00 f0 47 f8 e1 21]
+<5a>
+<a1>
+[5a a5 20 00 d4 41 49 02 00 20 00 f0 6a f9 0d 49 0e a0 00 f0 16 fb 00 20 00 f0 33 f8 01 46 13 a0 00 f0 0f fb 69 46]
+<5a>
+<a1>
+[5a a5 20 00 17 41 00 20 00 f0 30 f9 00 28 f9 d1 68 46 01 78 00 20 00 f0 1a f9 f3 e7 00 00 80 80 04 40 80 40 04 00]
+<5a>
+<a1>
+[5a a5 20 00 f4 d4 71 19 00 00 65 78 61 6d 70 6c 65 20 61 70 70 3a 20 6d 61 69 6e 20 61 64 64 72 65 73 73 3a 30 78]
+<5a>
+<a1>
+[5a a5 20 00 5a 99 25 58 0d 0a 00 00 00 00 43 6f 72 65 43 6c 6f 63 6b 3a 25 64 48 7a 0d 0a 00 00 00 00 01 00 71 48]
+<5a>
+<a1>
+[5a a5 20 00 72 26 00 68 02 d0 01 29 00 d0 00 20 70 47 30 b5 6e 4b 1c 68 80 25 2c 43 1c 60 ff 24 94 40 6b 4d 91 40]
+<5a>
+<a1>
+[5a a5 20 00 74 a1 03 00 00 f0 db fa 08 05 0c 13 1a 21 28 2f 36 0b 28 68 a0 43 28 60 28 68 08 43 28 60 30 bd 68 68]
+<5a>
+<a1>
+[5a a5 20 00 f2 22 a0 43 68 60 68 68 08 43 68 60 30 bd a8 68 a0 43 a8 60 a8 68 08 43 a8 60 30 bd e8 68 a0 43 e8 60]
+<5a>
+<a1>
+[5a a5 20 00 6e 83 e8 68 08 43 e8 60 30 bd 28 69 a0 43 28 61 28 69 08 43 28 61 30 bd 68 69 a0 43 68 61 68 69 08 43]
+<5a>
+<a1>
+[5a a5 20 00 f8 d4 68 61 30 bd a8 69 a0 43 a8 61 a8 69 08 43 a8 61 30 bd e8 69 a0 43 e8 61 e8 69 08 43 e8 61 30 bd]
+<5a>
+<a1>
+[5a a5 20 00 8d 3d 49 49 10 b5 40 39 08 61 00 20 48 61 01 20 48 61 ff f7 00 ff 10 bd 10 b5 45 48 01 69 04 22 11 43]
+<5a>
+<a1>
+[5a a5 20 00 b6 52 01 61 44 49 41 61 00 20 ff f7 98 ff 42 4c 43 49 00 f0 d4 f9 7d 21 c9 00 20 60 48 43 60 60 10 bd]
+<5a>
+<a1>
+[5a a5 20 00 0f 90 e9 e7 08 b5 3c 49 3a 4a 49 68 51 61 11 69 05 23 19 43 11 61 00 21 91 61 07 e0 13 69 00 93 db 07]
+<5a>
+<a1>
+[5a a5 20 00 3f f3 02 d0 00 9b db 03 f8 d5 49 1c 81 42 f5 d3 08 bd 31 49 30 4a 09 68 48 43 2d 49 90 42 01 d9 4a 61]
+<5a>
+<a1>
+[5a a5 20 00 2f 7b 00 e0 48 61 00 20 88 61 08 69 05 22 10 43 08 61 70 47 27 49 02 22 00 28 08 69 01 d0 10 43 00 e0]
+<5a>
+<a1>
+[5a a5 20 00 d9 1e 90 43 08 61 70 47 24 4a 08 32 51 60 10 60 70 47 10 b5 21 49 04 46 08 31 08 68 00 28 02 d0 09 68]
+<5a>
+<a1>
+[5a a5 20 00 73 74 e0 b2 88 47 20 46 10 bd 1b 48 10 b5 08 30 41 68 00 29 03 d0 40 68 80 47 c0 b2 10 bd 00 20 10 bd]
+<5a>
+<a1>
+[5a a5 20 00 1e 6b 10 b5 06 c8 81 f3 08 88 81 f3 09 88 14 49 08 38 88 60 90 47 00 bf 10 bd bf f3 4f 8f 10 49 11 48]
+<5a>
+<a1>
+[5a a5 20 00 ce 5f c8 60 bf f3 4f 8f fe e7 07 48 80 38 80 6b 70 47 10 b5 00 f0 c4 f8 10 bd 70 47 10 b5 ff f7 fc ff]
+<5a>
+<a1>
+[5a a5 20 00 23 a3 10 bd 00 00 00 00 00 10 80 80 04 40 00 c0 00 40 00 e0 00 e0 ff ff ff 00 04 00 00 10 40 42 0f 00]
+<5a>
+<a1>
+[5a a5 20 00 97 78 00 ed 00 e0 04 00 fa 05 35 4a 80 00 10 58 82 68 52 07 fc d5 c1 61 70 47 00 b5 01 46 00 20 ff f7]
+<5a>
+<a1>
+[5a a5 20 00 ad bd f3 ff 00 20 00 bd 82 00 2d 48 80 58 82 68 d2 07 03 d0 40 69 08 70 00 20 70 47 01 20 70 47 08 b5]
+<5a>
+<a1>
+[5a a5 20 00 aa 32 69 46 00 20 ff f7 ef ff 00 28 f9 d1 68 46 00 78 08 bd 23 4b 81 00 59 58 01 23 00 2a 06 d0 cb 60]
+<5a>
+<a1>
+[5a a5 20 00 6c 07 20 49 00 28 04 d0 01 28 06 d1 03 e0 0b 61 03 e0 08 20 00 e0 10 20 08 60 00 20 70 47 70 b5 1a 48]
+<5a>
+<a1>
+[5a a5 20 00 dd 85 0c 46 01 68 03 22 92 03 11 43 01 60 16 4d 00 21 40 35 69 61 ff 21 29 61 02 21 01 61 00 20 ff f7]
+<5a>
+<a1>
+[5a a5 20 00 a9 fd bd fe 21 01 0e 46 00 f0 f9 f8 44 1e 00 20 ff f7 b5 fe 31 46 62 1c 51 43 00 f0 f0 f8 00 02 ff 38]
+<5a>
+<a1>
+[5a a5 20 00 61 75 01 38 68 61 09 48 04 62 81 15 41 60 08 49 81 60 05 21 01 60 07 49 08 48 ff f7 45 ff 00 20 70 bd]
+<5a>
+<a1>
+[5a a5 20 00 ea 27 10 23 00 00 00 e1 00 e0 80 80 04 40 00 40 06 40 ff ff 00 00 3f 1c 00 00 19 1c 00 00 80 0a 70 47]
+<5a>
+<a1>
+[5a a5 20 00 78 80 01 20 80 02 70 47 40 20 70 47 10 b5 00 20 ff f7 85 fe 7d 21 c9 00 00 f0 c1 f8 5d 49 08 60 10 bd]
+<5a>
+<a1>
+[5a a5 20 00 dd e7 f8 b5 84 0a 5b 4d 32 20 11 c5 29 46 0c 31 5a 4e 2c 60 0f 46 57 48 08 3d b0 47 68 69 00 28 0c d1]
+<5a>
+<a1>
+[5a a5 20 00 fb 77 34 20 11 c5 52 48 2c 60 00 68 68 60 39 46 51 48 08 3d b0 47 68 69 00 28 00 d0 01 20 f8 bd 10 b5]
+<5a>
+<a1>
+[5a a5 20 00 39 c9 4c 4c 3a 20 21 46 20 60 4b 4a 14 31 20 46 90 47 e1 69 a0 69 48 40 10 bd 10 b5 46 4c 39 20 21 46]
+<5a>
+<a1>
+[5a a5 20 00 d0 45 20 60 45 4a 14 31 20 46 90 47 60 69 00 28 00 d0 01 20 10 bd f8 b5 05 46 3e 4c 80 0a 32 21 60 60]
+<5a>
+<a1>
+[5a a5 20 00 71 2a 21 60 21 46 a0 60 14 31 3b 4e 0f 46 20 46 b0 47 60 69 00 28 0d d1 a8 09 3b 21 60 60 21 60 a0 60]
+<5a>
+<a1>
+[5a a5 20 00 11 64 33 48 39 46 00 68 e0 60 20 46 b0 47 60 69 00 28 00 d0 01 20 f8 bd f8 b5 05 46 2e 4c 0f 46 80 0a]
+<5a>
+<a1>
+[5a a5 20 00 f1 21 32 21 60 60 21 60 a0 60 21 46 14 31 2a 4e 20 46 00 91 b0 47 60 69 00 28 0d d1 33 20 a1 c4 40 20]
+<5a>
+<a1>
+[5a a5 20 00 53 ac 20 60 23 48 00 68 60 60 22 48 0c 3c 00 99 b0 47 60 69 00 28 00 d0 01 20 f8 bd f0 b5 91 b0 0e 46]
+<5a>
+<a1>
+[5a a5 20 00 56 b7 05 46 ff f7 72 ff ae 19 2d e0 28 46 ff f7 b2 ff 40 21 68 46 00 f0 63 f8 69 46 28 46 ff f7 cb ff]
+<5a>
+<a1>
+[5a a5 20 00 9e df 00 24 6f 46 ff 21 20 46 00 f0 3e f8 39 55 64 1c 40 2c f7 d3 28 46 ff f7 9d ff 69 46 28 46 ff f7]
+<5a>
+<a1>
+[5a a5 20 00 9b e9 ba ff 2f 46 00 24 ff 21 20 46 00 f0 2d f8 38 5d 81 42 01 d0 01 24 03 e0 64 1c 40 2c f3 d3 00 24]
+<5a>
+<a1>
+[5a a5 20 00 ed 2d 00 2c 02 d1 40 35 ae 42 cf d2 20 46 11 b0 f0 bd 18 00 00 10 1c 00 00 10 f1 1f 00 0f 30 b5 0b 46]
+<5a>
+<a1>
+[5a a5 20 00 5d 55 01 46 00 20 20 22 01 24 09 e0 0d 46 d5 40 9d 42 05 d3 1d 46 95 40 49 1b 25 46 95 40 40 19 15 46]
+<5a>
+<a1>
+[5a a5 20 00 0c 70 52 1e 00 2d f1 dc 30 bd 70 b5 00 24 25 46 00 28 01 da 01 24 40 42 00 29 01 da 01 25 49 42 ff f7]
+<5a>
+<a1>
+[5a a5 20 00 32 ef dd ff ac 42 00 d0 40 42 00 2c 00 d0 49 42 70 bd d2 b2 01 e0 02 70 40 1c 49 1e fb d2 70 47 00 22]
+<5a>
+<a1>
+[5a a5 20 00 d3 e6 f6 e7 10 b5 13 46 0a 46 04 46 19 46 ff f7 f0 ff 20 46 10 bd f0 b5 1f b4 06 46 00 20 82 b0 05 46]
+<5a>
+<a1>
+[5a a5 20 00 88 63 40 24 01 91 00 90 1b e0 01 99 22 46 0f 46 30 46 00 f0 42 f8 04 9a 05 9b 80 1a 99 41 10 d3 10 46]
+<5a>
+<a1>
+[5a a5 20 00 00 92 19 46 22 46 00 f0 28 f8 36 1a 8f 41 01 97 22 46 01 20 00 21 00 9f 00 f0 1f f8 38 18 4d 41 00 90]
+<5a>
+<a1>
+[5a a5 20 00 75 85 20 46 64 1e 00 28 df dc 01 9b 00 98 29 46 32 46 07 b0 f0 bd 06 4c 01 25 06 4e 05 e0 e3 68 07 cc]
+<5a>
+<a1>
+[5a a5 20 00 4c 54 2b 43 0c 3c 98 47 10 34 b4 42 f7 d3 ff f7 9c fc 18 23 00 00 38 23 00 00 10 b5 20 2a 04 db 01 46]
+<5a>
+<a1>
+[5a a5 20 00 58 3c 20 3a 91 40 00 20 10 bd 91 40 20 23 9c 1a 03 46 e3 40 19 43 90 40 10 bd 10 b5 20 2a 04 db 08 46]
+<5a>
+<a1>
+[5a a5 20 00 4b d6 20 3a d0 40 00 21 10 bd 0b 46 d3 40 d0 40 20 24 a2 1a 91 40 08 43 19 46 10 bd 00 00 0f b4 10 b5]
+<5a>
+<a1>
+[5a a5 20 00 2b dc 03 a9 04 4b 04 4a 02 98 00 f0 24 f8 10 bc 08 bc 04 b0 18 47 71 1b 00 00 14 00 00 10 30 b4 74 46]
+<5a>
+<a1>
+[5a a5 20 00 de 98 64 1e 25 78 64 1c ab 42 00 d2 1d 46 63 5d 5b 00 e3 18 30 bc 18 47 02 e0 08 c8 12 1f 08 c1 00 2a]
+<5a>
+<a1>
+[5a a5 20 00 16 f7 fa d1 70 47 70 47 00 20 01 e0 01 c1 12 1f 00 2a fb d1 70 47 ff b5 8f b0 0f 46 04 46 00 26 06 e0]
+<5a>
+<a1>
+[5a a5 20 00 b9 3c 25 28 0a d0 12 9a 11 99 90 47 64 1c 76 1c 20 78 00 28 f5 d1 30 46 13 b0 f0 bd 00 25 01 21 a1 4a]
+<5a>
+<a1>
+[5a a5 20 00 a5 64 00 95 00 e0 05 43 64 1c 23 78 08 46 20 3b 98 40 10 42 f7 d1 20 78 2e 28 15 d1 04 20 05 43 60 78]
+<5a>
+<a1>
+[5a a5 20 00 21 98 64 1c 2a 28 0a d1 01 cf 64 1c 00 90 0b e0 00 99 0a 22 51 43 30 39 40 18 64 1c 00 90 20 78 01 46]
+<5a>
+<a1>
+[5a a5 20 00 8d ad 30 39 09 29 f3 d9 20 78 6c 28 0e d0 04 dc 4c 28 13 d0 6a 28 12 d1 04 e0 74 28 0e d0 7a 28 0d d1]
+<5a>
+<a1>
+[5a a5 20 00 fc eb 0b e0 01 20 40 05 05 43 07 e0 01 21 09 05 62 78 0d 43 82 42 01 d1 6d 18 64 1c 64 1c 20 78 86 46]
+<5a>
+<a1>
+[5a a5 20 00 73 8c 69 28 4a d0 08 dc 00 28 b4 d0 58 28 6d d0 63 28 10 d0 64 28 08 d1 40 e0 70 28 6b d0 73 28 12 d0]
+<5a>
+<a1>
+[5a a5 20 00 9a 87 75 28 60 d0 78 28 60 d0 12 9a 70 46 11 99 90 47 76 1c e5 e0 38 78 69 46 08 72 00 20 48 72 02 a8]
+<5a>
+<a1>
+[5a a5 20 00 59 52 01 90 01 20 03 e0 38 68 01 90 00 20 c0 43 3f 1d 69 07 0c d5 00 25 00 e0 6d 1c 00 99 8d 42 0f da]
+<5a>
+<a1>
+[5a a5 20 00 40 e9 85 42 f9 db 01 99 49 5d 00 29 f5 d1 08 e0 00 25 00 e0 6d 1c 85 42 fc db 01 99 49 5d 00 29 f8 d1]
+<5a>
+<a1>
+[5a a5 20 00 28 ca 76 19 07 e0 01 98 01 99 00 78 49 1c 01 91 12 9a 11 99 90 47 6d 1e f5 d2 b2 e0 0a 20 02 90 00 21]
+<5a>
+<a1>
+[5a a5 20 00 2b c6 68 02 40 0f 03 91 02 28 0c d0 01 cf c1 17 84 46 00 29 0d da 62 46 08 46 52 42 00 21 81 41 94 46]
+<5a>
+<a1>
+[5a a5 20 00 16 bf 2d 20 08 e0 ff 1d ff 08 ff 00 03 cf 84 46 ef e7 28 05 04 d5 2b 20 6a 46 10 74 01 20 3c e0 e8 07]
+<5a>
+<a1>
+[5a a5 20 00 76 82 3a d0 20 20 f7 e7 0a 20 00 e0 10 20 00 21 03 91 02 90 07 e0 10 20 02 90 00 21 04 20 05 43 08 20]
+<5a>
+<a1>
+[5a a5 20 00 6a ce 03 91 00 90 68 02 40 0f 02 28 10 d0 01 cf 00 21 84 46 00 20 0d 90 28 07 1f d5 70 46 70 28 0c d0]
+<5a>
+<a1>
+[5a a5 20 00 d5 b1 02 9a 10 20 03 9b 42 40 1a 43 0c d0 15 e0 ff 1d ff 08 ff 00 03 cf 84 46 eb e7 40 20 6a 46 10 74]
+<5a>
+<a1>
+[5a a5 20 00 c8 64 01 20 0d 90 0c e0 60 46 08 43 06 d0 30 20 6a 46 10 74 70 46 50 74 02 20 0d 90 70 46 58 28 04 d0]
+<5a>
+<a1>
+[5a a5 20 00 52 ae 29 a0 01 90 0d a8 0e 90 0d e0 2c a0 f9 e7 60 46 03 9b 02 9a ff f7 5e fe 01 9b 84 46 9b 5c 0e 9a]
+<5a>
+<a1>
+[5a a5 20 00 99 35 52 1e 0e 92 13 70 60 46 08 43 f0 d1 0e 98 05 a9 08 1a 20 30 01 90 68 07 01 d5 00 98 01 e0 01 20]
+<5a>
+<a1>
+[5a a5 20 00 e5 a1 00 90 01 99 88 42 03 dd 01 46 01 98 08 1a 00 e0 00 20 00 25 00 90 06 e0 04 a8 12 9a 40 5d 11 99]
+<5a>
+<a1>
+[5a a5 20 00 30 84 90 47 6d 1c 76 1c 0d 98 85 42 f5 db 04 e0 12 9a 30 20 11 99 90 47 76 1c 00 99 48 1e 00 90 00 29]
+<5a>
+<a1>
+[5a a5 20 00 af 77 f5 dc 08 e0 0e 98 0e 99 00 78 49 1c 0e 91 12 9a 11 99 90 47 76 1c 01 99 48 1e 01 90 00 29 f1 dc]
+<5a>
+<a1>
+[5a a5 20 00 9c 2a 64 1c b4 e6 09 28 01 00 30 31 32 33 34 35 36 37 38 39 61 62 63 64 65 66 00 00 00 00 30 31 32 33]
+<5a>
+<a1>
+[5a a5 20 00 53 1e 34 35 36 37 38 39 41 42 43 44 45 46 00 00 00 00 00 40 06 40 00 80 06 40 38 23 00 00 00 00 00 10]
+<5a>
+<a1>
+[5a a5 20 00 a1 c9 1c 00 00 00 16 20 00 00 54 23 00 00 1c 00 00 10 24 02 00 00 26 20 00 00 80 c3 c9 01 00 00 00 00]
+<5a>
+<a1>
+[5a a5 14 00 50 86 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 e0 2e 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<23 72>
+<a0 00 00 02 00 00 00 00 04 00 00 00>
+Successful generic response to command 'write-memory'
+  - took 1.683 seconds
+Inject command 'reset'
+[5a a1]
+[5a a4 04 00 6f 46 0b 00 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<cd a6>
+<a0 00 00 02 00 00 00 00 0b 00 00 00>
+Successful generic response to command 'reset'
+  - took 0.118 seconds
+[5a a1]
+[5a a6]
+<5a>
+Ping responded in 1 attempt(s)
+<a6>
+[5a a6]
+<5a>
+Ping responded in 1 attempt(s)
+<a6>
+[5a a6]
+<5a>
+Ping responded in 1 attempt(s)
+<a7>
+<00 02 01 50 00 00 aa ea>
+Framing protocol version = 0x50010200, options = 0x0
+inject command 'get-property'
+[5a a4 0c 00 c4 d0 07 00 00 02 05 00 00 00 3e 1f 10 77]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<05 de>
+<a7 00 00 02 00 00 00 00 40 00 00 00>
+Successful response to command 'get-property(flash-sector-size)'
+  - took 0.011 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 ed bc 07 00 00 02 03 00 00 00 00 00 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<5b 5a>
+<a7 00 00 02 00 00 00 00 00 18 00 00>
+Successful response to command 'get-property(flash-start-address)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 cb 6b 07 00 00 02 04 00 00 00 00 00 0f 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<34 ad>
+<a7 00 00 02 00 00 00 00 00 40 00 00>
+Successful response to command 'get-property(flash-size-in-bytes)'
+  - took 0.118 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 4b 33 07 00 00 02 01 00 00 00 00 00 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<c7 a6>
+<a7 00 00 02 00 00 00 00 00 04 01 4b>
+Successful response to command 'get-property(current-version)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 34 d7 07 00 00 02 11 00 00 00 f8 f8 07 01]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<99 b0>
+<a7 00 00 02 00 00 00 00 00 00 00 00>
+Successful response to command 'get-property(flash-security-state)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 91 74 07 00 00 02 0f 00 00 00 f8 f8 07 01]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<38 19>
+<a7 00 00 02 00 00 00 00 00 08 00 00>
+Successful response to command 'get-property(ram-size-in-bytes)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 e4 bc 07 00 00 02 0c 00 00 00 f8 f8 07 01]
+<5a>
+<a1>
+<5a>
+<a4>
+<18 00>
+<b7 23>
+<a7 00 00 05 00 00 00 00 00 00 00 00 00 80 00 00 00 00 00 00 00 00 00 00>
+Successful response to command 'get-property(reserved-regions)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 04 8d 07 00 00 02 07 00 00 00 04 f9 07 01]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<59 34>
+<a7 00 00 02 00 00 00 00 ff ff 00 00>
+Successful response to command 'get-property(available-commands)'
+  - took 0.119 seconds
+Inject command 'reset'
+[5a a1]
+[5a a4 04 00 6f 46 0b 00 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<cd a6>
+<a0 00 00 02 00 00 00 00 0b 00 00 00>
+Successful generic response to command 'reset'
+  - took 0.118 seconds
+[5a a1]
+[5a a6]
+<5a>
+Ping responded in 1 attempt(s)
+<a7>
+<00 02 01 50 00 00 aa ea>
+Framing protocol version = 0x50010200, options = 0x0
+inject command 'get-property'
+[5a a4 0c 00 c4 d0 07 00 00 02 05 00 00 00 3e 1f 10 77]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<05 de>
+<a7 00 00 02 00 00 00 00 40 00 00 00>
+Successful response to command 'get-property(flash-sector-size)'
+  - took 0.011 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 ed bc 07 00 00 02 03 00 00 00 00 00 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<5b 5a>
+<a7 00 00 02 00 00 00 00 00 18 00 00>
+Successful response to command 'get-property(flash-start-address)'
+  - took 0.120 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 cb 6b 07 00 00 02 04 00 00 00 00 00 0f 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<34 ad>
+<a7 00 00 02 00 00 00 00 00 40 00 00>
+Successful response to command 'get-property(flash-size-in-bytes)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 4b 33 07 00 00 02 01 00 00 00 00 00 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<c7 a6>
+<a7 00 00 02 00 00 00 00 00 04 01 4b>
+Successful response to command 'get-property(current-version)'
+  - took 0.120 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 34 d7 07 00 00 02 11 00 00 00 f8 f8 07 01]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<99 b0>
+<a7 00 00 02 00 00 00 00 00 00 00 00>
+Successful response to command 'get-property(flash-security-state)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 91 74 07 00 00 02 0f 00 00 00 f8 f8 07 01]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<38 19>
+<a7 00 00 02 00 00 00 00 00 08 00 00>
+Successful response to command 'get-property(ram-size-in-bytes)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 e4 bc 07 00 00 02 0c 00 00 00 f8 f8 07 01]
+<5a>
+<a1>
+<5a>
+<a4>
+<18 00>
+<b7 23>
+<a7 00 00 05 00 00 00 00 00 00 00 00 00 80 00 00 00 00 00 00 00 00 00 00>
+Successful response to command 'get-property(reserved-regions)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 04 8d 07 00 00 02 07 00 00 00 04 f9 07 01]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<59 34>
+<a7 00 00 02 00 00 00 00 ff ff 00 00>
+Successful response to command 'get-property(available-commands)'
+  - took 0.119 seconds
+[5a a1]
+[5a a6]
+<5a>
+Ping responded in 1 attempt(s)
+<a7>
+<00 02 01 50 00 00 aa ea>
+Framing protocol version = 0x50010200, options = 0x0
+[5a a6]
+<5a>
+Ping responded in 1 attempt(s)
+<a7>
+<00 02 01 50 00 00 aa ea>
+Framing protocol version = 0x50010200, options = 0x0
+[5a a6]
+<5a>
+Ping responded in 1 attempt(s)
+<a7>
+<00 02 01 50 00 00 aa ea>
+Framing protocol version = 0x50010200, options = 0x0
+[5a a6]
+<5a>
+Ping responded in 1 attempt(s)
+<a7>
+<00 02 01 50 00 00 aa ea>
+Framing protocol version = 0x50010200, options = 0x0
+inject command 'flash-erase-region'
+[5a a4 0c 00 26 f3 02 00 00 02 00 18 00 00 80 0b 00 00]
+<5a>
+<a1>
+<>
+<>
+<>
+<5a>
+<a4>
+<0c 00>
+<ba 55>
+<a0 00 00 02 00 00 00 00 02 00 00 00>
+Successful generic response to command 'flash-erase-region'
+  - took 3.545 seconds
+inject command 'write-memory'
+[5a a1]
+[5a a4 0c 00 a3 42 04 01 00 02 00 18 00 00 54 0b 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<23 72>
+<a0 00 00 02 00 00 00 00 04 00 00 00>
+Successful generic response to command 'write-memory'
+[5a a1]
+[5a a5 20 00 22 0b 40 02 00 10 55 19 00 00 db 1b 00 00 5d 19 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00]
+<5a>
+<a1>
+[5a a5 20 00 9f ef 00 00 00 00 00 00 00 00 00 00 00 00 5f 19 00 00 00 00 00 00 00 00 00 00 61 19 00 00 63 19 00 00]
+<5a>
+<a1>
+[5a a5 20 00 f7 98 65 19 00 00 65 19 00 00 00 00 00 00 65 19 00 00 65 19 00 00 65 19 00 00 00 00 00 00 00 00 00 00]
+<5a>
+<a1>
+[5a a5 20 00 10 97 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 00 00 00 00 65 19 00 00]
+<5a>
+<a1>
+[5a a5 20 00 37 18 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00]
+<5a>
+<a1>
+[5a a5 20 00 a1 4e 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00]
+<5a>
+<a1>
+[5a a5 20 00 1c 5d 03 48 85 46 00 f0 56 fb 00 48 00 47 71 19 00 00 40 02 00 10 10 b5 1a 49 08 69 1a 4c 80 07 80 0f]
+<5a>
+<a1>
+[5a a5 20 00 78 22 10 d1 17 48 40 38 80 6a 80 07 80 0f 04 d0 01 28 04 d0 02 28 06 d1 03 e0 13 48 02 e0 13 48 00 e0]
+<5a>
+<a1>
+[5a a5 20 00 24 34 13 48 20 60 89 69 20 68 00 f0 c8 fa 20 60 10 bd 0b 48 40 38 81 6a 89 08 89 00 81 62 81 6a 02 22]
+<5a>
+<a1>
+[5a a5 20 00 df 93 11 43 81 62 06 48 01 69 89 08 89 00 01 61 41 69 41 61 42 69 01 21 0a 43 42 61 81 61 70 47 00 00]
+<5a>
+<a1>
+[5a a5 20 00 2e cc 40 80 04 40 00 00 00 10 40 54 89 00 00 1b b7 00 c0 e1 e4 00 04 48 80 47 04 48 00 47 fe e7 fe e7]
+<5a>
+<a1>
+[5a a5 20 00 53 e1 fe e7 fe e7 fe e7 00 00 11 19 00 00 c1 18 00 00 08 b5 ff f7 af ff 18 48 01 68 18 4a 11 43 01 60]
+<5a>
+<a1>
+[5a a5 20 00 6b 07 00 f0 be f8 0a 20 00 f0 bc f8 00 22 01 21 10 46 00 f0 4c f8 00 21 08 22 08 46 00 f0 47 f8 e1 21]
+<5a>
+<a1>
+[5a a5 20 00 d4 41 49 02 00 20 00 f0 6a f9 0d 49 0e a0 00 f0 16 fb 00 20 00 f0 33 f8 01 46 13 a0 00 f0 0f fb 69 46]
+<5a>
+<a1>
+[5a a5 20 00 17 41 00 20 00 f0 30 f9 00 28 f9 d1 68 46 01 78 00 20 00 f0 1a f9 f3 e7 00 00 80 80 04 40 80 40 04 00]
+<5a>
+<a1>
+[5a a5 20 00 f4 d4 71 19 00 00 65 78 61 6d 70 6c 65 20 61 70 70 3a 20 6d 61 69 6e 20 61 64 64 72 65 73 73 3a 30 78]
+<5a>
+<a1>
+[5a a5 20 00 5a 99 25 58 0d 0a 00 00 00 00 43 6f 72 65 43 6c 6f 63 6b 3a 25 64 48 7a 0d 0a 00 00 00 00 01 00 71 48]
+<5a>
+<a1>
+[5a a5 20 00 72 26 00 68 02 d0 01 29 00 d0 00 20 70 47 30 b5 6e 4b 1c 68 80 25 2c 43 1c 60 ff 24 94 40 6b 4d 91 40]
+<5a>
+<a1>
+[5a a5 20 00 74 a1 03 00 00 f0 db fa 08 05 0c 13 1a 21 28 2f 36 0b 28 68 a0 43 28 60 28 68 08 43 28 60 30 bd 68 68]
+<5a>
+<a1>
+[5a a5 20 00 f2 22 a0 43 68 60 68 68 08 43 68 60 30 bd a8 68 a0 43 a8 60 a8 68 08 43 a8 60 30 bd e8 68 a0 43 e8 60]
+<5a>
+<a1>
+[5a a5 20 00 6e 83 e8 68 08 43 e8 60 30 bd 28 69 a0 43 28 61 28 69 08 43 28 61 30 bd 68 69 a0 43 68 61 68 69 08 43]
+<5a>
+<a1>
+[5a a5 20 00 f8 d4 68 61 30 bd a8 69 a0 43 a8 61 a8 69 08 43 a8 61 30 bd e8 69 a0 43 e8 61 e8 69 08 43 e8 61 30 bd]
+<5a>
+<a1>
+[5a a5 20 00 8d 3d 49 49 10 b5 40 39 08 61 00 20 48 61 01 20 48 61 ff f7 00 ff 10 bd 10 b5 45 48 01 69 04 22 11 43]
+<5a>
+<a1>
+[5a a5 20 00 b6 52 01 61 44 49 41 61 00 20 ff f7 98 ff 42 4c 43 49 00 f0 d4 f9 7d 21 c9 00 20 60 48 43 60 60 10 bd]
+<5a>
+<a1>
+[5a a5 20 00 0f 90 e9 e7 08 b5 3c 49 3a 4a 49 68 51 61 11 69 05 23 19 43 11 61 00 21 91 61 07 e0 13 69 00 93 db 07]
+<5a>
+<a1>
+[5a a5 20 00 3f f3 02 d0 00 9b db 03 f8 d5 49 1c 81 42 f5 d3 08 bd 31 49 30 4a 09 68 48 43 2d 49 90 42 01 d9 4a 61]
+<5a>
+<a1>
+[5a a5 20 00 2f 7b 00 e0 48 61 00 20 88 61 08 69 05 22 10 43 08 61 70 47 27 49 02 22 00 28 08 69 01 d0 10 43 00 e0]
+<5a>
+<a1>
+[5a a5 20 00 d9 1e 90 43 08 61 70 47 24 4a 08 32 51 60 10 60 70 47 10 b5 21 49 04 46 08 31 08 68 00 28 02 d0 09 68]
+<5a>
+<a1>
+[5a a5 20 00 73 74 e0 b2 88 47 20 46 10 bd 1b 48 10 b5 08 30 41 68 00 29 03 d0 40 68 80 47 c0 b2 10 bd 00 20 10 bd]
+<5a>
+<a1>
+[5a a5 20 00 1e 6b 10 b5 06 c8 81 f3 08 88 81 f3 09 88 14 49 08 38 88 60 90 47 00 bf 10 bd bf f3 4f 8f 10 49 11 48]
+<5a>
+<a1>
+[5a a5 20 00 ce 5f c8 60 bf f3 4f 8f fe e7 07 48 80 38 80 6b 70 47 10 b5 00 f0 c4 f8 10 bd 70 47 10 b5 ff f7 fc ff]
+<5a>
+<a1>
+[5a a5 20 00 23 a3 10 bd 00 00 00 00 00 10 80 80 04 40 00 c0 00 40 00 e0 00 e0 ff ff ff 00 04 00 00 10 40 42 0f 00]
+<5a>
+<a1>
+[5a a5 20 00 97 78 00 ed 00 e0 04 00 fa 05 35 4a 80 00 10 58 82 68 52 07 fc d5 c1 61 70 47 00 b5 01 46 00 20 ff f7]
+<5a>
+<a1>
+[5a a5 20 00 ad bd f3 ff 00 20 00 bd 82 00 2d 48 80 58 82 68 d2 07 03 d0 40 69 08 70 00 20 70 47 01 20 70 47 08 b5]
+<5a>
+<a1>
+[5a a5 20 00 aa 32 69 46 00 20 ff f7 ef ff 00 28 f9 d1 68 46 00 78 08 bd 23 4b 81 00 59 58 01 23 00 2a 06 d0 cb 60]
+<5a>
+<a1>
+[5a a5 20 00 6c 07 20 49 00 28 04 d0 01 28 06 d1 03 e0 0b 61 03 e0 08 20 00 e0 10 20 08 60 00 20 70 47 70 b5 1a 48]
+<5a>
+<a1>
+[5a a5 20 00 dd 85 0c 46 01 68 03 22 92 03 11 43 01 60 16 4d 00 21 40 35 69 61 ff 21 29 61 02 21 01 61 00 20 ff f7]
+<5a>
+<a1>
+[5a a5 20 00 a9 fd bd fe 21 01 0e 46 00 f0 f9 f8 44 1e 00 20 ff f7 b5 fe 31 46 62 1c 51 43 00 f0 f0 f8 00 02 ff 38]
+<5a>
+<a1>
+[5a a5 20 00 61 75 01 38 68 61 09 48 04 62 81 15 41 60 08 49 81 60 05 21 01 60 07 49 08 48 ff f7 45 ff 00 20 70 bd]
+<5a>
+<a1>
+[5a a5 20 00 ea 27 10 23 00 00 00 e1 00 e0 80 80 04 40 00 40 06 40 ff ff 00 00 3f 1c 00 00 19 1c 00 00 80 0a 70 47]
+<5a>
+<a1>
+[5a a5 20 00 78 80 01 20 80 02 70 47 40 20 70 47 10 b5 00 20 ff f7 85 fe 7d 21 c9 00 00 f0 c1 f8 5d 49 08 60 10 bd]
+<5a>
+<a1>
+[5a a5 20 00 dd e7 f8 b5 84 0a 5b 4d 32 20 11 c5 29 46 0c 31 5a 4e 2c 60 0f 46 57 48 08 3d b0 47 68 69 00 28 0c d1]
+<5a>
+<a1>
+[5a a5 20 00 fb 77 34 20 11 c5 52 48 2c 60 00 68 68 60 39 46 51 48 08 3d b0 47 68 69 00 28 00 d0 01 20 f8 bd 10 b5]
+<5a>
+<a1>
+[5a a5 20 00 39 c9 4c 4c 3a 20 21 46 20 60 4b 4a 14 31 20 46 90 47 e1 69 a0 69 48 40 10 bd 10 b5 46 4c 39 20 21 46]
+<5a>
+<a1>
+[5a a5 20 00 d0 45 20 60 45 4a 14 31 20 46 90 47 60 69 00 28 00 d0 01 20 10 bd f8 b5 05 46 3e 4c 80 0a 32 21 60 60]
+<5a>
+<a1>
+[5a a5 20 00 71 2a 21 60 21 46 a0 60 14 31 3b 4e 0f 46 20 46 b0 47 60 69 00 28 0d d1 a8 09 3b 21 60 60 21 60 a0 60]
+<5a>
+<a1>
+[5a a5 20 00 11 64 33 48 39 46 00 68 e0 60 20 46 b0 47 60 69 00 28 00 d0 01 20 f8 bd f8 b5 05 46 2e 4c 0f 46 80 0a]
+<5a>
+<a1>
+[5a a5 20 00 f1 21 32 21 60 60 21 60 a0 60 21 46 14 31 2a 4e 20 46 00 91 b0 47 60 69 00 28 0d d1 33 20 a1 c4 40 20]
+<5a>
+<a1>
+[5a a5 20 00 53 ac 20 60 23 48 00 68 60 60 22 48 0c 3c 00 99 b0 47 60 69 00 28 00 d0 01 20 f8 bd f0 b5 91 b0 0e 46]
+<5a>
+<a1>
+[5a a5 20 00 56 b7 05 46 ff f7 72 ff ae 19 2d e0 28 46 ff f7 b2 ff 40 21 68 46 00 f0 63 f8 69 46 28 46 ff f7 cb ff]
+<5a>
+<a1>
+[5a a5 20 00 9e df 00 24 6f 46 ff 21 20 46 00 f0 3e f8 39 55 64 1c 40 2c f7 d3 28 46 ff f7 9d ff 69 46 28 46 ff f7]
+<5a>
+<a1>
+[5a a5 20 00 9b e9 ba ff 2f 46 00 24 ff 21 20 46 00 f0 2d f8 38 5d 81 42 01 d0 01 24 03 e0 64 1c 40 2c f3 d3 00 24]
+<5a>
+<a1>
+[5a a5 20 00 ed 2d 00 2c 02 d1 40 35 ae 42 cf d2 20 46 11 b0 f0 bd 18 00 00 10 1c 00 00 10 f1 1f 00 0f 30 b5 0b 46]
+<5a>
+<a1>
+[5a a5 20 00 5d 55 01 46 00 20 20 22 01 24 09 e0 0d 46 d5 40 9d 42 05 d3 1d 46 95 40 49 1b 25 46 95 40 40 19 15 46]
+<5a>
+<a1>
+[5a a5 20 00 0c 70 52 1e 00 2d f1 dc 30 bd 70 b5 00 24 25 46 00 28 01 da 01 24 40 42 00 29 01 da 01 25 49 42 ff f7]
+<5a>
+<a1>
+[5a a5 20 00 32 ef dd ff ac 42 00 d0 40 42 00 2c 00 d0 49 42 70 bd d2 b2 01 e0 02 70 40 1c 49 1e fb d2 70 47 00 22]
+<5a>
+<a1>
+[5a a5 20 00 d3 e6 f6 e7 10 b5 13 46 0a 46 04 46 19 46 ff f7 f0 ff 20 46 10 bd f0 b5 1f b4 06 46 00 20 82 b0 05 46]
+<5a>
+<a1>
+[5a a5 20 00 88 63 40 24 01 91 00 90 1b e0 01 99 22 46 0f 46 30 46 00 f0 42 f8 04 9a 05 9b 80 1a 99 41 10 d3 10 46]
+<5a>
+<a1>
+[5a a5 20 00 00 92 19 46 22 46 00 f0 28 f8 36 1a 8f 41 01 97 22 46 01 20 00 21 00 9f 00 f0 1f f8 38 18 4d 41 00 90]
+<5a>
+<a1>
+[5a a5 20 00 75 85 20 46 64 1e 00 28 df dc 01 9b 00 98 29 46 32 46 07 b0 f0 bd 06 4c 01 25 06 4e 05 e0 e3 68 07 cc]
+<5a>
+<a1>
+[5a a5 20 00 4c 54 2b 43 0c 3c 98 47 10 34 b4 42 f7 d3 ff f7 9c fc 18 23 00 00 38 23 00 00 10 b5 20 2a 04 db 01 46]
+<5a>
+<a1>
+[5a a5 20 00 58 3c 20 3a 91 40 00 20 10 bd 91 40 20 23 9c 1a 03 46 e3 40 19 43 90 40 10 bd 10 b5 20 2a 04 db 08 46]
+<5a>
+<a1>
+[5a a5 20 00 4b d6 20 3a d0 40 00 21 10 bd 0b 46 d3 40 d0 40 20 24 a2 1a 91 40 08 43 19 46 10 bd 00 00 0f b4 10 b5]
+<5a>
+<a1>
+[5a a5 20 00 2b dc 03 a9 04 4b 04 4a 02 98 00 f0 24 f8 10 bc 08 bc 04 b0 18 47 71 1b 00 00 14 00 00 10 30 b4 74 46]
+<5a>
+<a1>
+[5a a5 20 00 de 98 64 1e 25 78 64 1c ab 42 00 d2 1d 46 63 5d 5b 00 e3 18 30 bc 18 47 02 e0 08 c8 12 1f 08 c1 00 2a]
+<5a>
+<a1>
+[5a a5 20 00 16 f7 fa d1 70 47 70 47 00 20 01 e0 01 c1 12 1f 00 2a fb d1 70 47 ff b5 8f b0 0f 46 04 46 00 26 06 e0]
+<5a>
+<a1>
+[5a a5 20 00 b9 3c 25 28 0a d0 12 9a 11 99 90 47 64 1c 76 1c 20 78 00 28 f5 d1 30 46 13 b0 f0 bd 00 25 01 21 a1 4a]
+<5a>
+<a1>
+[5a a5 20 00 a5 64 00 95 00 e0 05 43 64 1c 23 78 08 46 20 3b 98 40 10 42 f7 d1 20 78 2e 28 15 d1 04 20 05 43 60 78]
+<5a>
+<a1>
+[5a a5 20 00 21 98 64 1c 2a 28 0a d1 01 cf 64 1c 00 90 0b e0 00 99 0a 22 51 43 30 39 40 18 64 1c 00 90 20 78 01 46]
+<5a>
+<a1>
+[5a a5 20 00 8d ad 30 39 09 29 f3 d9 20 78 6c 28 0e d0 04 dc 4c 28 13 d0 6a 28 12 d1 04 e0 74 28 0e d0 7a 28 0d d1]
+<5a>
+<a1>
+[5a a5 20 00 fc eb 0b e0 01 20 40 05 05 43 07 e0 01 21 09 05 62 78 0d 43 82 42 01 d1 6d 18 64 1c 64 1c 20 78 86 46]
+<5a>
+<a1>
+[5a a5 20 00 73 8c 69 28 4a d0 08 dc 00 28 b4 d0 58 28 6d d0 63 28 10 d0 64 28 08 d1 40 e0 70 28 6b d0 73 28 12 d0]
+<5a>
+<a1>
+[5a a5 20 00 9a 87 75 28 60 d0 78 28 60 d0 12 9a 70 46 11 99 90 47 76 1c e5 e0 38 78 69 46 08 72 00 20 48 72 02 a8]
+<5a>
+<a1>
+[5a a5 20 00 59 52 01 90 01 20 03 e0 38 68 01 90 00 20 c0 43 3f 1d 69 07 0c d5 00 25 00 e0 6d 1c 00 99 8d 42 0f da]
+<5a>
+<a1>
+[5a a5 20 00 40 e9 85 42 f9 db 01 99 49 5d 00 29 f5 d1 08 e0 00 25 00 e0 6d 1c 85 42 fc db 01 99 49 5d 00 29 f8 d1]
+<5a>
+<a1>
+[5a a5 20 00 28 ca 76 19 07 e0 01 98 01 99 00 78 49 1c 01 91 12 9a 11 99 90 47 6d 1e f5 d2 b2 e0 0a 20 02 90 00 21]
+<5a>
+<a1>
+[5a a5 20 00 2b c6 68 02 40 0f 03 91 02 28 0c d0 01 cf c1 17 84 46 00 29 0d da 62 46 08 46 52 42 00 21 81 41 94 46]
+<5a>
+<a1>
+[5a a5 20 00 16 bf 2d 20 08 e0 ff 1d ff 08 ff 00 03 cf 84 46 ef e7 28 05 04 d5 2b 20 6a 46 10 74 01 20 3c e0 e8 07]
+<5a>
+<a1>
+[5a a5 20 00 76 82 3a d0 20 20 f7 e7 0a 20 00 e0 10 20 00 21 03 91 02 90 07 e0 10 20 02 90 00 21 04 20 05 43 08 20]
+<5a>
+<a1>
+[5a a5 20 00 6a ce 03 91 00 90 68 02 40 0f 02 28 10 d0 01 cf 00 21 84 46 00 20 0d 90 28 07 1f d5 70 46 70 28 0c d0]
+<5a>
+<a1>
+[5a a5 20 00 d5 b1 02 9a 10 20 03 9b 42 40 1a 43 0c d0 15 e0 ff 1d ff 08 ff 00 03 cf 84 46 eb e7 40 20 6a 46 10 74]
+<5a>
+<a1>
+[5a a5 20 00 c8 64 01 20 0d 90 0c e0 60 46 08 43 06 d0 30 20 6a 46 10 74 70 46 50 74 02 20 0d 90 70 46 58 28 04 d0]
+<5a>
+<a1>
+[5a a5 20 00 52 ae 29 a0 01 90 0d a8 0e 90 0d e0 2c a0 f9 e7 60 46 03 9b 02 9a ff f7 5e fe 01 9b 84 46 9b 5c 0e 9a]
+<5a>
+<a1>
+[5a a5 20 00 99 35 52 1e 0e 92 13 70 60 46 08 43 f0 d1 0e 98 05 a9 08 1a 20 30 01 90 68 07 01 d5 00 98 01 e0 01 20]
+<5a>
+<a1>
+[5a a5 20 00 e5 a1 00 90 01 99 88 42 03 dd 01 46 01 98 08 1a 00 e0 00 20 00 25 00 90 06 e0 04 a8 12 9a 40 5d 11 99]
+<5a>
+<a1>
+[5a a5 20 00 30 84 90 47 6d 1c 76 1c 0d 98 85 42 f5 db 04 e0 12 9a 30 20 11 99 90 47 76 1c 00 99 48 1e 00 90 00 29]
+<5a>
+<a1>
+[5a a5 20 00 af 77 f5 dc 08 e0 0e 98 0e 99 00 78 49 1c 0e 91 12 9a 11 99 90 47 76 1c 01 99 48 1e 01 90 00 29 f1 dc]
+<5a>
+<a1>
+[5a a5 20 00 9c 2a 64 1c b4 e6 09 28 01 00 30 31 32 33 34 35 36 37 38 39 61 62 63 64 65 66 00 00 00 00 30 31 32 33]
+<5a>
+<a1>
+[5a a5 20 00 53 1e 34 35 36 37 38 39 41 42 43 44 45 46 00 00 00 00 00 40 06 40 00 80 06 40 38 23 00 00 00 00 00 10]
+<5a>
+<a1>
+[5a a5 20 00 a1 c9 1c 00 00 00 16 20 00 00 54 23 00 00 1c 00 00 10 24 02 00 00 26 20 00 00 80 c3 c9 01 00 00 00 00]
+<5a>
+<a1>
+[5a a5 14 00 50 86 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 e0 2e 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<23 72>
+<a0 00 00 02 00 00 00 00 04 00 00 00>
+Successful generic response to command 'write-memory'
+  - took 1.683 seconds
+Inject command 'reset'
+[5a a1]
+[5a a4 04 00 6f 46 0b 00 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<cd a6>
+<a0 00 00 02 00 00 00 00 0b 00 00 00>
+Successful generic response to command 'reset'
+  - took 0.118 seconds
+[5a a1]
+[5a a6]
+<5a>
+Ping responded in 1 attempt(s)
+<a6>
+[5a a6]
+<5a>
+Ping responded in 1 attempt(s)
+<a6>
+[5a a6]
+<5a>
+Ping responded in 1 attempt(s)
+<a6>
+[5a a6]
+<5a>
+Ping responded in 1 attempt(s)
+<a6>
+[5a a6]
+<5a>
+Ping responded in 1 attempt(s)
+<a6>
+[5a a6]
+<5a>
+Ping responded in 1 attempt(s)
+<a6>
+[5a a6]
+<5a>
+Ping responded in 1 attempt(s)
+<a6>
+[5a a6]
+<5a>
+Ping responded in 1 attempt(s)
+<a7>
+<00 02 01 50 00 00 aa ea>
+Framing protocol version = 0x50010200, options = 0x0
+inject command 'get-property'
+[5a a4 0c 00 c4 d0 07 00 00 02 05 00 00 00 3e 1f 10 77]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<05 de>
+<a7 00 00 02 00 00 00 00 40 00 00 00>
+Successful response to command 'get-property(flash-sector-size)'
+  - took 0.011 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 ed bc 07 00 00 02 03 00 00 00 00 00 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<5b 5a>
+<a7 00 00 02 00 00 00 00 00 18 00 00>
+Successful response to command 'get-property(flash-start-address)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 cb 6b 07 00 00 02 04 00 00 00 00 00 0f 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<34 ad>
+<a7 00 00 02 00 00 00 00 00 40 00 00>
+Successful response to command 'get-property(flash-size-in-bytes)'
+  - took 0.119 seconds
+[5a a1]
+[5a a6]
+<5a>
+Ping responded in 1 attempt(s)
+<a7>
+<00 02 01 50 00 00 aa ea>
+Framing protocol version = 0x50010200, options = 0x0
+inject command 'get-property'
+[5a a4 0c 00 c4 d0 07 00 00 02 05 00 00 00 3e 1f 10 77]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<05 de>
+<a7 00 00 02 00 00 00 00 40 00 00 00>
+Successful response to command 'get-property(flash-sector-size)'
+  - took 0.019 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 ed bc 07 00 00 02 03 00 00 00 00 00 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<5b 5a>
+<a7 00 00 02 00 00 00 00 00 18 00 00>
+Successful response to command 'get-property(flash-start-address)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 cb 6b 07 00 00 02 04 00 00 00 00 00 0f 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<34 ad>
+<a7 00 00 02 00 00 00 00 00 40 00 00>
+Successful response to command 'get-property(flash-size-in-bytes)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 4b 33 07 00 00 02 01 00 00 00 00 00 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<c7 a6>
+<a7 00 00 02 00 00 00 00 00 04 01 4b>
+Successful response to command 'get-property(current-version)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 34 d7 07 00 00 02 11 00 00 00 f8 f8 07 01]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<99 b0>
+<a7 00 00 02 00 00 00 00 00 00 00 00>
+Successful response to command 'get-property(flash-security-state)'
+  - took 0.129 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 91 74 07 00 00 02 0f 00 00 00 f8 f8 07 01]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<38 19>
+<a7 00 00 02 00 00 00 00 00 08 00 00>
+Successful response to command 'get-property(ram-size-in-bytes)'
+  - took 0.119 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 e4 bc 07 00 00 02 0c 00 00 00 f8 f8 07 01]
+<5a>
+<a1>
+<5a>
+<a4>
+<18 00>
+<b7 23>
+<a7 00 00 05 00 00 00 00 00 00 00 00 00 80 00 00 00 00 00 00 00 00 00 00>
+Successful response to command 'get-property(reserved-regions)'
+  - took 0.121 seconds
+inject command 'get-property'
+[5a a1]
+[5a a4 0c 00 04 8d 07 00 00 02 07 00 00 00 04 f9 07 01]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<59 34>
+<a7 00 00 02 00 00 00 00 ff ff 00 00>
+Successful response to command 'get-property(available-commands)'
+  - took 0.118 seconds
+inject command 'flash-erase-region'
+[5a a1]
+[5a a4 0c 00 26 f3 02 00 00 02 00 18 00 00 80 0b 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<ba 55>
+<a0 00 00 02 00 00 00 00 02 00 00 00>
+Successful generic response to command 'flash-erase-region'
+  - took 0.186 seconds
+inject command 'write-memory'
+[5a a1]
+[5a a4 0c 00 a3 42 04 01 00 02 00 18 00 00 54 0b 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<23 72>
+<a0 00 00 02 00 00 00 00 04 00 00 00>
+Successful generic response to command 'write-memory'
+[5a a1]
+[5a a5 20 00 22 0b 40 02 00 10 55 19 00 00 db 1b 00 00 5d 19 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00]
+<5a>
+<a1>
+[5a a5 20 00 9f ef 00 00 00 00 00 00 00 00 00 00 00 00 5f 19 00 00 00 00 00 00 00 00 00 00 61 19 00 00 63 19 00 00]
+<5a>
+<a1>
+[5a a5 20 00 f7 98 65 19 00 00 65 19 00 00 00 00 00 00 65 19 00 00 65 19 00 00 65 19 00 00 00 00 00 00 00 00 00 00]
+<5a>
+<a1>
+[5a a5 20 00 10 97 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 00 00 00 00 65 19 00 00]
+<5a>
+<a1>
+[5a a5 20 00 37 18 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00]
+<5a>
+<a1>
+[5a a5 20 00 a1 4e 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00 65 19 00 00]
+<5a>
+<a1>
+[5a a5 20 00 1c 5d 03 48 85 46 00 f0 56 fb 00 48 00 47 71 19 00 00 40 02 00 10 10 b5 1a 49 08 69 1a 4c 80 07 80 0f]
+<5a>
+<a1>
+[5a a5 20 00 78 22 10 d1 17 48 40 38 80 6a 80 07 80 0f 04 d0 01 28 04 d0 02 28 06 d1 03 e0 13 48 02 e0 13 48 00 e0]
+<5a>
+<a1>
+[5a a5 20 00 24 34 13 48 20 60 89 69 20 68 00 f0 c8 fa 20 60 10 bd 0b 48 40 38 81 6a 89 08 89 00 81 62 81 6a 02 22]
+<5a>
+<a1>
+[5a a5 20 00 df 93 11 43 81 62 06 48 01 69 89 08 89 00 01 61 41 69 41 61 42 69 01 21 0a 43 42 61 81 61 70 47 00 00]
+<5a>
+<a1>
+[5a a5 20 00 2e cc 40 80 04 40 00 00 00 10 40 54 89 00 00 1b b7 00 c0 e1 e4 00 04 48 80 47 04 48 00 47 fe e7 fe e7]
+<5a>
+<a1>
+[5a a5 20 00 53 e1 fe e7 fe e7 fe e7 00 00 11 19 00 00 c1 18 00 00 08 b5 ff f7 af ff 18 48 01 68 18 4a 11 43 01 60]
+<5a>
+<a1>
+[5a a5 20 00 6b 07 00 f0 be f8 0a 20 00 f0 bc f8 00 22 01 21 10 46 00 f0 4c f8 00 21 08 22 08 46 00 f0 47 f8 e1 21]
+<5a>
+<a1>
+[5a a5 20 00 d4 41 49 02 00 20 00 f0 6a f9 0d 49 0e a0 00 f0 16 fb 00 20 00 f0 33 f8 01 46 13 a0 00 f0 0f fb 69 46]
+<5a>
+<a1>
+[5a a5 20 00 17 41 00 20 00 f0 30 f9 00 28 f9 d1 68 46 01 78 00 20 00 f0 1a f9 f3 e7 00 00 80 80 04 40 80 40 04 00]
+<5a>
+<a1>
+[5a a5 20 00 f4 d4 71 19 00 00 65 78 61 6d 70 6c 65 20 61 70 70 3a 20 6d 61 69 6e 20 61 64 64 72 65 73 73 3a 30 78]
+<5a>
+<a1>
+[5a a5 20 00 5a 99 25 58 0d 0a 00 00 00 00 43 6f 72 65 43 6c 6f 63 6b 3a 25 64 48 7a 0d 0a 00 00 00 00 01 00 71 48]
+<5a>
+<a1>
+[5a a5 20 00 72 26 00 68 02 d0 01 29 00 d0 00 20 70 47 30 b5 6e 4b 1c 68 80 25 2c 43 1c 60 ff 24 94 40 6b 4d 91 40]
+<5a>
+<a1>
+[5a a5 20 00 74 a1 03 00 00 f0 db fa 08 05 0c 13 1a 21 28 2f 36 0b 28 68 a0 43 28 60 28 68 08 43 28 60 30 bd 68 68]
+<5a>
+<a1>
+[5a a5 20 00 f2 22 a0 43 68 60 68 68 08 43 68 60 30 bd a8 68 a0 43 a8 60 a8 68 08 43 a8 60 30 bd e8 68 a0 43 e8 60]
+<5a>
+<a1>
+[5a a5 20 00 6e 83 e8 68 08 43 e8 60 30 bd 28 69 a0 43 28 61 28 69 08 43 28 61 30 bd 68 69 a0 43 68 61 68 69 08 43]
+<5a>
+<a1>
+[5a a5 20 00 f8 d4 68 61 30 bd a8 69 a0 43 a8 61 a8 69 08 43 a8 61 30 bd e8 69 a0 43 e8 61 e8 69 08 43 e8 61 30 bd]
+<5a>
+<a1>
+[5a a5 20 00 8d 3d 49 49 10 b5 40 39 08 61 00 20 48 61 01 20 48 61 ff f7 00 ff 10 bd 10 b5 45 48 01 69 04 22 11 43]
+<5a>
+<a1>
+[5a a5 20 00 b6 52 01 61 44 49 41 61 00 20 ff f7 98 ff 42 4c 43 49 00 f0 d4 f9 7d 21 c9 00 20 60 48 43 60 60 10 bd]
+<5a>
+<a1>
+[5a a5 20 00 0f 90 e9 e7 08 b5 3c 49 3a 4a 49 68 51 61 11 69 05 23 19 43 11 61 00 21 91 61 07 e0 13 69 00 93 db 07]
+<5a>
+<a1>
+[5a a5 20 00 3f f3 02 d0 00 9b db 03 f8 d5 49 1c 81 42 f5 d3 08 bd 31 49 30 4a 09 68 48 43 2d 49 90 42 01 d9 4a 61]
+<5a>
+<a1>
+[5a a5 20 00 2f 7b 00 e0 48 61 00 20 88 61 08 69 05 22 10 43 08 61 70 47 27 49 02 22 00 28 08 69 01 d0 10 43 00 e0]
+<5a>
+<a1>
+[5a a5 20 00 d9 1e 90 43 08 61 70 47 24 4a 08 32 51 60 10 60 70 47 10 b5 21 49 04 46 08 31 08 68 00 28 02 d0 09 68]
+<5a>
+<a1>
+[5a a5 20 00 73 74 e0 b2 88 47 20 46 10 bd 1b 48 10 b5 08 30 41 68 00 29 03 d0 40 68 80 47 c0 b2 10 bd 00 20 10 bd]
+<5a>
+<a1>
+[5a a5 20 00 1e 6b 10 b5 06 c8 81 f3 08 88 81 f3 09 88 14 49 08 38 88 60 90 47 00 bf 10 bd bf f3 4f 8f 10 49 11 48]
+<5a>
+<a1>
+[5a a5 20 00 ce 5f c8 60 bf f3 4f 8f fe e7 07 48 80 38 80 6b 70 47 10 b5 00 f0 c4 f8 10 bd 70 47 10 b5 ff f7 fc ff]
+<5a>
+<a1>
+[5a a5 20 00 23 a3 10 bd 00 00 00 00 00 10 80 80 04 40 00 c0 00 40 00 e0 00 e0 ff ff ff 00 04 00 00 10 40 42 0f 00]
+<5a>
+<a1>
+[5a a5 20 00 97 78 00 ed 00 e0 04 00 fa 05 35 4a 80 00 10 58 82 68 52 07 fc d5 c1 61 70 47 00 b5 01 46 00 20 ff f7]
+<5a>
+<a1>
+[5a a5 20 00 ad bd f3 ff 00 20 00 bd 82 00 2d 48 80 58 82 68 d2 07 03 d0 40 69 08 70 00 20 70 47 01 20 70 47 08 b5]
+<5a>
+<a1>
+[5a a5 20 00 aa 32 69 46 00 20 ff f7 ef ff 00 28 f9 d1 68 46 00 78 08 bd 23 4b 81 00 59 58 01 23 00 2a 06 d0 cb 60]
+<5a>
+<a1>
+[5a a5 20 00 6c 07 20 49 00 28 04 d0 01 28 06 d1 03 e0 0b 61 03 e0 08 20 00 e0 10 20 08 60 00 20 70 47 70 b5 1a 48]
+<5a>
+<a1>
+[5a a5 20 00 dd 85 0c 46 01 68 03 22 92 03 11 43 01 60 16 4d 00 21 40 35 69 61 ff 21 29 61 02 21 01 61 00 20 ff f7]
+<5a>
+<a1>
+[5a a5 20 00 a9 fd bd fe 21 01 0e 46 00 f0 f9 f8 44 1e 00 20 ff f7 b5 fe 31 46 62 1c 51 43 00 f0 f0 f8 00 02 ff 38]
+<5a>
+<a1>
+[5a a5 20 00 61 75 01 38 68 61 09 48 04 62 81 15 41 60 08 49 81 60 05 21 01 60 07 49 08 48 ff f7 45 ff 00 20 70 bd]
+<5a>
+<a1>
+[5a a5 20 00 ea 27 10 23 00 00 00 e1 00 e0 80 80 04 40 00 40 06 40 ff ff 00 00 3f 1c 00 00 19 1c 00 00 80 0a 70 47]
+<5a>
+<a1>
+[5a a5 20 00 78 80 01 20 80 02 70 47 40 20 70 47 10 b5 00 20 ff f7 85 fe 7d 21 c9 00 00 f0 c1 f8 5d 49 08 60 10 bd]
+<5a>
+<a1>
+[5a a5 20 00 dd e7 f8 b5 84 0a 5b 4d 32 20 11 c5 29 46 0c 31 5a 4e 2c 60 0f 46 57 48 08 3d b0 47 68 69 00 28 0c d1]
+<5a>
+<a1>
+[5a a5 20 00 fb 77 34 20 11 c5 52 48 2c 60 00 68 68 60 39 46 51 48 08 3d b0 47 68 69 00 28 00 d0 01 20 f8 bd 10 b5]
+<5a>
+<a1>
+[5a a5 20 00 39 c9 4c 4c 3a 20 21 46 20 60 4b 4a 14 31 20 46 90 47 e1 69 a0 69 48 40 10 bd 10 b5 46 4c 39 20 21 46]
+<5a>
+<a1>
+[5a a5 20 00 d0 45 20 60 45 4a 14 31 20 46 90 47 60 69 00 28 00 d0 01 20 10 bd f8 b5 05 46 3e 4c 80 0a 32 21 60 60]
+<5a>
+<a1>
+[5a a5 20 00 71 2a 21 60 21 46 a0 60 14 31 3b 4e 0f 46 20 46 b0 47 60 69 00 28 0d d1 a8 09 3b 21 60 60 21 60 a0 60]
+<5a>
+<a1>
+[5a a5 20 00 11 64 33 48 39 46 00 68 e0 60 20 46 b0 47 60 69 00 28 00 d0 01 20 f8 bd f8 b5 05 46 2e 4c 0f 46 80 0a]
+<5a>
+<a1>
+[5a a5 20 00 f1 21 32 21 60 60 21 60 a0 60 21 46 14 31 2a 4e 20 46 00 91 b0 47 60 69 00 28 0d d1 33 20 a1 c4 40 20]
+<5a>
+<a1>
+[5a a5 20 00 53 ac 20 60 23 48 00 68 60 60 22 48 0c 3c 00 99 b0 47 60 69 00 28 00 d0 01 20 f8 bd f0 b5 91 b0 0e 46]
+<5a>
+<a1>
+[5a a5 20 00 56 b7 05 46 ff f7 72 ff ae 19 2d e0 28 46 ff f7 b2 ff 40 21 68 46 00 f0 63 f8 69 46 28 46 ff f7 cb ff]
+<5a>
+<a1>
+[5a a5 20 00 9e df 00 24 6f 46 ff 21 20 46 00 f0 3e f8 39 55 64 1c 40 2c f7 d3 28 46 ff f7 9d ff 69 46 28 46 ff f7]
+<5a>
+<a1>
+[5a a5 20 00 9b e9 ba ff 2f 46 00 24 ff 21 20 46 00 f0 2d f8 38 5d 81 42 01 d0 01 24 03 e0 64 1c 40 2c f3 d3 00 24]
+<5a>
+<a1>
+[5a a5 20 00 ed 2d 00 2c 02 d1 40 35 ae 42 cf d2 20 46 11 b0 f0 bd 18 00 00 10 1c 00 00 10 f1 1f 00 0f 30 b5 0b 46]
+<5a>
+<a1>
+[5a a5 20 00 5d 55 01 46 00 20 20 22 01 24 09 e0 0d 46 d5 40 9d 42 05 d3 1d 46 95 40 49 1b 25 46 95 40 40 19 15 46]
+<5a>
+<a1>
+[5a a5 20 00 0c 70 52 1e 00 2d f1 dc 30 bd 70 b5 00 24 25 46 00 28 01 da 01 24 40 42 00 29 01 da 01 25 49 42 ff f7]
+<5a>
+<a1>
+[5a a5 20 00 32 ef dd ff ac 42 00 d0 40 42 00 2c 00 d0 49 42 70 bd d2 b2 01 e0 02 70 40 1c 49 1e fb d2 70 47 00 22]
+<5a>
+<a1>
+[5a a5 20 00 d3 e6 f6 e7 10 b5 13 46 0a 46 04 46 19 46 ff f7 f0 ff 20 46 10 bd f0 b5 1f b4 06 46 00 20 82 b0 05 46]
+<5a>
+<a1>
+[5a a5 20 00 88 63 40 24 01 91 00 90 1b e0 01 99 22 46 0f 46 30 46 00 f0 42 f8 04 9a 05 9b 80 1a 99 41 10 d3 10 46]
+<5a>
+<a1>
+[5a a5 20 00 00 92 19 46 22 46 00 f0 28 f8 36 1a 8f 41 01 97 22 46 01 20 00 21 00 9f 00 f0 1f f8 38 18 4d 41 00 90]
+<5a>
+<a1>
+[5a a5 20 00 75 85 20 46 64 1e 00 28 df dc 01 9b 00 98 29 46 32 46 07 b0 f0 bd 06 4c 01 25 06 4e 05 e0 e3 68 07 cc]
+<5a>
+<a1>
+[5a a5 20 00 4c 54 2b 43 0c 3c 98 47 10 34 b4 42 f7 d3 ff f7 9c fc 18 23 00 00 38 23 00 00 10 b5 20 2a 04 db 01 46]
+<5a>
+<a1>
+[5a a5 20 00 58 3c 20 3a 91 40 00 20 10 bd 91 40 20 23 9c 1a 03 46 e3 40 19 43 90 40 10 bd 10 b5 20 2a 04 db 08 46]
+<5a>
+<a1>
+[5a a5 20 00 4b d6 20 3a d0 40 00 21 10 bd 0b 46 d3 40 d0 40 20 24 a2 1a 91 40 08 43 19 46 10 bd 00 00 0f b4 10 b5]
+<5a>
+<a1>
+[5a a5 20 00 2b dc 03 a9 04 4b 04 4a 02 98 00 f0 24 f8 10 bc 08 bc 04 b0 18 47 71 1b 00 00 14 00 00 10 30 b4 74 46]
+<5a>
+<a1>
+[5a a5 20 00 de 98 64 1e 25 78 64 1c ab 42 00 d2 1d 46 63 5d 5b 00 e3 18 30 bc 18 47 02 e0 08 c8 12 1f 08 c1 00 2a]
+<5a>
+<a1>
+[5a a5 20 00 16 f7 fa d1 70 47 70 47 00 20 01 e0 01 c1 12 1f 00 2a fb d1 70 47 ff b5 8f b0 0f 46 04 46 00 26 06 e0]
+<5a>
+<a1>
+[5a a5 20 00 b9 3c 25 28 0a d0 12 9a 11 99 90 47 64 1c 76 1c 20 78 00 28 f5 d1 30 46 13 b0 f0 bd 00 25 01 21 a1 4a]
+<5a>
+<a1>
+[5a a5 20 00 a5 64 00 95 00 e0 05 43 64 1c 23 78 08 46 20 3b 98 40 10 42 f7 d1 20 78 2e 28 15 d1 04 20 05 43 60 78]
+<5a>
+<a1>
+[5a a5 20 00 21 98 64 1c 2a 28 0a d1 01 cf 64 1c 00 90 0b e0 00 99 0a 22 51 43 30 39 40 18 64 1c 00 90 20 78 01 46]
+<5a>
+<a1>
+[5a a5 20 00 8d ad 30 39 09 29 f3 d9 20 78 6c 28 0e d0 04 dc 4c 28 13 d0 6a 28 12 d1 04 e0 74 28 0e d0 7a 28 0d d1]
+<5a>
+<a1>
+[5a a5 20 00 fc eb 0b e0 01 20 40 05 05 43 07 e0 01 21 09 05 62 78 0d 43 82 42 01 d1 6d 18 64 1c 64 1c 20 78 86 46]
+<5a>
+<a1>
+[5a a5 20 00 73 8c 69 28 4a d0 08 dc 00 28 b4 d0 58 28 6d d0 63 28 10 d0 64 28 08 d1 40 e0 70 28 6b d0 73 28 12 d0]
+<5a>
+<a1>
+[5a a5 20 00 9a 87 75 28 60 d0 78 28 60 d0 12 9a 70 46 11 99 90 47 76 1c e5 e0 38 78 69 46 08 72 00 20 48 72 02 a8]
+<5a>
+<a1>
+[5a a5 20 00 59 52 01 90 01 20 03 e0 38 68 01 90 00 20 c0 43 3f 1d 69 07 0c d5 00 25 00 e0 6d 1c 00 99 8d 42 0f da]
+<5a>
+<a1>
+[5a a5 20 00 40 e9 85 42 f9 db 01 99 49 5d 00 29 f5 d1 08 e0 00 25 00 e0 6d 1c 85 42 fc db 01 99 49 5d 00 29 f8 d1]
+<5a>
+<a1>
+[5a a5 20 00 28 ca 76 19 07 e0 01 98 01 99 00 78 49 1c 01 91 12 9a 11 99 90 47 6d 1e f5 d2 b2 e0 0a 20 02 90 00 21]
+<5a>
+<a1>
+[5a a5 20 00 2b c6 68 02 40 0f 03 91 02 28 0c d0 01 cf c1 17 84 46 00 29 0d da 62 46 08 46 52 42 00 21 81 41 94 46]
+<5a>
+<a1>
+[5a a5 20 00 16 bf 2d 20 08 e0 ff 1d ff 08 ff 00 03 cf 84 46 ef e7 28 05 04 d5 2b 20 6a 46 10 74 01 20 3c e0 e8 07]
+<5a>
+<a1>
+[5a a5 20 00 76 82 3a d0 20 20 f7 e7 0a 20 00 e0 10 20 00 21 03 91 02 90 07 e0 10 20 02 90 00 21 04 20 05 43 08 20]
+<5a>
+<a1>
+[5a a5 20 00 6a ce 03 91 00 90 68 02 40 0f 02 28 10 d0 01 cf 00 21 84 46 00 20 0d 90 28 07 1f d5 70 46 70 28 0c d0]
+<5a>
+<a1>
+[5a a5 20 00 d5 b1 02 9a 10 20 03 9b 42 40 1a 43 0c d0 15 e0 ff 1d ff 08 ff 00 03 cf 84 46 eb e7 40 20 6a 46 10 74]
+<5a>
+<a1>
+[5a a5 20 00 c8 64 01 20 0d 90 0c e0 60 46 08 43 06 d0 30 20 6a 46 10 74 70 46 50 74 02 20 0d 90 70 46 58 28 04 d0]
+<5a>
+<a1>
+[5a a5 20 00 52 ae 29 a0 01 90 0d a8 0e 90 0d e0 2c a0 f9 e7 60 46 03 9b 02 9a ff f7 5e fe 01 9b 84 46 9b 5c 0e 9a]
+<5a>
+<a1>
+[5a a5 20 00 99 35 52 1e 0e 92 13 70 60 46 08 43 f0 d1 0e 98 05 a9 08 1a 20 30 01 90 68 07 01 d5 00 98 01 e0 01 20]
+<5a>
+<a1>
+[5a a5 20 00 e5 a1 00 90 01 99 88 42 03 dd 01 46 01 98 08 1a 00 e0 00 20 00 25 00 90 06 e0 04 a8 12 9a 40 5d 11 99]
+<5a>
+<a1>
+[5a a5 20 00 30 84 90 47 6d 1c 76 1c 0d 98 85 42 f5 db 04 e0 12 9a 30 20 11 99 90 47 76 1c 00 99 48 1e 00 90 00 29]
+<5a>
+<a1>
+[5a a5 20 00 af 77 f5 dc 08 e0 0e 98 0e 99 00 78 49 1c 0e 91 12 9a 11 99 90 47 76 1c 01 99 48 1e 01 90 00 29 f1 dc]
+<5a>
+<a1>
+[5a a5 20 00 9c 2a 64 1c b4 e6 09 28 01 00 30 31 32 33 34 35 36 37 38 39 61 62 63 64 65 66 00 00 00 00 30 31 32 33]
+<5a>
+<a1>
+[5a a5 20 00 53 1e 34 35 36 37 38 39 41 42 43 44 45 46 00 00 00 00 00 40 06 40 00 80 06 40 38 23 00 00 00 00 00 10]
+<5a>
+<a1>
+[5a a5 20 00 a1 c9 1c 00 00 00 16 20 00 00 54 23 00 00 1c 00 00 10 24 02 00 00 26 20 00 00 80 c3 c9 01 00 00 00 00]
+<5a>
+<a1>
+[5a a5 14 00 50 86 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 e0 2e 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<23 72>
+<a0 00 00 02 00 00 00 00 04 00 00 00>
+Successful generic response to command 'write-memory'
+  - took 1.699 seconds
+Inject command 'reset'
+[5a a1]
+[5a a4 04 00 6f 46 0b 00 00 00]
+<5a>
+<a1>
+<5a>
+<a4>
+<0c 00>
+<cd a6>
+<a0 00 00 02 00 00 00 00 0b 00 00 00>
+Successful generic response to command 'reset'
+  - took 0.117 seconds
+[5a a1]

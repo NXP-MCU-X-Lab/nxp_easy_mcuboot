@@ -1,0 +1,87 @@
+Dependencies for Project 'lpc802_example_app', Target 'lpc802_example_app': (DO NOT MODIFY !)
+F (..\..\..\..\Libraries\startup\src\system_LPC8xx.c)(0x5CFF4802)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O2 --apcs=interwork -I ..\..\..\..\Libraries\startup\inc -I ..\..\..\..\Libraries\drivers_lpc800\inc -I ..\..\..\..\Libraries\utilities\inc -I ..\..\..\..\Libraries\devices\inc -I ..\src -I ..\src\config -I ..\..\..\..\Libraries\utilities\mcuboot -I ..\..\..\..\Libraries\utilities\kptl --c99-I.\RTE\_lpc802_example_app-IC:\Keil_v5\ARM\PACK\NXP\LPC802_DFP\10.0.3-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\PACK\NXP\LPC802_DFP\10.0.3\Device\Include-D__UVISION_VERSION="525" -DCPU_LPC802M001JDH16 -DLPC802 -D__VTOR_PRESENT --C99-o .\lpc802_example\system_lpc8xx.o --omf_browse .\lpc802_example\system_lpc8xx.crf --depend .\lpc802_example\system_lpc8xx.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (..\..\..\..\Libraries\startup\inc\LPC8xx.h)(0x5ADD5CF3)
+I (..\..\..\..\Libraries\startup\inc\core_cm0plus.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cmInstr.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cmFunc.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\system_LPC8xx.h)(0x5A4CEB7E)
+F (..\..\..\..\Libraries\startup\src\mdk\startup_LPC8xx.s)(0x5CFF4F54)(--cpu Cortex-M0+ -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_lpc802_example_app-IC:\Keil_v5\ARM\PACK\NXP\LPC802_DFP\10.0.3-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\PACK\NXP\LPC802_DFP\10.0.3\Device\Include--pd "__UVISION_VERSION SETA 525" --pd "CPU_LPC802M001JDH16 SETA 1" --pd "NO_CRP SETA 1"-o .\lpc802_example\startup_lpc8xx.o --depend .\lpc802_example\startup_lpc8xx.d)
+F (..\src\main.c)(0x5CFF498C)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O2 --apcs=interwork -I ..\..\..\..\Libraries\startup\inc -I ..\..\..\..\Libraries\drivers_lpc800\inc -I ..\..\..\..\Libraries\utilities\inc -I ..\..\..\..\Libraries\devices\inc -I ..\src -I ..\src\config -I ..\..\..\..\Libraries\utilities\mcuboot -I ..\..\..\..\Libraries\utilities\kptl --c99-I.\RTE\_lpc802_example_app-IC:\Keil_v5\ARM\PACK\NXP\LPC802_DFP\10.0.3-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\PACK\NXP\LPC802_DFP\10.0.3\Device\Include-D__UVISION_VERSION="525" -DCPU_LPC802M001JDH16 -DLPC802 -D__VTOR_PRESENT --C99-o .\lpc802_example\main.o --omf_browse .\lpc802_example\main.crf --depend .\lpc802_example\main.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CD2A719)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599ECD2C)
+I (..\..\..\..\Libraries\drivers_lpc800\inc\common.h)(0x5CFF550A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599ECD2E)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599ECD2C)
+I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x599ECD2A)
+I (..\..\..\..\Libraries\startup\inc\LPC8xx.h)(0x5ADD5CF3)
+I (..\..\..\..\Libraries\startup\inc\core_cm0plus.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cmInstr.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cmFunc.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\system_LPC8xx.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\drivers_lpc800\inc\gpio.h)(0x5B481B61)
+I (..\..\..\..\Libraries\drivers_lpc800\inc\uart.h)(0x5B481B53)
+I (..\..\..\..\Libraries\drivers_lpc800\inc\flash.h)(0x5B481B64)
+F (..\..\..\..\Libraries\drivers_lpc800\src\common.c)(0x5B481BB1)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O2 --apcs=interwork -I ..\..\..\..\Libraries\startup\inc -I ..\..\..\..\Libraries\drivers_lpc800\inc -I ..\..\..\..\Libraries\utilities\inc -I ..\..\..\..\Libraries\devices\inc -I ..\src -I ..\src\config -I ..\..\..\..\Libraries\utilities\mcuboot -I ..\..\..\..\Libraries\utilities\kptl --c99-I.\RTE\_lpc802_example_app-IC:\Keil_v5\ARM\PACK\NXP\LPC802_DFP\10.0.3-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\PACK\NXP\LPC802_DFP\10.0.3\Device\Include-D__UVISION_VERSION="525" -DCPU_LPC802M001JDH16 -DLPC802 -D__VTOR_PRESENT --C99-o .\lpc802_example\common.o --omf_browse .\lpc802_example\common.crf --depend .\lpc802_example\common.d)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599ECD2C)
+I (..\..\..\..\Libraries\drivers_lpc800\inc\common.h)(0x5CFF550A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599ECD2E)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599ECD2C)
+I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x599ECD2A)
+I (..\..\..\..\Libraries\startup\inc\LPC8xx.h)(0x5ADD5CF3)
+I (..\..\..\..\Libraries\startup\inc\core_cm0plus.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cmInstr.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cmFunc.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\system_LPC8xx.h)(0x5A4CEB7E)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CD2A719)
+F (..\..\..\..\Libraries\drivers_lpc800\src\gpio.c)(0x5B481BA4)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O2 --apcs=interwork -I ..\..\..\..\Libraries\startup\inc -I ..\..\..\..\Libraries\drivers_lpc800\inc -I ..\..\..\..\Libraries\utilities\inc -I ..\..\..\..\Libraries\devices\inc -I ..\src -I ..\src\config -I ..\..\..\..\Libraries\utilities\mcuboot -I ..\..\..\..\Libraries\utilities\kptl --c99-I.\RTE\_lpc802_example_app-IC:\Keil_v5\ARM\PACK\NXP\LPC802_DFP\10.0.3-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\PACK\NXP\LPC802_DFP\10.0.3\Device\Include-D__UVISION_VERSION="525" -DCPU_LPC802M001JDH16 -DLPC802 -D__VTOR_PRESENT --C99-o .\lpc802_example\gpio.o --omf_browse .\lpc802_example\gpio.crf --depend .\lpc802_example\gpio.d)
+I (..\..\..\..\Libraries\drivers_lpc800\inc\common.h)(0x5CFF550A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599ECD2E)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599ECD2C)
+I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x599ECD2A)
+I (..\..\..\..\Libraries\startup\inc\LPC8xx.h)(0x5ADD5CF3)
+I (..\..\..\..\Libraries\startup\inc\core_cm0plus.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cmInstr.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cmFunc.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\system_LPC8xx.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\drivers_lpc800\inc\gpio.h)(0x5B481B61)
+F (..\..\..\..\Libraries\drivers_lpc800\src\syscon.c)(0x5B481B99)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O2 --apcs=interwork -I ..\..\..\..\Libraries\startup\inc -I ..\..\..\..\Libraries\drivers_lpc800\inc -I ..\..\..\..\Libraries\utilities\inc -I ..\..\..\..\Libraries\devices\inc -I ..\src -I ..\src\config -I ..\..\..\..\Libraries\utilities\mcuboot -I ..\..\..\..\Libraries\utilities\kptl --c99-I.\RTE\_lpc802_example_app-IC:\Keil_v5\ARM\PACK\NXP\LPC802_DFP\10.0.3-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\PACK\NXP\LPC802_DFP\10.0.3\Device\Include-D__UVISION_VERSION="525" -DCPU_LPC802M001JDH16 -DLPC802 -D__VTOR_PRESENT --C99-o .\lpc802_example\syscon.o --omf_browse .\lpc802_example\syscon.crf --depend .\lpc802_example\syscon.d)
+I (..\..\..\..\Libraries\drivers_lpc800\inc\syscon.h)(0x5B481B58)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599ECD2E)
+I (..\..\..\..\Libraries\drivers_lpc800\inc\common.h)(0x5CFF550A)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599ECD2C)
+I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x599ECD2A)
+I (..\..\..\..\Libraries\startup\inc\LPC8xx.h)(0x5ADD5CF3)
+I (..\..\..\..\Libraries\startup\inc\core_cm0plus.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cmInstr.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cmFunc.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\system_LPC8xx.h)(0x5A4CEB7E)
+F (..\..\..\..\Libraries\drivers_lpc800\src\uart.c)(0x5B481B95)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O2 --apcs=interwork -I ..\..\..\..\Libraries\startup\inc -I ..\..\..\..\Libraries\drivers_lpc800\inc -I ..\..\..\..\Libraries\utilities\inc -I ..\..\..\..\Libraries\devices\inc -I ..\src -I ..\src\config -I ..\..\..\..\Libraries\utilities\mcuboot -I ..\..\..\..\Libraries\utilities\kptl --c99-I.\RTE\_lpc802_example_app-IC:\Keil_v5\ARM\PACK\NXP\LPC802_DFP\10.0.3-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\PACK\NXP\LPC802_DFP\10.0.3\Device\Include-D__UVISION_VERSION="525" -DCPU_LPC802M001JDH16 -DLPC802 -D__VTOR_PRESENT --C99-o .\lpc802_example\uart.o --omf_browse .\lpc802_example\uart.crf --depend .\lpc802_example\uart.d)
+I (..\..\..\..\Libraries\drivers_lpc800\inc\uart.h)(0x5B481B53)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599ECD2E)
+I (..\..\..\..\Libraries\drivers_lpc800\inc\common.h)(0x5CFF550A)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599ECD2C)
+I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x599ECD2A)
+I (..\..\..\..\Libraries\startup\inc\LPC8xx.h)(0x5ADD5CF3)
+I (..\..\..\..\Libraries\startup\inc\core_cm0plus.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cmInstr.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cmFunc.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\system_LPC8xx.h)(0x5A4CEB7E)
+F (..\..\..\..\Libraries\drivers_lpc800\src\flash.c)(0x5CFF4D5D)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O2 --apcs=interwork -I ..\..\..\..\Libraries\startup\inc -I ..\..\..\..\Libraries\drivers_lpc800\inc -I ..\..\..\..\Libraries\utilities\inc -I ..\..\..\..\Libraries\devices\inc -I ..\src -I ..\src\config -I ..\..\..\..\Libraries\utilities\mcuboot -I ..\..\..\..\Libraries\utilities\kptl --c99-I.\RTE\_lpc802_example_app-IC:\Keil_v5\ARM\PACK\NXP\LPC802_DFP\10.0.3-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\PACK\NXP\LPC802_DFP\10.0.3\Device\Include-D__UVISION_VERSION="525" -DCPU_LPC802M001JDH16 -DLPC802 -D__VTOR_PRESENT --C99-o .\lpc802_example\flash.o --omf_browse .\lpc802_example\flash.crf --depend .\lpc802_example\flash.d)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599ECD2C)
+I (..\..\..\..\Libraries\drivers_lpc800\inc\flash.h)(0x5B481B64)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (..\..\..\..\Libraries\drivers_lpc800\inc\common.h)(0x5CFF550A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599ECD2E)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599ECD2C)
+I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x599ECD2A)
+I (..\..\..\..\Libraries\startup\inc\LPC8xx.h)(0x5ADD5CF3)
+I (..\..\..\..\Libraries\startup\inc\core_cm0plus.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cmInstr.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cmFunc.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\system_LPC8xx.h)(0x5A4CEB7E)
