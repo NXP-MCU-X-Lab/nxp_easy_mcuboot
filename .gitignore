@@ -1,26 +1,53 @@
-# Prerequisites
-*.d
-
 # Object files
 *.o
 *.ko
-*.obj
-*.elf
-
-# Linker output
-*.ilk
+*.o.*
+*.uvgui.*
+*.bat
+*.__i
+*.dbgdt
+*.tra
+*.iex
+*.sim
+*.pbd
+*.browse
+*.tmp
+*.ewt
+*.db
+*.__ia
+*.dni
+*.wsdt
+*.pbi
+*.bin
+*.cout
+*.crf
+*.d
+*.sct
+*.htm
 *.map
-*.exp
-
-# Precompiled Headers
-*.gch
-*.pch
+*.axf
+*.lnp
+*.txt
+*.xcl
+*.pbi.xcl
+*.ini
+*.Scr
+*.lst
+*.uvgui*
+output
+Doc
+settings
+Debug
+SI
+Tools
+Tool
+Release
+lib_html
+d4d
+net_5000
 
 # Libraries
-*.lib
 *.a
-*.la
-*.lo
 
 # Shared objects (inc. Windows DLLs)
 *.dll
@@ -32,21 +59,10 @@
 *.exe
 *.out
 *.app
-*.i*86
-*.x86_64
 *.hex
 
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+# Project files
+*.plg
+*.Yandld
+*.dep
+*.bak
