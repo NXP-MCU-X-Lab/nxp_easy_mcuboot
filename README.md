@@ -96,10 +96,10 @@ kptl 负责MCUBOOT协议的基本实现，拆包封包等， mcuboot 实现 boot
 | cfg_flash_start       | APP启动地址(示例中一般默认为0x1000(4K) 或者0x8000(32K))      |
 | cfg_flash_size        | FLash 大小                                                   |
 | cfg_flash_sector_size | flash sector 大小                                            |
-| cfg_ram_start         | RAM起始地址                                                  |
-| cfg_ram_size          | RAM大小                                                      |
-| cfg_device_id         | MCU ID 例子中一般填了一个0x12345678而已，有需要的话需要从MCU中读取 |
-| cfg_uuid              | MCU UID， 唯一ID                                             |
+| cfg_ram_start         | RAM起始地址。这个字段只是让上位机获取这个信息。移植阶段可以随便填 |
+| cfg_ram_size          | RAM大小。这个字段只是让上位机获取这个信息。移植阶段可以随便填 |
+| cfg_device_id         | 例子中一般填了一个0x12345678而已。这个字段只是让上位机获取这个信息。移植阶段可以随便填 |
+| cfg_uuid              | MCU唯一ID。这个字段只是让上位机获取这个信息。移植阶段可以随便填 |
 
    例子：
 
@@ -184,3 +184,4 @@ void JumpToImage(uint32_t addr)
 }
 ```
 
+5. APP工程不要忘记修改启动地址
