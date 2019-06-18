@@ -62,15 +62,15 @@ Project
 
 ## 移植
 
-bootloader本身只有4个 文件: `kptl.c ` `kptl.h`  `mcuboot.c`, `mcuboot.h`.
+bootloader本身只有4个 文件: `kptl.c` `kptl.h`  `mcuboot.c`, `mcuboot.h`.
 
-kptl 负责MCUBOOT协议的基本实现，拆包封包等， mcuboot 实现 bootloader的基本命令。 注意mcuboot已经砍掉了大部分 官方完整版的命令实现，只保留用于串口下载的最基本命令如 擦写flash, 获得芯片信息等等。
+kptl 负责MCUBOOT协议的基本实现，拆包封包等， mcuboot 实现 bootloader的基本命令,依赖kptl。 注意mcuboot已经砍掉了大部分 官方完整版的命令实现，只保留用于串口下载的最基本命令如 擦写flash, 获得芯片信息等等。
 
 
 
 ### 移植步骤
 
-1. 准备好的你的MCU： 确保你已经熟悉了你的MCU。MCU 可以正常跑，串口收发功能已经调通并没有问题， Flash编程，擦写功能已经调通并没有问题。
+1. 准备好的你的MCU： 确保你已经熟悉了你的MCU。MCU 可以正常跑，串口收发功能已经调通并没有问题， Flash编程，擦写功能已经调通并没有问题。这些非常重要，串口收发和flash的编程功能是bootloader的基本操作。这些功能有BUG将直接影响bootloader工程
 2. 在工程中加入kptl.c 和 mcuboot.c 并且添加对应的include路径
 3. 在工程中定义全局结构： `static mcuboot_t mcuboot;`
 
@@ -79,19 +79,19 @@ kptl 负责MCUBOOT协议的基本实现，拆包封包等， mcuboot 实现 boot
 
    具体需要实现的回调操作如下
 
-   | 回调接口     | 说明                                                         |
-   | ------------ | ------------------------------------------------------------ |
-   | op_send      | 串口发送数据                                                 |
-   | op_reset     | 复位MCU                                                      |
-   | op_jump      | MCU跳转到指定地址                                            |
-   | op_complete  | 在bootloader 接收完完整的image后会回调这个函数，一般用于释放硬件资源，改关闭的外设关闭，中断该关的关 |
-   | op_mem_erase | flash擦除                                                    |
-   | op_mem_write | flash编程                                                    |
-   | op_mem_read  | flash读取                                                    |
+   | 需要实现的回调接口函数 | 说明                                                         |
+   | ---------------------- | ------------------------------------------------------------ |
+   | op_send                | 串口发送数据                                                 |
+   | op_reset               | 复位MCU                                                      |
+   | op_jump                | MCU跳转到指定地址                                            |
+   | op_complete            | 在bootloader 接收完完整的image后会回调这个函数，一般用于释放硬件资源，改关闭的外设关闭，中断该关的关 |
+   | op_mem_erase           | flash擦除                                                    |
+   | op_mem_write           | flash编程                                                    |
+   | op_mem_read            | flash读取                                                    |
 
    配置：
 
-   | 配置                  | 说明                                                         |
+   | 需要填入的配置        | 说明                                                         |
    | --------------------- | ------------------------------------------------------------ |
    | cfg_flash_start       | APP启动地址(示例中一般默认为0x1000(4K) 或者0x8000(32K))      |
    | cfg_flash_size        | FLash 大小                                                   |
@@ -127,7 +127,7 @@ kptl 负责MCUBOOT协议的基本实现，拆包封包等， mcuboot 实现 boot
 
 
 
-5. 在while1 中，轮训接受串口数据，接到数据就调用一次`mcuboot_recv`,  并轮训调用`mcuboot_proc`. 同时，可以通过Systick中断设置一个超时函数，超过多少秒后没有收到串口数据就尝试直接跳到app.(例子一般默认300MS)
+5. 在while1 中，轮训接受串口数据，接到一个byte就调用一次`mcuboot_recv`,  并轮训调用`mcuboot_proc`. 同时，可以通过Systick中断设置一个超时函数，超过多少秒后没有收到串口数据就尝试直接跳到app.(例子一般默认300MS)
 
        while(1)
        {
@@ -150,7 +150,7 @@ kptl 负责MCUBOOT协议的基本实现，拆包封包等， mcuboot 实现 boot
 
 1. Flash的操作实现很重要。 一般flash都是块设备，有最小的擦除和编程单位(尤其是LPC, 最小擦除单位和最小编程单位都不一样，而且很大，很恶心)。这就需要在实现`memory_write`函数的时候格外注意，该对齐的对齐，该补全的补全，没到最小编程单位的需要提取读出之前的数据并合并，超过最小编程单位的需要多次写入flash
 2. 对于MCU复位的实现，直接调用 CMSIS库函数 `NVIC_SystemReset`即可
-3. 最后跳转之前一般需要把外设全部反初始化，中断(包括SYsTick)该关的都要关掉
+3. 最后跳转之前一般需要把外设全部反初始化，中断(包括SYsTick)该关的都要关掉,可以在`mcuboot_complete`中完成这些操作
 4. 最后的跳转到用户app 。主要需要干三件事： 重新设置PC,SP, 重新设置中断向量表的入口地址：SCB->VTOR。其中SP为Image的0-3字节，PC为image的4-7字节。可直接使用祖传函数：
 
 ```
