@@ -12,6 +12,8 @@
 
 
 
+有关完整的MCUBOOT 协议，软件及其他内容看参看官方[page](https://www.nxp.com/support/developer-resources/software-development-tools/mcuxpresso-software-and-tools/mcuboot-mcu-bootloader-for-nxp-microcontrollers:MCUBOOT):
+
 ## 文件结构
 
 ```
@@ -148,7 +150,8 @@ kptl 负责MCUBOOT协议的基本实现，拆包封包等， mcuboot 实现 boot
 
 1. Flash的操作实现很重要。 一般flash都是块设备，有最小的擦除和编程单位(尤其是LPC, 最小擦除单位和最小编程单位都不一样，而且很大，很恶心)。这就需要在实现`memory_write`函数的时候格外注意，该对齐的对齐，该补全的补全，没到最小编程单位的需要提取读出之前的数据并合并，超过最小编程单位的需要多次写入flash
 2. 对于MCU复位的实现，直接调用 CMSIS库函数 `NVIC_SystemReset`即可
-3. 最后的跳转到用户app 。主要需要干三件事： 重新设置PC,SP, 重新设置中断向量表的入口地址：SCB->VTOR。其中SP为Image的0-3字节，PC为image的4-7字节。可直接使用祖传函数：
+3. 最后跳转之前一般需要把外设全部反初始化，中断(包括SYsTick)该关的都要关掉
+4. 最后的跳转到用户app 。主要需要干三件事： 重新设置PC,SP, 重新设置中断向量表的入口地址：SCB->VTOR。其中SP为Image的0-3字节，PC为image的4-7字节。可直接使用祖传函数：
 
 ```
 void JumpToImage(uint32_t addr)
