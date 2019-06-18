@@ -1,0 +1,82 @@
+Dependencies for Project 'frdm_k64_example_app', Target 'frdm_k64_example_app': (DO NOT MODIFY !)
+F (..\..\..\..\Libraries\startup\src\system_MK64F12.c)(0x5D0856FC)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\..\..\..\Libraries\startup\inc -I ..\..\..\..\Libraries\drivers_k64\inc -I ..\..\..\..\Libraries\utilities\mcuboot -I ..\..\..\..\Libraries\utilities\kptl -I ..\src\config --c99-I.\RTE\_frdm_k64_example_app-IC:\Keil_v5\ARM\PACK\Keil\Kinetis_K60_DFP\1.5.0\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DMK64FN1M0xxx12 -DMK64F12-o .\frdm_k64_example_app\system_mk64f12.o --omf_browse .\frdm_k64_example_app\system_mk64f12.crf --depend .\frdm_k64_example_app\system_mk64f12.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (..\..\..\..\Libraries\startup\inc\MK64F12.h)(0x5A4CEB80)
+I (..\..\..\..\Libraries\startup\inc\core_cm4.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cmInstr.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cmFunc.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cm4_simd.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\system_MK64F12.h)(0x5A4CEB80)
+F (..\..\..\..\Libraries\startup\src\mdk\startup_MK64F12.s)(0x5A4CEB80)(--cpu Cortex-M4.fp -g --apcs=interwork -I.\RTE\_frdm_k64_example_app-IC:\Keil_v5\ARM\PACK\Keil\Kinetis_K60_DFP\1.5.0\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 525" --pd "MK64FN1M0xxx12 SETA 1" --pd "RAM_TARGET SETA 1"--list .\startup_mk64f12.lst --xref -o .\frdm_k64_example_app\startup_mk64f12.o --depend .\frdm_k64_example_app\startup_mk64f12.d)
+F (..\src\main.c)(0x5D085611)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\..\..\..\Libraries\startup\inc -I ..\..\..\..\Libraries\drivers_k64\inc -I ..\..\..\..\Libraries\utilities\mcuboot -I ..\..\..\..\Libraries\utilities\kptl -I ..\src\config --c99-I.\RTE\_frdm_k64_example_app-IC:\Keil_v5\ARM\PACK\Keil\Kinetis_K60_DFP\1.5.0\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DMK64FN1M0xxx12 -DMK64F12-o .\frdm_k64_example_app\main.o --omf_browse .\frdm_k64_example_app\main.crf --depend .\frdm_k64_example_app\main.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CD2A719)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599ECD2C)
+I (..\..\..\..\Libraries\drivers_k64\inc\common.h)(0x5D0851FB)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599ECD2E)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599ECD2C)
+I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x599ECD2A)
+I (..\..\..\..\Libraries\startup\inc\MK64F12.h)(0x5A4CEB80)
+I (..\..\..\..\Libraries\startup\inc\core_cm4.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cmInstr.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cmFunc.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cm4_simd.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\system_MK64F12.h)(0x5A4CEB80)
+I (..\..\..\..\Libraries\drivers_k64\inc\gpio.h)(0x5CE6093E)
+I (..\..\..\..\Libraries\drivers_k64\inc\uart.h)(0x5CBAB08D)
+I (..\..\..\..\Libraries\drivers_k64\inc\flash.h)(0x5A4CEB80)
+I (..\..\..\..\Libraries\utilities\mcuboot\mcuboot.h)(0x5C30BCCF)
+I (..\..\..\..\Libraries\utilities\kptl\kptl.h)(0x5CFF5004)
+F (..\..\..\..\Libraries\drivers_k64\src\common.c)(0x5CC1052F)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\..\..\..\Libraries\startup\inc -I ..\..\..\..\Libraries\drivers_k64\inc -I ..\..\..\..\Libraries\utilities\mcuboot -I ..\..\..\..\Libraries\utilities\kptl -I ..\src\config --c99-I.\RTE\_frdm_k64_example_app-IC:\Keil_v5\ARM\PACK\Keil\Kinetis_K60_DFP\1.5.0\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DMK64FN1M0xxx12 -DMK64F12-o .\frdm_k64_example_app\common.o --omf_browse .\frdm_k64_example_app\common.crf --depend .\frdm_k64_example_app\common.d)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599ECD2C)
+I (..\..\..\..\Libraries\drivers_k64\inc\common.h)(0x5D0851FB)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599ECD2E)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599ECD2C)
+I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x599ECD2A)
+I (..\..\..\..\Libraries\startup\inc\MK64F12.h)(0x5A4CEB80)
+I (..\..\..\..\Libraries\startup\inc\core_cm4.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cmInstr.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cmFunc.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cm4_simd.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\system_MK64F12.h)(0x5A4CEB80)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CD2A719)
+F (..\..\..\..\Libraries\drivers_k64\src\flash.c)(0x5A4CEB80)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\..\..\..\Libraries\startup\inc -I ..\..\..\..\Libraries\drivers_k64\inc -I ..\..\..\..\Libraries\utilities\mcuboot -I ..\..\..\..\Libraries\utilities\kptl -I ..\src\config --c99-I.\RTE\_frdm_k64_example_app-IC:\Keil_v5\ARM\PACK\Keil\Kinetis_K60_DFP\1.5.0\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DMK64FN1M0xxx12 -DMK64F12-o .\frdm_k64_example_app\flash.o --omf_browse .\frdm_k64_example_app\flash.crf --depend .\frdm_k64_example_app\flash.d)
+I (..\..\..\..\Libraries\drivers_k64\inc\flash.h)(0x5A4CEB80)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (..\..\..\..\Libraries\drivers_k64\inc\common.h)(0x5D0851FB)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599ECD2E)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599ECD2C)
+I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x599ECD2A)
+I (..\..\..\..\Libraries\startup\inc\MK64F12.h)(0x5A4CEB80)
+I (..\..\..\..\Libraries\startup\inc\core_cm4.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cmInstr.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cmFunc.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cm4_simd.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\system_MK64F12.h)(0x5A4CEB80)
+F (..\..\..\..\Libraries\drivers_k64\src\gpio.c)(0x5A4CEB80)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\..\..\..\Libraries\startup\inc -I ..\..\..\..\Libraries\drivers_k64\inc -I ..\..\..\..\Libraries\utilities\mcuboot -I ..\..\..\..\Libraries\utilities\kptl -I ..\src\config --c99-I.\RTE\_frdm_k64_example_app-IC:\Keil_v5\ARM\PACK\Keil\Kinetis_K60_DFP\1.5.0\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DMK64FN1M0xxx12 -DMK64F12-o .\frdm_k64_example_app\gpio.o --omf_browse .\frdm_k64_example_app\gpio.crf --depend .\frdm_k64_example_app\gpio.d)
+I (..\..\..\..\Libraries\drivers_k64\inc\common.h)(0x5D0851FB)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599ECD2E)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599ECD2C)
+I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x599ECD2A)
+I (..\..\..\..\Libraries\startup\inc\MK64F12.h)(0x5A4CEB80)
+I (..\..\..\..\Libraries\startup\inc\core_cm4.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cmInstr.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cmFunc.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cm4_simd.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\system_MK64F12.h)(0x5A4CEB80)
+I (..\..\..\..\Libraries\drivers_k64\inc\gpio.h)(0x5CE6093E)
+F (..\..\..\..\Libraries\drivers_k64\src\uart.c)(0x5CD29B6B)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\..\..\..\Libraries\startup\inc -I ..\..\..\..\Libraries\drivers_k64\inc -I ..\..\..\..\Libraries\utilities\mcuboot -I ..\..\..\..\Libraries\utilities\kptl -I ..\src\config --c99-I.\RTE\_frdm_k64_example_app-IC:\Keil_v5\ARM\PACK\Keil\Kinetis_K60_DFP\1.5.0\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DMK64FN1M0xxx12 -DMK64F12-o .\frdm_k64_example_app\uart.o --omf_browse .\frdm_k64_example_app\uart.crf --depend .\frdm_k64_example_app\uart.d)
+I (..\..\..\..\Libraries\drivers_k64\inc\uart.h)(0x5CBAB08D)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599ECD2E)
+I (..\..\..\..\Libraries\drivers_k64\inc\common.h)(0x5D0851FB)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599ECD2C)
+I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x599ECD2A)
+I (..\..\..\..\Libraries\startup\inc\MK64F12.h)(0x5A4CEB80)
+I (..\..\..\..\Libraries\startup\inc\core_cm4.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cmInstr.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cmFunc.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\core_cm4_simd.h)(0x5A4CEB7E)
+I (..\..\..\..\Libraries\startup\inc\system_MK64F12.h)(0x5A4CEB80)

@@ -1,0 +1,12 @@
+--cpu=Cortex-M4.fp
+".\frdm_k64_example_app\system_mk64f12.o"
+".\frdm_k64_example_app\startup_mk64f12.o"
+".\frdm_k64_example_app\main.o"
+".\frdm_k64_example_app\common.o"
+".\frdm_k64_example_app\flash.o"
+".\frdm_k64_example_app\gpio.o"
+".\frdm_k64_example_app\uart.o"
+--strict --scatter ".\frdm_k64_example_app\frdm_k64_example_app.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\frdm_k64_example_app.map" -o .\frdm_k64_example_app\frdm_k64_example_app.axf

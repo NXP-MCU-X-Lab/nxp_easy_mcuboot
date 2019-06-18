@@ -1,0 +1,14 @@
+--cpu=Cortex-M4.fp
+".\frdm_k64_bl\system_mk64f12.o"
+".\frdm_k64_bl\startup_mk64f12.o"
+".\frdm_k64_bl\main.o"
+".\frdm_k64_bl\common.o"
+".\frdm_k64_bl\flash.o"
+".\frdm_k64_bl\gpio.o"
+".\frdm_k64_bl\uart.o"
+".\frdm_k64_bl\kptl.o"
+".\frdm_k64_bl\mcuboot.o"
+--strict --scatter ".\frdm_k64_bl\frdm_k64_bl.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\frdm_k64_bl.map" -o .\frdm_k64_bl\frdm_k64_bl.axf
