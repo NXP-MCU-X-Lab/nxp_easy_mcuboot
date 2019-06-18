@@ -1,6 +1,6 @@
 # NXP EASY MCU bootlaoder 
 
-这是NXP官方 MCUBOOT 的 简化版C实现，砍掉了大部分功能，只保留串口下载功能。可以配合 官方的命令行工具blhost 或者 GUI工具： Kinetis Flash Tool 来实现一个基于MCU串口的bootloader.  非常容易移植到任何MCU上
+这是NXP官方 MCUBOOT 的 简化版C实现，砍掉了大部分功能，只保留串口下载功能。可以配合 官方的命令行工具blhost 或者 GUI工具： Kinetis Flash Tool 来实现一个基于MCU串口的bootloader.  非常容易移植到任何MCU上。 建议以后不要再推AN2295这种老古董了，统一迁移到 MCUBOOT上来。鉴于MCUBOOT 官方实现很复杂，故有此地。
 
 
 
@@ -79,27 +79,27 @@ kptl 负责MCUBOOT协议的基本实现，拆包封包等， mcuboot 实现 boot
 
    具体需要实现的回调操作如下
 
-   | 需要实现的回调接口函数 | 说明                                                         |
-   | ---------------------- | ------------------------------------------------------------ |
-   | op_send                | 串口发送数据                                                 |
-   | op_reset               | 复位MCU                                                      |
-   | op_jump                | MCU跳转到指定地址                                            |
-   | op_complete            | 在bootloader 接收完完整的image后会回调这个函数，一般用于释放硬件资源，改关闭的外设关闭，中断该关的关 |
-   | op_mem_erase           | flash擦除                                                    |
-   | op_mem_write           | flash编程                                                    |
-   | op_mem_read            | flash读取                                                    |
+| 需要实现的回调接口函数 | 说明                                                         |
+| ---------------------- | ------------------------------------------------------------ |
+| op_send                | 串口发送数据                                                 |
+| op_reset               | 复位MCU                                                      |
+| op_jump                | MCU跳转到指定地址                                            |
+| op_complete            | 在bootloader 接收完完整的image后会回调这个函数，一般用于释放硬件资源，改关闭的外设关闭，中断该关的关 |
+| op_mem_erase           | flash擦除                                                    |
+| op_mem_write           | flash编程                                                    |
+| op_mem_read            | flash读取                                                    |
 
    配置：
 
-   | 需要填入的配置        | 说明                                                         |
-   | --------------------- | ------------------------------------------------------------ |
-   | cfg_flash_start       | APP启动地址(示例中一般默认为0x1000(4K) 或者0x8000(32K))      |
-   | cfg_flash_size        | FLash 大小                                                   |
-   | cfg_flash_sector_size | flash sector 大小                                            |
-   | cfg_ram_start         | RAM起始地址                                                  |
-   | cfg_ram_size          | RAM大小                                                      |
-   | cfg_device_id         | MCU ID 例子中一般填了一个0x12345678而已，有需要的话需要从MCU中读取 |
-   | cfg_uuid              | MCU UID， 唯一ID                                             |
+| 需要填入的配置        | 说明                                                         |
+| --------------------- | ------------------------------------------------------------ |
+| cfg_flash_start       | APP启动地址(示例中一般默认为0x1000(4K) 或者0x8000(32K))      |
+| cfg_flash_size        | FLash 大小                                                   |
+| cfg_flash_sector_size | flash sector 大小                                            |
+| cfg_ram_start         | RAM起始地址                                                  |
+| cfg_ram_size          | RAM大小                                                      |
+| cfg_device_id         | MCU ID 例子中一般填了一个0x12345678而已，有需要的话需要从MCU中读取 |
+| cfg_uuid              | MCU UID， 唯一ID                                             |
 
    例子：
 
