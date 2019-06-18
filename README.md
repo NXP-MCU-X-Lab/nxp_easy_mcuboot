@@ -7,7 +7,7 @@
 ## 简介
 
 * 基础实现和具体硬件完全解耦。 只有2个.c .h文件:kptl.c  mcuboot.c。 除Systick中断外 不使用任何中断。只使用串口轮训发送和接收数据。
-* 所有与硬件相关的必要操作全部由回调函数显示。 kptl 和  mcuboot 本身没有任何硬件依赖。非常容易移植到任何ARM Cortex MCU上
+* 所有与硬件相关的必要操作全部由回调函数显示。 kptl 和  mcuboot 本身没有任何硬件依赖。非常容易移植到任何ARM Cortex MCU上。kptl和mcuboot写的很小白，有C基础的都可以看的明白，容易改。
 * 目前提供LPC802和 FRDM-K64的移植demo
 
 
