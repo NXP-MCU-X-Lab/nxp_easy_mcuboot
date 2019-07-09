@@ -185,3 +185,7 @@ void JumpToImage(uint32_t addr)
 ```
 
 5. APP工程不要忘记修改启动地址
+
+6. 一些开发板(比如FRDM-KE02) 默认的板载openSDA K20调试器的USB转串口功能做的不好，无法有效识别PING开始命令，导致握手失败，需要更新最新的JLINK OPENSDA firmware才可以用
+
+   固件下载： https://www.segger.com/products/debug-probes/j-link/models/other-j-links/opensda-sda-v2/
