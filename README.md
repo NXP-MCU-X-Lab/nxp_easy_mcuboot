@@ -25,7 +25,9 @@ nxp_easy_mcuboot
 │    └─ utilities - 存放bootloader源代码
 ├─ Project - example 工程
 │    ├─ frdm_k64 基于FRDM-K64的 bootloader示例工程
+│    ├─ frdm_ke02 基于FRDM-ke02的 bootloader示例工程
 │    └─ lpc802 基于LPC802的 bootloader示例工程
+│    └─ lpc804 基于LPC804的 bootloader示例工程
 ├─ pc_tool - PC工具
 │    ├─ KinetisFlashTool.exe  GUI工具，直接使用这个下载程序
 │    ├─ KinetisFlashTool.ini
