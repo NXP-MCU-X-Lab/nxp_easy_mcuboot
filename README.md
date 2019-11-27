@@ -1,18 +1,13 @@
 # NXP EASY MCU boot loader
 
-这是NXP官方 MCUBOOT 的 简化版C实现，砍掉了大部分功能，只保留串口下载功能。可以配合 官方的命令行工具blhost 或者 GUI工具： Kinetis Flash Tool 来实现一个基于MCU串口的bootloader.  非常容易移植到任何MCU上。 建议以后不要再推AN2295这种老古董了，统一迁移到 MCUBOOT上来。鉴于MCUBOOT 官方实现很复杂，故有此地。
+NXP官方 [MCUBOOT](https://www.nxp.com/support/developer-resources/software-development-tools/mcuxpresso-software-and-tools/mcuboot-mcu-bootloader-for-nxp-microcontrollers:MCUBOOT)的简化版C实现，砍掉了绝大部分功能，只保留串口下载功能。可以配合 官方Win下的命令行工具`blhost` 或者 GUI工具`Kinetis Flash Tool` 来实现一个基于MCU串口的bootloader.  这套代码非常容易移植到任何MCU上。 建议以后不要再推AN2295这种老古董了，统一迁移到 MCUBOOT上来。鉴于MCUBOOT 官方实现很复杂，故有此地
 
 
 
-## 简介
+## 特色
 
 * 基础实现和具体硬件完全解耦。 只有2个.c .h文件:kptl.c  mcuboot.c。 除Systick中断外 不使用任何中断。只使用串口轮训发送和接收数据。
 * 所有与硬件相关的必要操作全部由回调函数显示。 kptl 和  mcuboot 本身没有任何硬件依赖。非常容易移植到任何ARM Cortex MCU上。kptl和mcuboot写的很小白，有C基础的都可以看的明白，容易改。
-* 目前提供LPC802, FRDM-KE02和 FRDM-K64的移植demo
-
-
-
-有关完整的MCUBOOT 协议，软件及其他内容看参看官方[page](https://www.nxp.com/support/developer-resources/software-development-tools/mcuxpresso-software-and-tools/mcuboot-mcu-bootloader-for-nxp-microcontrollers:MCUBOOT):
 
 ## 文件结构
 
@@ -66,13 +61,13 @@ Project
 
 bootloader本身只有4个 文件: `kptl.c` `kptl.h`  `mcuboot.c`, `mcuboot.h`.
 
-kptl 负责MCUBOOT协议的基本实现，拆包封包等， mcuboot 实现 bootloader的基本命令,依赖kptl。 注意mcuboot已经砍掉了大部分 官方完整版的命令实现，只保留用于串口下载的最基本命令如 擦写flash, 获得芯片信息等等。
+kptl 负责MCUBOOT协议的基本实现，拆包封包等， mcuboot.c实现 bootloader的基本命令,依赖kptl.c。 注意mcuboot.c已经砍掉了大部分 官方完整版的命令实现，只保留用于串口下载的最基本命令如 擦写编程flash, 获得芯片信息等等。
 
 
 
 ### 移植步骤
 
-1. 准备好的你的MCU： 确保你已经熟悉了你的MCU。MCU 可以正常跑，串口收发功能已经调通并没有问题， Flash编程，擦写功能已经调通并没有问题。这些非常重要，串口收发和flash的编程功能是bootloader的基本操作。这些功能有BUG将直接影响bootloader工程
+1. 准备好的你的MCU： 确保你已经熟悉了你的MCU。MCU 可以正常跑，串口收发功能已经调通并没有问题， Flash编程，擦写功能已经调通并没有问题。这些非常重要，串口收发和flash的编程功能是bootloader的基本操作。这些功能有bug将直接影响bootloader成功与否。
 2. 在工程中加入kptl.c 和 mcuboot.c 并且添加对应的include路径
 3. 在工程中定义全局结构： `static mcuboot_t mcuboot;`
 
@@ -86,7 +81,7 @@ kptl 负责MCUBOOT协议的基本实现，拆包封包等， mcuboot 实现 boot
 | op_send                | 串口发送数据                                                 |
 | op_reset               | 复位MCU                                                      |
 | op_jump                | MCU跳转到指定地址                                            |
-| op_complete            | 在bootloader 接收完完整的image后会回调这个函数，一般用于释放硬件资源，改关闭的外设关闭，中断该关的关 |
+| op_complete            | 在bootloader 接收完完整的image后会回调这个函数，一般用于释放硬件资源，该关闭的外设关闭，中断该关的关， 让mcu跳转app之前回到一个比较干净的状态 |
 | op_mem_erase           | flash擦除                                                    |
 | op_mem_write           | flash编程                                                    |
 | op_mem_read            | flash读取                                                    |
@@ -150,8 +145,8 @@ kptl 负责MCUBOOT协议的基本实现，拆包封包等， mcuboot 实现 boot
 
 ## 其他一些注意的
 
-1. Flash的操作实现很重要。 一般flash都是块设备，有最小的擦除和编程单位(尤其是LPC, 最小擦除单位和最小编程单位都不一样，而且很大，很恶心)。这就需要在实现`memory_write`函数的时候格外注意，该对齐的对齐，该补全的补全，没到最小编程单位的需要提取读出之前的数据并合并，超过最小编程单位的需要多次写入flash
-2. 对于MCU复位的实现，直接调用 CMSIS库函数 `NVIC_SystemReset`即可
+1. Flash的操作实现很重要。 一般flash都是块设备，有最小的擦除和编程单位(尤其是LPC, 最小擦除单位和最小编程单位都不一样，而且很大，很恶心)。这就需要在实现`memory_write`函数的时候格外注意，该对齐的对齐，该补全的补全，没到最小编程单位的需要提取读出之前的数据并合并，超过最小编程单位的需要多次调用flash_program函数以保证全部写入。
+2. 对于MCU复位的实现，直接调用 CMSIS库函数 `NVIC_SystemReset`即可。
 3. 最后跳转之前一般需要把外设全部反初始化，中断(包括SYsTick)该关的都要关掉,可以在`mcuboot_complete`中完成这些操作
 4. 最后的跳转到用户app 。主要需要干三件事： 重新设置PC,SP, 重新设置中断向量表的入口地址：SCB->VTOR。其中SP为Image的0-3字节，PC为image的4-7字节。可直接使用祖传函数：
 
@@ -191,3 +186,4 @@ void JumpToImage(uint32_t addr)
 6. 一些开发板(比如FRDM-KE02) 默认的板载openSDA K20调试器的USB转串口功能做的不好，无法有效识别PING开始命令，导致握手失败，需要更新最新的JLINK OPENSDA firmware才可以用
 
    固件下载： https://www.segger.com/products/debug-probes/j-link/models/other-j-links/opensda-sda-v2/
+
