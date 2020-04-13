@@ -492,23 +492,21 @@ uint32_t RAMTest(uint32_t address, uint32_t size)
 
 void JumpToImage(uint32_t addr)
 {
+    static uint32_t sp, pc;
     uint32_t *vectorTable = (uint32_t*)addr;
-    uint32_t sp = vectorTable[0];
-    uint32_t pc = vectorTable[1];
+    sp = vectorTable[0];
+    pc = vectorTable[1];
     
     typedef void(*app_entry_t)(void);
 
-    uint32_t s_stackPointer = 0;
-    uint32_t s_applicationEntry = 0;
-    app_entry_t s_application = 0;
+    /* must be static, otherwise SP value will be lost */
+    static app_entry_t s_application = 0;
 
-    s_stackPointer = sp;
-    s_applicationEntry = pc;
-    s_application = (app_entry_t)s_applicationEntry;
+    s_application = (app_entry_t)pc;
 
     // Change MSP and PSP
-    __set_MSP(s_stackPointer);
-    __set_PSP(s_stackPointer);
+    __set_MSP(sp);
+    __set_PSP(sp);
     
     SCB->VTOR = addr;
     
