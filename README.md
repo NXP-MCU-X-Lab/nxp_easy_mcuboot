@@ -1,3 +1,5 @@
+![](https://media.nxp.com/system/files-encrypted/styles/nir_media_item_grid_thumbnail/encrypt/nasdaq_kms/media_gallery/thumbnail/2019-08/NXP_logo_RGB_web.jpg?itok=A8qCl8eI)
+
 # NXP EASY MCU boot loader
 
 NXP官方 [MCUBOOT](https://www.nxp.com/support/developer-resources/software-development-tools/mcuxpresso-software-and-tools/mcuboot-mcu-bootloader-for-nxp-microcontrollers:MCUBOOT)的简化版C实现，砍掉了绝大部分功能，只保留串口下载功能。可以配合 官方Win下的命令行工具`blhost` 或者 GUI工具`Kinetis Flash Tool` 来实现一个基于MCU串口的bootloader.  这套代码非常容易移植到任何MCU上。 建议以后不要再推AN2295这种老古董了，统一迁移到 MCUBOOT上来。鉴于MCUBOOT 官方实现很复杂，故有此地
