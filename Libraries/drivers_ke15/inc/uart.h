@@ -1,12 +1,9 @@
-/**
-  ******************************************************************************
-  * @file    uart.h
-  * @author  YANDLD
-  * @version V2.6
-  * @date    2015.6.21
-  * @brief   www.beyondcore.net   http://upcmcu.taobao.com 
-  ******************************************************************************
-  */
+/*
+ * Copyright 2018-2020 NXP
+ * All rights reserved.
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
 #ifndef __CH_LIB_KL_UART_H__
 #define __CH_LIB_KL_UART_H__
 
