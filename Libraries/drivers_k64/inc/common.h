@@ -1,11 +1,9 @@
-/**
-  ******************************************************************************
-  * @file    common.h
-  * @author  YANDLD
-  * @version V3.0.0
-  * @date    2015.6.21
-  ******************************************************************************
-  */
+/*
+ * Copyright 2018-2020 NXP
+ * All rights reserved.
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
 #ifndef __CH_LIB_COMMON_H__
 #define __CH_LIB_COMMON_H__
 

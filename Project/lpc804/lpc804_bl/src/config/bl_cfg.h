@@ -1,3 +1,10 @@
+/*
+ * Copyright 2018-2020 NXP
+ * All rights reserved.
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+ 
 #ifndef __BL_CFG_H__
 #define __BL_CFG_H__
 

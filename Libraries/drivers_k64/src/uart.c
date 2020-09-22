@@ -1,12 +1,9 @@
-/**
-  ******************************************************************************
-  * @file    uart.c
-  * @author  YANDLD
-  * @version V3.0.0
-  * @date    2015.6.21
-  * @brief   www.beyondcore.net   http://upcmcu.taobao.com 
-  ******************************************************************************
-  */
+/*
+ * Copyright 2018-2020 NXP
+ * All rights reserved.
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
 #include "uart.h"
 #include "common.h"
 

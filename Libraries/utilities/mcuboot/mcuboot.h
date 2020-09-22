@@ -1,3 +1,10 @@
+/*
+ * Copyright 2018-2020 NXP
+ * All rights reserved.
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+ 
 #ifndef __MCUBOOT_H__
 #define __MCUBOOT_H__
 

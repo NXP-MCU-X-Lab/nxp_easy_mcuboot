@@ -1,12 +1,9 @@
-/**
-  ******************************************************************************
-  * @file    flash.c
-  * @author  YANDLD
-  * @version V3.0.0
-  * @date    2016.6.6
-  * @brief   www.beyondcore.net   http://upcmcu.taobao.com 
-  ******************************************************************************
-  */
+/*
+ * Copyright 2018-2020 NXP
+ * All rights reserved.
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
 #include "flash.h"
 #include "common.h"
 

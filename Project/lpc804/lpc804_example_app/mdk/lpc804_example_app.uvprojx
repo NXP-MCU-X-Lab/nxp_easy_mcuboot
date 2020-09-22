@@ -16,8 +16,8 @@
         <TargetCommonOption>
           <Device>LPC802M001JDH16</Device>
           <Vendor>NXP</Vendor>
-          <PackID>Keil.LPC800_DFP.1.10.1</PackID>
-          <PackURL>http://www.keil.com/pack/</PackURL>
+          <PackID>NXP.LPC802_DFP.10.0.3</PackID>
+          <PackURL>http://mcuxpresso.nxp.com/cmsis_pack/repo/</PackURL>
           <Cpu>IROM(0x00000000,0x00004000) IRAM(0x10000000,0x00000800) CPUTYPE("Cortex-M0+") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
