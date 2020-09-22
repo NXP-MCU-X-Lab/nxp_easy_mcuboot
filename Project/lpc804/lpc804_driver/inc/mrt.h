@@ -1,8 +1,8 @@
 /*
- * mrt.h
+ * Copyright 2018-2020 NXP
+ * All rights reserved.
  *
- *  Created on: This day
- *      Author: The Creator
+ * SPDX-License-Identifier: BSD-3-Clause
  */
 #ifndef __CH_LIB_MRT_H__
 #define __CH_LIB_MRT_H__
