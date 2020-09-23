@@ -11,7 +11,7 @@
 #define DEFAULT_SYSTEM_CLOCK    (48000000)
 #endif
 
-/* PORTÄ£¿éÊ±ÖÓ¿ª¹ØÎ»ÖÃ¶¨Òå */
+/* PORTæ¨¡å—æ—¶é’Ÿå¼€å…³ä½ç½®å®šä¹‰ */
 #if defined(SIM_SCGC5_PORTA_MASK)
 static const Reg_t PORTClkGate[] =
 {
@@ -59,21 +59,21 @@ static const Reg_t PORTClkGate[] =
 #define PORT_BASES {PORTA, PORTB, PORTC, PORTD, PORTE};
 #endif
 
-/* ¿ØÖÆÌ¨½Ó¿Ú */
+/* æ§åˆ¶å°æ¥å£ */
 typedef struct
 {
     int (*putc)(uint8_t ch);
     int (*getc)(void);
 }Console_t;
 
-/* ¹Ì¼ş¿âÈ«¾Ö±äÁ¿ */
+/* å›ºä»¶åº“å…¨å±€å˜é‡ */
 static PORT_Type * const PORTBases[] = PORT_BASES;
 static uint32_t fac_us = 0;             /* usDelay Mut */
 static uint32_t fac_ms = 0;             /* msDelay Mut */
-volatile static Console_t Console;      /* µ÷ÊÔÆ÷  */
+volatile static Console_t Console;      /* è°ƒè¯•å™¨  */
 bool _is_fitst_init = true;
 
-/* debug ºê¶¨Òå */
+/* debug å®å®šä¹‰ */
 #ifdef LIB_DEBUG
 #if (defined(__CC_ARM)) || (defined(__ICCARM__))
 void __aeabi_assert(const char *failedExpr, const char *file, int line)
@@ -96,12 +96,12 @@ void __assert_func(const char *file, int line, const char *func, const char *fai
 
 
  /**
- * @brief  ¶ÁÈ¡ÏµÍ³Ê±ÖÓ
+ * @brief  è¯»å–ç³»ç»Ÿæ—¶é’Ÿ
  * @note   None
- * @param  clock: ÏµÍ³Ê±ÖÓ
- *         @arg kCoreClock ÄÚºËÊ±ÖÓ
- *         @arg kBusClock  ×ÜÏßÊ±ÖÓ(Í¨³£ÎªÄÚºËÊ±ÖÓµÄÒ»°ë)
- * @retval ÏµÍ³Ê±ÖÓµÄÆµÂÊ Hz
+ * @param  clock: ç³»ç»Ÿæ—¶é’Ÿ
+ *         @arg kCoreClock å†…æ ¸æ—¶é’Ÿ
+ *         @arg kBusClock  æ€»çº¿æ—¶é’Ÿ(é€šå¸¸ä¸ºå†…æ ¸æ—¶é’Ÿçš„ä¸€åŠ)
+ * @retval ç³»ç»Ÿæ—¶é’Ÿçš„é¢‘ç‡ Hz
  */
 uint32_t GetClock(Clock_t clock)
 {
@@ -149,12 +149,12 @@ uint32_t GetClock(Clock_t clock)
 }
 
  /**
- * @brief  ÉèÖÃÒı½Å¸´ÓÃ
+ * @brief  è®¾ç½®å¼•è„šå¤ç”¨
  * @note   None
- * @param  instance: GPIOÄ£¿éºÅ
- *         @arg HW_GPIOx £ºGPIOA-GPIOE
+ * @param  instance: GPIOæ¨¡å—å·
+ *         @arg HW_GPIOx ï¼šGPIOA-GPIOE
  * @param  pin: 0-31
- * @param  mux: ¸´ÓÃÑ¡Ïî 0-7
+ * @param  mux: å¤ç”¨é€‰é¡¹ 0-7
  * @retval None
  */
 void SetPinMux(uint32_t instance, uint32_t pin, uint32_t mux)
@@ -165,13 +165,13 @@ void SetPinMux(uint32_t instance, uint32_t pin, uint32_t mux)
 }
 
  /**
- * @brief  ÉèÖÃÒı½ÅÊÇ·ñ¿ªÆô ¿ªÂ© Ä£Ê½
- * @param  instance: GPIOÄ£¿éºÅ
- *         @arg HW_GPIOx £ºGPIOA-GPIOE
+ * @brief  è®¾ç½®å¼•è„šæ˜¯å¦å¼€å¯ å¼€æ¼ æ¨¡å¼
+ * @param  instance: GPIOæ¨¡å—å·
+ *         @arg HW_GPIOx ï¼šGPIOA-GPIOE
  * @param  pin: 0-31
  * @param  val: 
- *         @arg true : ¿ªÆôÖĞ¶Ï
- *         @arg false : ¹Ø±ÕÖĞ¶Ï
+ *         @arg true : å¼€å¯ä¸­æ–­
+ *         @arg false : å…³é—­ä¸­æ–­
  * @retval None
  */
 void SetPinOpenDrain(uint32_t instance, uint32_t pin, bool val)
@@ -185,14 +185,14 @@ void SetPinOpenDrain(uint32_t instance, uint32_t pin, bool val)
 }
 
 /**
- * @brief  ÉèÖÃÒı½ÅÖĞ¶ÏÄ£Ê½
+ * @brief  è®¾ç½®å¼•è„šä¸­æ–­æ¨¡å¼
  * @note   None
  * @param  instance:
- *         @arg HW_GPIOx : GPIO¶Ë¿ÚºÅA-E
- * @param  pin : Òı½ÅºÅÂë£º0-31
+ *         @arg HW_GPIOx : GPIOç«¯å£å·A-E
+ * @param  pin : å¼•è„šå·ç ï¼š0-31
  * @param  val :
- *         @arg true £º¿ªÆôÖĞ¶Ï
- *         @arg false £º¹Ø±ÕÖĞ¶Ï
+ *         @arg true ï¼šå¼€å¯ä¸­æ–­
+ *         @arg false ï¼šå…³é—­ä¸­æ–­
  * @retval None
  */
 void SetPinFilter(uint32_t instance, uint32_t pin, bool val)
@@ -207,14 +207,14 @@ void SetPinHighDrive(uint32_t instance, uint32_t pin, bool val)
 }
 
  /**
- * @brief  ÉèÖÃÒı½ÅÉÏÏÂÀ­ÅäÖÃ
- * @param  instance: GPIOÄ£¿éºÅ
- *         @arg HW_GPIOx £ºGPIOA-GPIOE
+ * @brief  è®¾ç½®å¼•è„šä¸Šä¸‹æ‹‰é…ç½®
+ * @param  instance: GPIOæ¨¡å—å·
+ *         @arg HW_GPIOx ï¼šGPIOA-GPIOE
  * @param  pin: 0-31
- * @param  val: ÉÏÏÂÀ­ÅäÖÃ
- *         @arg 0 ÏÂÀ­
- *         @arg 1 ÉÏÀ­
- *         @arg ÆäËû ¸¡¿Õ
+ * @param  val: ä¸Šä¸‹æ‹‰é…ç½®
+ *         @arg 0 ä¸‹æ‹‰
+ *         @arg 1 ä¸Šæ‹‰
+ *         @arg å…¶ä»– æµ®ç©º
  * @retval None
  */
 void SetPinPull(uint32_t instance, uint32_t pin, uint32_t val)
@@ -257,8 +257,8 @@ void SysTick_Init(void)
 }
 
  /**
- * @brief  ÑÓÊ±³õÊ¼»¯
- * @note   µ÷ÓÃDelayMsºÍDealyUsÇ°ĞèÒªµ÷ÓÃ´Ëº¯Êı
+ * @brief  å»¶æ—¶åˆå§‹åŒ–
+ * @note   è°ƒç”¨DelayMså’ŒDealyUså‰éœ€è¦è°ƒç”¨æ­¤å‡½æ•°
  * @retval None
  */
 #pragma weak DelayInit
@@ -268,9 +268,9 @@ void DelayInit(void)
 }
 
 /**
- * @brief MS¼¶ÑÓÊ±
+ * @brief MSçº§å»¶æ—¶
  * @note  None
- * @param ms : ÑÓÊ±Êı£¬µ¥Î»MS
+ * @param ms : å»¶æ—¶æ•°ï¼Œå•ä½MS
  * @retval None
  */
 #pragma weak DelayMs
@@ -292,9 +292,9 @@ void DelayMs(uint32_t ms)
 }
 
 /**
- * @brief  ÉèÖÃSysTick¶¨Ê±Æ÷Ê±¼ä
+ * @brief  è®¾ç½®SysTickå®šæ—¶å™¨æ—¶é—´
  * @note   None
- * @param  us : ¶¨Ê±Æ÷Ê±¼ä£¬µ¥Î»US
+ * @param  us : å®šæ—¶å™¨æ—¶é—´ï¼Œå•ä½US
  * @retval None
  */
 void SysTick_SetTime(uint32_t us)
@@ -305,9 +305,9 @@ void SysTick_SetTime(uint32_t us)
 }
 
 /**
- * @brief  USÃë¼¶ÑÓÊ±
+ * @brief  USç§’çº§å»¶æ—¶
  * @note   None
- * @param  us : ÑÓÊ±Êı£¬µ¥Î»US
+ * @param  us : å»¶æ—¶æ•°ï¼Œå•ä½US
  * @retval None
  */
 #pragma weak DelayUs
@@ -323,11 +323,11 @@ void inline DelayUs(uint32_t us)
 }
 
 /**
- * @brief  ¿ªÆô»ò¹Ø±ÕSysTickÖĞ¶Ï
+ * @brief  å¼€å¯æˆ–å…³é—­SysTickä¸­æ–­
  * @note   None
  * @param  val: 
- *         @arg true : ¹Ø±ÕÖĞ¶Ï
- *         @arg false : ¿ªÆôÖĞ¶Ï
+ *         @arg true : å…³é—­ä¸­æ–­
+ *         @arg false : å¼€å¯ä¸­æ–­
  * @retval None
  */
 void SysTick_SetIntMode(bool val)
@@ -348,7 +348,7 @@ struct __FILE
 { 
 	int handle;
 }; 
-/* FILE is typedef¡¯ d in stdio.h. */ 
+/* FILE is typedefâ€™ d in stdio.h. */ 
 FILE __stdout;
 FILE __stdin;
 int fputc(int ch,FILE *f)
@@ -420,7 +420,7 @@ size_t __read(int handle, unsigned char * buffer, size_t size)
 #endif /* comiler support */
 
  /**
- * @brief  Èí¼ş¸´Î»
+ * @brief  è½¯ä»¶å¤ä½
  * @retval None
  */
 void SystemSoftReset(void)
@@ -429,9 +429,9 @@ void SystemSoftReset(void)
 }
 
  /**
- * @brief  »ñµÃ¸´Î»Ô­Òò
- * @note   ¸´Î»Ô­Òò´úÂë¾ßÌåĞèÒª²é¿´Ğ¾Æ¬ÊÖ²á SMCÕÂ½Ú
- * @retval ¸´Î»Ô­Òò´úÂë
+ * @brief  è·å¾—å¤ä½åŸå› 
+ * @note   å¤ä½åŸå› ä»£ç å…·ä½“éœ€è¦æŸ¥çœ‹èŠ¯ç‰‡æ‰‹å†Œ SMCç« èŠ‚
+ * @retval å¤ä½åŸå› ä»£ç 
  */
 uint32_t GetResetCause(void)
 {
@@ -443,10 +443,10 @@ uint32_t GetResetCause(void)
 }
 
  /**
- * @brief  ÉèÖÃÏµÍ³¹¦ºÄÄ£Ê½
- * @param  enSleepOnExit £ºÍË³öÍ£Ö¹Ä£Ê½ºó(ÍË³öÖĞ¶ÏÊ±)ÊÇ·ñ×Ô¶¯ÔÙ´Î½øÈëÍ£Ö¹Ä£Ê½
- *         @arg true £º½øÈëÖĞ¶Ï(»½ĞÑ)ºó, ÍË³öÊ±£¬×Ô¶¯ÔÙ´Î½øÈëÍ£Ö¹Ä£Ê½
- *         @arg true £º½øÈëÖĞ¶Ï(»½ĞÑ)ºó, ÍË³öÊ±£¬²»ÔÙ½øÈëÍ£Ö¹Ä£Ê½
+ * @brief  è®¾ç½®ç³»ç»ŸåŠŸè€—æ¨¡å¼
+ * @param  enSleepOnExit ï¼šé€€å‡ºåœæ­¢æ¨¡å¼å(é€€å‡ºä¸­æ–­æ—¶)æ˜¯å¦è‡ªåŠ¨å†æ¬¡è¿›å…¥åœæ­¢æ¨¡å¼
+ *         @arg true ï¼šè¿›å…¥ä¸­æ–­(å”¤é†’)å, é€€å‡ºæ—¶ï¼Œè‡ªåŠ¨å†æ¬¡è¿›å…¥åœæ­¢æ¨¡å¼
+ *         @arg true ï¼šè¿›å…¥ä¸­æ–­(å”¤é†’)å, é€€å‡ºæ—¶ï¼Œä¸å†è¿›å…¥åœæ­¢æ¨¡å¼
  * @retval None
  */
 void SetPowerMode(uint32_t mode, bool enSleepOnExit)
@@ -513,7 +513,7 @@ void SetPowerMode(uint32_t mode, bool enSleepOnExit)
 }
 
  /**
- * @brief  »ñµÃĞ¾Æ¬ UID(Î¨Ò»ID)
+ * @brief  è·å¾—èŠ¯ç‰‡ UID(å”¯ä¸€ID)
  * @param  None
  * @retval UID
  */
@@ -524,14 +524,14 @@ uint32_t GetUID(void)
 
 
 #pragma weak ShowMemory
-void ShowMemory(uint32_t addr, uint32_t size)
+void ShowMemory(uint32_t addr, uint32_t length)
 {
 	int i = 0, j =0;
 
 	addr = addr & ~0xF;
-	size = 4*((size + 3)/4);
+	length = 4*((length + 3)/4);
 
-	while(i < size)
+	while(i < length)
 	{
 		LIB_TRACE("0x%08x: ", addr );
 
@@ -549,98 +549,86 @@ void ShowMemory(uint32_t addr, uint32_t size)
 }
 
 #pragma weak RAMTest
-uint32_t RAMTest(uint32_t address, uint32_t size)
+uint32_t RAMTest(uint32_t addr, uint32_t length)
 {
     uint32_t i;
-    LIB_TRACE("memtest,address: 0x%08X size: 0x%08X\r\n", address, size);
+    LIB_TRACE("memory test, address: 0x%08X length: 0x%08X\r\n", addr, length);
     
-    /**< 8bit test */
+    /* 8-bit memory test */
     {
-        volatile uint8_t * p_uint8_t = (uint8_t *)address;
-        for(i=0; i<size/sizeof(uint8_t); i++)
-        {
-            *p_uint8_t++ = (uint8_t)i;
+        volatile uint8_t * ptr_u8 = (uint8_t *)addr;
+        for(i=0; i < length/sizeof(uint8_t); i++){
+            *ptr_u8++ = (uint8_t)i;
         }
 
-        p_uint8_t = (uint8_t *)address;
-        for(i=0; i<size/sizeof(uint8_t); i++)
-        {
-            if( *p_uint8_t != (uint8_t)i )
-            {
-                LIB_TRACE("8bit test fail @ 0x%08X\r\n",(uint32_t)p_uint8_t);
+        ptr_u8 = (uint8_t *)addr;
+        for(i=0; i < length/sizeof(uint8_t); i++){
+            if( *ptr_u8 != (uint8_t)i ){
+                LIB_TRACE("8-bit memory test fails on address 0x%08X\r\n",(uint32_t)ptr_u8);
                 return CH_ERR;
             }
-            p_uint8_t++;
+            ptr_u8++;
         }
-        LIB_TRACE("8bit test pass!\r\n");
+        LIB_TRACE("8-bit memory test success!\r\n");
     }
     
-    /**< 16bit test */
+    /* 16-bit memory test */
     {
-        volatile uint16_t * p_uint16_t = (uint16_t *)address;
-        for(i=0; i<size/sizeof(uint16_t); i++)
-        {
-            *p_uint16_t++ = (uint16_t)i;
+        volatile uint16_t * ptr_u16 = (uint16_t *)addr;
+        for(i=0; i < length/sizeof(uint16_t); i++){
+            *ptr_u16++ = (uint16_t)i;
         }
 
-        p_uint16_t = (uint16_t *)address;
-        for(i=0; i<size/sizeof(uint16_t); i++)
-        {
-            if( *p_uint16_t != (uint16_t)i )
-            {
-                LIB_TRACE("16bit test fail @ 0x%08X\r\n",(uint32_t)p_uint16_t);
+        ptr_u16 = (uint16_t *)addr;
+        for(i=0; i < length/sizeof(uint16_t); i++){
+            if( *ptr_u16 != (uint16_t)i ){
+                LIB_TRACE("16-bit memory test fails on address 0x%08X\r\n",(uint32_t)ptr_u16);
                 return CH_ERR;
             }
-            p_uint16_t++;
+            ptr_u16++;
         }
-        LIB_TRACE("16bit test pass!\r\n");
+        LIB_TRACE("16-bit memory test success!\r\n");
     }
 
-    /**< 32bit test */
+    /* 32-bit memory test */
     {
-        volatile uint32_t * p_uint32_t = (uint32_t *)address;
-        for(i=0; i<size/sizeof(uint32_t); i++)
-        {
-            *p_uint32_t++ = (uint32_t)i;
+        volatile uint32_t * ptr_u32 = (uint32_t *)addr;
+        for(i=0; i < length/sizeof(uint32_t); i++){
+            *ptr_u32++ = (uint32_t)i;
         }
 
-        p_uint32_t = (uint32_t *)address;
-        for(i=0; i<size/sizeof(uint32_t); i++)
-        {
-            if( *p_uint32_t != (uint32_t)i )
-            {
-                LIB_TRACE("32bit test fail @ 0x%08X\r\n",(uint32_t)p_uint32_t);
+        ptr_u32 = (uint32_t *)addr;
+        for(i=0; i < length/sizeof(uint32_t); i++){
+            if( *ptr_u32 != (uint32_t)i ){
+                LIB_TRACE("16-bit memory test fails on address 0x%08X\r\n",(uint32_t)ptr_u32);
                 return CH_ERR;
             }
-            p_uint32_t++;
+            ptr_u32++;
         }
-        LIB_TRACE("32bit test pass!\r\n");
+        LIB_TRACE("32-bit memory test success!\r\n");
     }
 
-    /**< 32bit Loopback test */
+    /**< 32-bit Loopback test */
     {
-        volatile uint32_t * p_uint32_t = (uint32_t *)address;
-        for(i=0; i<size/sizeof(uint32_t); i++)
-        {
-            *p_uint32_t  = (uint32_t)p_uint32_t;
-            *p_uint32_t++;
+        volatile uint32_t * ptr_u32 = (uint32_t *)addr;
+        for(i=0; i < length/sizeof(uint32_t); i++){
+            *ptr_u32  = (uint32_t)ptr_u32;
+            *ptr_u32++;
         }
 
-        p_uint32_t = (uint32_t *)address;
-        for(i=0; i<size/sizeof(uint32_t); i++)
-        {
-            if( *p_uint32_t != (uint32_t)p_uint32_t )
-            {
-                LIB_TRACE("32bit Loopback test fail @ 0x%08X", (uint32_t)p_uint32_t);
-                LIB_TRACE(" data:0x%08X \r\n", (uint32_t)*p_uint32_t);
+        ptr_u32 = (uint32_t *)addr;
+        for(i=0; i < length/sizeof(uint32_t); i++){
+            if( *ptr_u32 != (uint32_t)ptr_u32 ){
+                LIB_TRACE("32-bit memory test fails on address 0x%08X", (uint32_t)ptr_u32);
+                LIB_TRACE(" data:0x%08X \r\n", (uint32_t)*ptr_u32);
                 return CH_ERR;
             }
-            p_uint32_t++;
+            ptr_u32++;
         }
-        LIB_TRACE("32bit Loopback test pass!\r\n");
+        LIB_TRACE("32-bit Loopback test success!\r\n");
     }
     
-    LIB_TRACE("all memory test complete\r\n");
+    LIB_TRACE("all memory test are done!\r\n");
     return  CH_OK;
 }
 
