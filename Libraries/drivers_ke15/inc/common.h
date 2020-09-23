@@ -17,7 +17,7 @@
 #include <assert.h>
 
 
-/* ¹Ì¼ş¿â°æ±¾ */
+/* å›ºä»¶åº“ç‰ˆæœ¬ */
 #define CHLIB_VERSION       (300)
 
 
@@ -69,7 +69,7 @@
 #error "No CPU defined!"
 #endif
 
-/* NVIC ÖĞ¶ÏÏòÁ¿×é¶¨Òå */
+/* NVIC ä¸­æ–­å‘é‡ç»„å®šä¹‰ */
 #define NVIC_PriorityGroup_0         ((uint32_t)0x7) /*!< 0 bits for pre-emption priority   4 bits for subpriority */                                               
 #define NVIC_PriorityGroup_1         ((uint32_t)0x6) /*!< 1 bits for pre-emption priority   3 bits for subpriority */                                                  
 #define NVIC_PriorityGroup_2         ((uint32_t)0x5) /*!< 2 bits for pre-emption priority   2 bits for subpriority */                                                   
@@ -151,7 +151,7 @@
 #define PCC_CLKCFG_CGC(x)                        (((uint32_t)(((uint32_t)(x)) << PCC_CLKCFG_CGC_SHIFT)) & PCC_CLKCFG_CGC_MASK)
 #endif
 
-    /* ÏµÍ³Ê±ÖÓ¶¨Òå */
+    /* ç³»ç»Ÿæ—¶é’Ÿå®šä¹‰ */
 typedef enum
 {
     kCoreClock,
@@ -159,7 +159,7 @@ typedef enum
     kMCGOutClock,
 }Clock_t; 
 
-/* ¹¦ºÄÄ£Ê½Ñ¡Ôñ */
+/* åŠŸè€—æ¨¡å¼é€‰æ‹© */
 enum
 {
     kRUN =      (0x00),  
@@ -171,7 +171,7 @@ enum
     kLLS3 =     (0x24),
 };
 
-/* ¹Ì¼ş¿â·µ»ØÖµ´úÂë */
+/* å›ºä»¶åº“è¿”å›å€¼ä»£ç  */
 enum
 {
     CH_OK,
@@ -182,7 +182,7 @@ enum
     CH_BUSY,
 };
 
-/* ÍâÉè MAP ³õÊ¼»¯½á¹¹ */
+/* å¤–è®¾ MAP åˆå§‹åŒ–ç»“æ„ */
 typedef struct
 {
     uint32_t ip:3;
@@ -228,8 +228,8 @@ void SetPowerMode(uint32_t Mode, bool enSleepOnExit);
 void JumpToImage(uint32_t addr);
 
 /* software test function */
-uint32_t RAMTest(uint32_t address, uint32_t size);
-void ShowMemory(uint32_t addr, uint32_t size);
+uint32_t RAMTest(uint32_t addr, uint32_t length);
+void ShowMemory(uint32_t addr, uint32_t length);
 
 #ifdef __cplusplus
 }
