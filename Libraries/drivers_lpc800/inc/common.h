@@ -141,10 +141,6 @@ void SetFlexCommClk(uint32_t instance, uint32_t val);
 void JumpToImage(uint32_t addr);
 void SetPinPull(uint32_t instance, uint32_t pin, uint32_t val);
 
-/* software test function */
-uint32_t RAMTest(uint32_t addr, uint32_t length);
-void ShowMemory(uint32_t addr, uint32_t length);
-
 #ifdef __cplusplus
 }
 #endif
