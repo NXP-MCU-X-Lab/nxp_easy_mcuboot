@@ -17,7 +17,7 @@
 #include <assert.h>
 
 
-/* ¹Ì¼ş¿â°æ±¾ */
+/* å›ºä»¶åº“ç‰ˆæœ¬ */
 #define CHLIB_VERSION       (300)
 
 
@@ -29,7 +29,7 @@
 #error "No CPU defined!"
 #endif
 
-/* NVIC ÖĞ¶ÏÏòÁ¿×é¶¨Òå */
+/* NVIC ä¸­æ–­å‘é‡ç»„å®šä¹‰ */
 #define NVIC_PriorityGroup_0         ((uint32_t)0x7) /*!< 0 bits for pre-emption priority   4 bits for subpriority */                                               
 #define NVIC_PriorityGroup_1         ((uint32_t)0x6) /*!< 1 bits for pre-emption priority   3 bits for subpriority */                                                  
 #define NVIC_PriorityGroup_2         ((uint32_t)0x5) /*!< 2 bits for pre-emption priority   2 bits for subpriority */                                                   
@@ -99,7 +99,7 @@
 
 
 
-    /* ÏµÍ³Ê±ÖÓ¶¨Òå */
+    /* ç³»ç»Ÿæ—¶é’Ÿå®šä¹‰ */
 typedef enum
 {
     kCoreClock,
@@ -107,7 +107,7 @@ typedef enum
 }Clock_t; 
 
 
-/* ¹Ì¼ş¿â·µ»ØÖµ´úÂë */
+/* å›ºä»¶åº“è¿”å›å€¼ä»£ç  */
 enum
 {
     CH_OK,
@@ -142,8 +142,8 @@ void JumpToImage(uint32_t addr);
 void SetPinPull(uint32_t instance, uint32_t pin, uint32_t val);
 
 /* software test function */
-uint32_t RAMTest(uint32_t address, uint32_t size);
-void ShowMemory(uint32_t addr, uint32_t size);
+uint32_t RAMTest(uint32_t addr, uint32_t length);
+void ShowMemory(uint32_t addr, uint32_t length);
 
 #ifdef __cplusplus
 }
