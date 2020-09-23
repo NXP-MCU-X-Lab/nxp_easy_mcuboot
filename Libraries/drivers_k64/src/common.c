@@ -524,14 +524,14 @@ uint32_t GetUID(void)
 
 
 #pragma weak ShowMemory
-void ShowMemory(uint32_t addr, uint32_t size)
+void ShowMemory(uint32_t addr, uint32_t length)
 {
 	int i = 0, j =0;
 
 	addr = addr & ~0xF;
-	size = 4*((size + 3)/4);
+	length = 4*((length + 3)/4);
 
-	while(i < size)
+	while(i < length)
 	{
 		LIB_TRACE("0x%08x: ", addr );
 
