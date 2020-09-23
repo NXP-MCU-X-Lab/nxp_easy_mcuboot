@@ -232,7 +232,7 @@ void JumpToImage(uint32_t addr);
 
 /* software test function */
 uint32_t RAMTest(uint32_t addr, uint32_t length);
-void ShowMemory(uint32_t addr, uint32_t size);
+void ShowMemory(uint32_t addr, uint32_t length);
 
 #ifdef __cplusplus
 }
