@@ -43,12 +43,36 @@ void FLASH_Init(void)
     MCM->PLACR = 0x1BC00; /* Disable flash cache */
 }
 
- /**
- * @brief  擦除Flash扇区
- * @note   该功能将删除一个Flash扇区的内容
- * @param  addr: 擦除区域起始地址
- * @retval 返回操作结果
- */
+
+uint8_t FLASH_EEP_EraseSector(uint32_t addr)
+{
+    // Clear error flags
+    FTMRH->FSTAT = 0x30;
+    
+    // Write index to specify the command code to be loaded
+    FTMRH->FCCOBIX = 0;
+    // Write command code and memory address bits[23:16]	
+    FTMRH->FCCOBHI = 0x12;
+
+    FTMRH->FCCOBLO = (uint8_t)((addr >> 16)&0x007f);   // memory address bits[17:16]
+    // Write index to specify the lower byte memory address bits[15:0] to be loaded
+    FTMRH->FCCOBIX = 0x1;
+    // Write the lower byte memory address bits[15:0]
+    //FTMRH_FCCOB = (uint16_t)adr;
+    FTMRH->FCCOBHI = (uint8_t)(addr >>  8);
+    FTMRH->FCCOBLO = (uint8_t)(addr);
+
+    // Launch the command
+    FTMRH->FSTAT = 0x80;
+    
+    // Wait till command is completed
+    while (!(FTMRH->FSTAT & FTMRH_FSTAT_CCIF_MASK));
+
+    if (FTMRH->FSTAT & FTMRH_FSTAT_FPVIOL_MASK)  return(FTFx_SSD_FSTAT_FPVIOL);
+    if (FTMRH->FSTAT & FTMRH_ERROR)              return(1);
+    return (0);
+}
+
 uint8_t FLASH_EraseSector(uint32_t addr)
 {
     // Clear error flags
@@ -78,14 +102,47 @@ uint8_t FLASH_EraseSector(uint32_t addr)
     return (0);
 }
 
- /**
- * @brief  写Flash一个扇区
- * @note   字节数必须等于扇区尺寸
- * @param  addr: 开始地址
- * @param  buf : 写入数据起始指针
- * @param  len : 字节数
- * @retval CH_OK：完成；CH_ERR：失败
- */
+
+uint8_t FLASH_EEP_WriteSector(uint32_t addr, const uint8_t *buf, uint32_t len)
+{
+  int  i;
+
+  for (i = 0; i < ((len+1)/2); i++)  {
+    // Clear error flags
+    FTMRH->FSTAT = 0x30;
+    
+    // Write index to specify the command code to be loaded
+    FTMRH->FCCOBIX = 0;
+    // Write command code and memory address bits[17:16]	
+    FTMRH->FCCOBHI = 0x11;// program EEPROM command
+    FTMRH->FCCOBLO = (uint8_t) ((addr >> 16));// Addr[22:16] always 0
+    // Write index to specify the lower byte memory address bits[15:0] to be loaded
+    FTMRH->FCCOBIX = 0x1;
+    // Write the lower byte memory address bits[15:0]
+    FTMRH->FCCOBHI = (uint8_t)(addr >>  8);
+    FTMRH->FCCOBLO = (uint8_t)(addr);
+
+    // Write index to specify the word0 (MSB word) to be programmed
+    FTMRH->FCCOBIX = 0x2;
+    FTMRH->FCCOBLO =  buf[0];
+    // Write index to specify the word1 (LSB word) to be programmed
+    FTMRH->FCCOBIX = 0x3;
+    FTMRH->FCCOBLO =  buf[1];
+    
+    // Launch the command
+    FTMRH->FSTAT = 0x80;
+    // Wait till command is completed
+    while (!(FTMRH->FSTAT & FTMRH_FSTAT_CCIF_MASK))
+     ;
+    // Check error status
+    if (FTMRH->FSTAT & FTMRH_ERROR) return(1);
+    buf += 2;
+    addr += 2;
+
+  }
+  return (0);                                  // Finished without Errors
+}
+
 uint8_t FLASH_WriteSector(uint32_t addr, const uint8_t *buf, uint32_t len)
 {
     int  i;
