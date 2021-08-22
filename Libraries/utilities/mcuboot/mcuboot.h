@@ -17,9 +17,11 @@
 typedef struct
 {
     /* packet handing resource */
-    pkt_dec_t dec;
+	  uint8_t reservedrx[2];//To make sure payload array in frame_packet is 4bytes aligned
     frame_packet_t rx_pkt;
-    frame_packet_t tx_pkt;
+	  uint8_t reservedtx[2];//To make sure payload array in frame_packet is 4bytes aligned
+    frame_packet_t tx_pkt;   
+   	pkt_dec_t dec;
     /* transmit callback */
     int (*op_send)(uint8_t* buf, uint32_t len);
     
