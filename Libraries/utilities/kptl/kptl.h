@@ -10,9 +10,11 @@
 
 #include <stdint.h>
 #include <stdbool.h>
+#include "bl_cfg.h"
 
+#ifndef MAX_PACKET_LEN
 #define MAX_PACKET_LEN          (64)
-
+#endif
 
 #define ARRAY2INT16(x)     (x[0] + (x[1] << 8))
 

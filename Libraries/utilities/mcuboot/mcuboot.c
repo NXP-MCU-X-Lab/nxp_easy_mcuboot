@@ -60,13 +60,13 @@ static void handle_cmd(mcuboot_t *ctx, frame_packet_t *pkt)
                     tx_param[1] =  0xFFFF;
                     tx_param_cnt = 2;
                     break;
-                case 0x0B:  /* MaxPacketSize */
-                    tx_param[1] = MAX_PACKET_LEN;
+                case 0x0B:  /* MaxPacketSize, <=512 */
+					tx_param[1] = MAX_PACKET_LEN<512?MAX_PACKET_LEN:512;
                     tx_param_cnt = 2;
                     break;
                 case 0x0C:  /* ReservedRegions */
                     tx_param[1] = 0;
-                    tx_param[2] = 32*1024;
+                    tx_param[2] = APPLICATION_BASE&0x0FFFFFFF;
                     tx_param[3] = 0;
                     tx_param[4] = 0;
                     tx_param_cnt = 5;

@@ -2,7 +2,7 @@
 
 # NXP EASY MCU boot loader
 
-NXP官方 [MCUBOOT](https://www.nxp.com/support/developer-resources/software-development-tools/mcuxpresso-software-and-tools/mcuboot-mcu-bootloader-for-nxp-microcontrollers:MCUBOOT)的简化版C实现，砍掉了绝大部分功能，只保留串口下载功能。可以配合 官方Win下的命令行工具`blhost` 或者 GUI工具`Kinetis Flash Tool` 来实现一个基于MCU串口的bootloader.  这套代码非常容易移植到任何MCU上。 建议以后不要再推AN2295这种老古董了，统一迁移到 MCUBOOT上来。鉴于MCUBOOT 官方实现很复杂，故有此地
+NXP官方 [MCUBOOT](https://www.nxp.com/support/developer-resources/software-development-tools/mcuxpresso-software-and-tools/mcuboot-mcu-bootloader-for-nxp-microcontrollers:MCUBOOT)的简化版C实现，砍掉了绝大部分功能，只保留串口下载功能。可以配合官方Win下的命令行工具`blhost` 或者 GUI工具`Kinetis Flash Tool` 来实现一个基于MCU串口的bootloader.  这套代码非常容易移植到任何MCU上。 建议以后不要再推AN2295这种老古董了，统一迁移到 MCUBOOT上来。鉴于MCUBOOT 官方实现很复杂，故有此地
 
 
 
@@ -13,14 +13,18 @@ NXP官方 [MCUBOOT](https://www.nxp.com/support/developer-resources/software-dev
 
 ## 支持PART列表
 
-| PART   | APP起始地址 |
-| ------ | ----------- |
-| K64    | 0x8000      |
-| KE02   | 0x8000      |
-| KE15   | 0x8000      |
-| LPC802 | 0x1000      |
-| LPC804 | 0x1000      |
-| KL26   | 0x8000      |
+| PART       | APP起始地址 |
+| ---------- | ----------- |
+| K64        | 0x8000      |
+| KE02       | 0x8000      |
+| KE15       | 0x8000      |
+| LPC802     | 0x1000      |
+| LPC804     | 0x1000      |
+| KL26       | 0x8000      |
+| KE18F      | 0x8000      |
+| i.MXRT1021 | 0x40000     |
+| i.MXRT1052 | 0x40000     |
+| i.MXRT1062 | 0x40000     |
 
 
 
@@ -31,14 +35,27 @@ nxp_easy_mcuboot
 ├─ Libraries - 存放所有库文件，bootloader源文件
 │    ├─ drivers_k64 - NXP KinetisK64 驱动文件
 │    ├─ drivers_lpc800  - NXP LPC800驱动文件
+│    ├─ drivers_ke  - NXP Kinetis KE0xZ驱动文件
+│    ├─ drivers_ke15  - NXP Kinetis KE1xZ和KE1xF驱动文件
+│    ├─ drivers_lpc800  - NXP LPC800驱动文件
+│    ├─ drivers_lpc800  - NXP LPC800驱动文件
+│    ├─ drivers_kl  - NXP KL驱动文件
+│    ├─ drivers_rt1021  - NXP i.MXRT102x驱动文件
+│    ├─ drivers_rt1052  - NXP i.MXRT105x驱动文件
+│    ├─ drivers_rt1062  - NXP i.MXRT106x驱动文件
 │    ├─ startup - 所有MCU启动文件
 │    └─ utilities - 存放bootloader源代码
 ├─ Project - example 工程
 │    ├─ frdm_k64 基于FRDM-K64的 bootloader示例工程
 │    ├─ frdm_ke02 基于FRDM-ke02的 bootloader示例工程
-│    └─ lpc802 基于LPC802的 bootloader示例工程
-│    └─ lpc804 基于LPC804的 bootloader示例工程
-│    └─ frdm_kl26 基于frdm_kl26的 bootloader示例工程
+│    ├─ frdm_ke15 基于FRDM-ke15Z的 bootloader示例工程
+│    ├─ lpc802 基于LPC802的 bootloader示例工程
+│    ├─ lpc804 基于LPC804的 bootloader示例工程
+│    ├─ frdm_kl26 基于frdm_kl26的 bootloader示例工程
+│    ├─ evk_imxrt1052_HyperFlash 基于evk_imxrt1052(HyperFlash)的 bootloader示例工程
+│    ├─ evk_imxrt1052_QspiFlash 基于evk_imxrt1052(QSPIFlash)的 bootloader示例工程
+│    ├─ evk_imxrt1021 基于evk_imxrt1021的 bootloader示例工程
+│    └─ evk_imxrt1062 基于evk_imxrt1062的 bootloader示例工程
 ├─ pc_tool - PC工具
 │    ├─ KinetisFlashTool.exe  GUI工具，直接使用这个下载程序
 │    ├─ KinetisFlashTool.ini
@@ -85,7 +102,7 @@ kptl 负责MCUBOOT协议的基本实现，拆包封包等， mcuboot.c实现 boo
 
 1. 准备好的你的MCU： 确保你已经熟悉了你的MCU。MCU 可以正常跑，串口收发功能已经调通并没有问题， Flash编程，擦写功能已经调通并没有问题。这些非常重要，串口收发和flash的编程功能是bootloader的基本操作。这些功能有bug将直接影响bootloader成功与否。
 2. 在工程中加入kptl.c 和 mcuboot.c 并且添加对应的include路径
-3. 在工程中定义全局结构： `static mcuboot_t mcuboot;`
+3. 在工程中定义全局结构： `static mcuboot_t mcuboot;`，**针对i.MXRT平台，注意需要加上attribute((aligned(4))) 四个字节对齐的预编译命令，保证mcuboot结构体里的rx_pkt缓存区是4字节对齐的，因为RT的ROM API需要这样的字节对齐方式才可以正常运行**；
 
 4. 在初始化必要的硬件资源后(串口和Flash肯定要初始化吧)。 给mcuboot结构填写必要的参数和回调接口
 
@@ -100,14 +117,14 @@ kptl 负责MCUBOOT协议的基本实现，拆包封包等， mcuboot.c实现 boo
 | op_complete            | 在bootloader 接收完完整的image后会回调这个函数，一般用于释放硬件资源，该关闭的外设关闭，中断该关的关， 让mcu跳转app之前回到一个比较干净的状态 |
 | op_mem_erase           | flash擦除                                                    |
 | op_mem_write           | flash编程                                                    |
-| op_mem_read            | flash读取                                                    |
+| op_mem_read            | flash读取，i.MXRT平台使用IP Command方式读取，这样在加密状态下也仅读取烧进去的密文，一方面可以方便做回读校验，一方面也不会泄露Flash明文数据 |
 
    配置：
 
 | 需要填入的配置        | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ |
-| cfg_flash_start       | APP启动地址(示例中一般默认为0x1000(4K) 或者0x8000(32K))      |
-| cfg_flash_size        | FLash 大小                                                   |
+| cfg_flash_start       | APP启动地址(示例中一般默认为0x1000(4K) 或者0x8000(32K)，RT平台建议为0x40000(256KB，HyperFlash的一个扇区大小)) |
+| cfg_flash_size        | Flash 大小                                                   |
 | cfg_flash_sector_size | flash sector 大小                                            |
 | cfg_ram_start         | RAM起始地址。这个字段只是让上位机获取这个信息。移植阶段可以随便填 |
 | cfg_ram_size          | RAM大小。这个字段只是让上位机获取这个信息。移植阶段可以随便填 |
@@ -161,10 +178,19 @@ kptl 负责MCUBOOT协议的基本实现，拆包封包等， mcuboot.c实现 boo
 
 ## 其他一些注意的
 
-1. Flash的操作实现很重要。 一般flash都是块设备，有最小的擦除和编程单位(尤其是LPC, 最小擦除单位和最小编程单位都不一样，而且很大，很恶心)。这就需要在实现`memory_write`函数的时候格外注意，该对齐的对齐，该补全的补全，没到最小编程单位的需要提取读出之前的数据并合并，超过最小编程单位的需要多次调用flash_program函数以保证全部写入。
-2. 对于MCU复位的实现，直接调用 CMSIS库函数 `NVIC_SystemReset`即可。
-3. 最后跳转之前一般需要把外设全部反初始化，中断(包括SYsTick)该关的都要关掉,可以在`mcuboot_complete`中完成这些操作
-4. 最后的跳转到用户app 。主要需要干三件事： 重新设置PC,SP, 重新设置中断向量表的入口地址：SCB->VTOR。其中SP为Image的0-3字节，PC为image的4-7字节。可直接使用祖传函数：
+1. Flash的操作实现很重要。 一般flash都是块设备，有最小的擦除和编程单位(尤其是LPC, 最小擦除单位和最小编程单位都不一样，而且很大，很恶心)。这就需要在实现`memory_write`函数的时候格外注意，该对齐的对齐，该补全的补全，没到最小编程单位的需要提取读出之前的数据并合并，超过最小编程单位的需要多次调用flash_program函数以保证全部写入；
+
+2. 针对i.MXRT平台，在bl_cfg.h里强烈建议定义一下MAX_PACKET_LEN，并把它配置成外部SPI Flash的page size，这样上位机会通过串口一次性下发对应大小的数据帧，MCU端则可以一次性的调用Page_Program API写入这一帧数据，最后一次剩下的数据可能会存在不满足一个Page的情况，MCU会只写入剩下的大小；
+
+   ```
+   #define MAX_PACKET_LEN   (256)//Strongly recommend to use NorFlash page size
+   ```
+
+3. 对于MCU复位的实现，直接调用 CMSIS库函数 `NVIC_SystemReset`即可；
+
+4. 最后跳转之前一般需要把外设全部反初始化，中断(包括SYsTick)该关的都要关掉,可以在`mcuboot_complete`中完成这些操作；
+
+5. 最后的跳转到用户app 。主要需要干三件事： 重新设置PC,SP, 重新设置中断向量表的入口地址：SCB->VTOR。其中SP为Image的0-3字节，PC为image的4-7字节。可直接使用祖传函数：
 
 ```
 void JumpToImage(uint32_t addr)
@@ -195,9 +221,7 @@ void JumpToImage(uint32_t addr)
 }
 ```
 
-5. APP工程不要忘记修改启动地址
+6. APP工程不要忘记修改启动地址；
 
-6. 一些开发板(比如FRDM-KE02) 默认的板载openSDA K20调试器的USB转串口功能做的不好，无法有效识别PING开始命令，导致握手失败，需要更新最新的JLINK OPENSDA firmware才可以用
-
-   固件下载： https://www.segger.com/products/debug-probes/j-link/models/other-j-links/opensda-sda-v2/
+7. 一些开发板(比如FRDM-KE02) 默认的板载openSDA K20调试器的USB转串口功能做的不好，无法有效识别PING开始命令，导致握手失败，需要更新最新的JLINK OPENSDA firmware才可以用固件下载： https://www.segger.com/products/debug-probes/j-link/models/other-j-links/opensda-sda-v2/
 
