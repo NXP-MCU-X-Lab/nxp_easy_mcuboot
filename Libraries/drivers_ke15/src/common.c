@@ -639,7 +639,7 @@ void JumpToImage(uint32_t addr)
     uint32_t *vectorTable = (uint32_t*)addr;
     sp = vectorTable[0];
     pc = vectorTable[1];
-    printf("0x%X 0x%X\r\n", sp, pc);
+//    printf("0x%X 0x%X\r\n", sp, pc);
     typedef void(*app_entry_t)(void);
 
     /* must be static, otherwise SP value will be lost */

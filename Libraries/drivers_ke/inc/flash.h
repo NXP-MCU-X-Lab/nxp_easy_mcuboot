@@ -13,8 +13,11 @@
 //!< API 功能接口
 void FLASH_Init(void);
 uint32_t FLASH_GetSectorSize(void);
+
 uint8_t FLASH_WriteSector(uint32_t addr, const uint8_t *buf, uint32_t len);
 uint8_t FLASH_EraseSector(uint32_t addr);
+uint8_t FLASH_EEP_EraseSector(uint32_t addr);
+uint8_t FLASH_EEP_WriteSector(uint32_t addr, const uint8_t *buf, uint32_t len);
 uint32_t FLASH_Test(uint32_t startAddr, uint32_t len);
 uint32_t FLASH_GetProgramCmd(void);
 
