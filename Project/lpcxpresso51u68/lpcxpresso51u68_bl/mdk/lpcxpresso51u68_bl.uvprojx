@@ -7,23 +7,23 @@
 
   <Targets>
     <Target>
-      <TargetName>plc8xx</TargetName>
+      <TargetName>lpcxpresso51u68_bl</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
+      <pCCUsed>5060960::V5.06 update 7 (build 960)::ARMCC</pCCUsed>
       <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
-          <Device>LPC802M001JDH16</Device>
+          <Device>LPC51U68JBD64</Device>
           <Vendor>NXP</Vendor>
-          <PackID>NXP.LPC802_DFP.10.0.3</PackID>
-          <PackURL>http://mcuxpresso.nxp.com/cmsis_pack/repo/</PackURL>
-          <Cpu>IROM(0x00000000,0x00004000) IRAM(0x10000000,0x00000800) CPUTYPE("Cortex-M0+") CLOCK(12000000) ELITTLE</Cpu>
+          <PackID>NXP.LPC51U68_DFP.13.1.0</PackID>
+          <PackURL>https://mcuxpresso.nxp.com/cmsis_pack/repo/</PackURL>
+          <Cpu>IRAM(0x20000000,0x010000) IRAM2(0x04000000,0x8000) IROM(0x00000000,0x040000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
-          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD10000000 -FC7E0 -FN1 -FF0LPC80x_16 -FS00 -FL04000 -FP0($$Device:LPC802M001JDH16$Flash\LPC80x_16.FLM))</FlashDriverDll>
+          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0LPC51U68_256 -FS00 -FL040000 -FP0($$Device:LPC51U68JBD64$arm\LPC51U68_256.FLM))</FlashDriverDll>
           <DeviceId>0</DeviceId>
-          <RegisterFile>$$Device:LPC802M001JDH16$Device\Include\LPC802.h</RegisterFile>
+          <RegisterFile>$$Device:LPC51U68JBD64$fsl_device_registers.h</RegisterFile>
           <MemoryEnv></MemoryEnv>
           <Cmp></Cmp>
           <Asm></Asm>
@@ -33,7 +33,7 @@
           <SLE66CMisc></SLE66CMisc>
           <SLE66AMisc></SLE66AMisc>
           <SLE66LinkerMisc></SLE66LinkerMisc>
-          <SFDFile>$$Device:LPC802M001JDH16$SVD\LPC802.svd</SFDFile>
+          <SFDFile>$$Device:LPC51U68JBD64$LPC51U68.xml</SFDFile>
           <bCustSvd>0</bCustSvd>
           <UseEnv>0</UseEnv>
           <BinPath></BinPath>
@@ -48,8 +48,8 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>.\lpc804_bl\</OutputDirectory>
-          <OutputName>lpc804_bl</OutputName>
+          <OutputDirectory>.\lpcxpresso51u68_bl\</OutputDirectory>
+          <OutputName>lpcxpresso51u68_bl</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -82,7 +82,7 @@
           <AfterMake>
             <RunUserProg1>1</RunUserProg1>
             <RunUserProg2>1</RunUserProg2>
-            <UserProg1Name>$KARM\BIN\ELFDWT.EXE !L BASEADDRESS(0x0)</UserProg1Name>
+            <UserProg1Name>$K/ARM/BIN/ElfDwT.exe !L BASEADDRESS(0x0)</UserProg1Name>
             <UserProg2Name>fromelf --bin -o "$L@L.bin" "#L"</UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
@@ -138,7 +138,7 @@
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3>"" ()</Flash3>
+          <Flash3></Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -159,19 +159,19 @@
             <ldmm>1</ldmm>
             <ldXref>1</ldXref>
             <BigEnd>0</BigEnd>
-            <AdsALst>0</AdsALst>
+            <AdsALst>1</AdsALst>
             <AdsACrf>1</AdsACrf>
             <AdsANop>0</AdsANop>
             <AdsANot>0</AdsANot>
             <AdsLLst>1</AdsLLst>
             <AdsLmap>1</AdsLmap>
-            <AdsLcgr>0</AdsLcgr>
-            <AdsLsym>0</AdsLsym>
+            <AdsLcgr>1</AdsLcgr>
+            <AdsLsym>1</AdsLsym>
             <AdsLszi>1</AdsLszi>
             <AdsLtoi>1</AdsLtoi>
-            <AdsLsun>0</AdsLsun>
-            <AdsLven>0</AdsLven>
-            <AdsLsxf>0</AdsLsxf>
+            <AdsLsun>1</AdsLsun>
+            <AdsLven>1</AdsLven>
+            <AdsLsxf>1</AdsLsxf>
             <RvctClst>0</RvctClst>
             <GenPPlst>0</GenPPlst>
             <AdsCpuType>"Cortex-M0+"</AdsCpuType>
@@ -186,7 +186,7 @@
             <RvdsVP>0</RvdsVP>
             <RvdsMve>0</RvdsMve>
             <RvdsCdeCp>0</RvdsCdeCp>
-            <hadIRAM2>0</hadIRAM2>
+            <hadIRAM2>1</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
             <useUlib>1</useUlib>
@@ -194,7 +194,7 @@
             <uLtcg>0</uLtcg>
             <nSecure>0</nSecure>
             <RoSelD>3</RoSelD>
-            <RwSelD>3</RwSelD>
+            <RwSelD>4</RwSelD>
             <CodeSel>0</CodeSel>
             <OptFeed>0</OptFeed>
             <NoZi1>0</NoZi1>
@@ -211,7 +211,7 @@
             <Ra2Chk>0</Ra2Chk>
             <Ra3Chk>0</Ra3Chk>
             <Im1Chk>1</Im1Chk>
-            <Im2Chk>0</Im2Chk>
+            <Im2Chk>1</Im2Chk>
             <OnChipMemories>
               <Ocm1>
                 <Type>0</Type>
@@ -245,18 +245,18 @@
               </Ocm6>
               <IRAM>
                 <Type>0</Type>
-                <StartAddress>0x10000000</StartAddress>
-                <Size>0x800</Size>
+                <StartAddress>0x20000000</StartAddress>
+                <Size>0x10000</Size>
               </IRAM>
               <IROM>
                 <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x4000</Size>
+                <Size>0x40000</Size>
               </IROM>
               <XRAM>
-                <Type>0</Type>
-                <StartAddress>0x0</StartAddress>
-                <Size>0x0</Size>
+                <Type>1</Type>
+                <StartAddress>0x20000000</StartAddress>
+                <Size>0x8000</Size>
               </XRAM>
               <OCR_RVCT1>
                 <Type>1</Type>
@@ -276,7 +276,7 @@
               <OCR_RVCT4>
                 <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x2000</Size>
+                <Size>0x40000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
                 <Type>1</Type>
@@ -300,20 +300,20 @@
               </OCR_RVCT8>
               <OCR_RVCT9>
                 <Type>0</Type>
-                <StartAddress>0x10000000</StartAddress>
-                <Size>0x7f0</Size>
+                <StartAddress>0x20000000</StartAddress>
+                <Size>0x10000</Size>
               </OCR_RVCT9>
               <OCR_RVCT10>
                 <Type>0</Type>
-                <StartAddress>0x0</StartAddress>
-                <Size>0x0</Size>
+                <StartAddress>0x4000000</StartAddress>
+                <Size>0x8000</Size>
               </OCR_RVCT10>
             </OnChipMemories>
             <RvctStartVector></RvctStartVector>
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>0</Optim>
+            <Optim>1</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>0</OneElfS>
@@ -322,24 +322,24 @@
             <PlainCh>0</PlainCh>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
-            <wLevel>0</wLevel>
+            <wLevel>2</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>0</uC99>
             <uGnu>0</uGnu>
             <useXO>0</useXO>
-            <v6Lang>0</v6Lang>
-            <v6LangP>0</v6LangP>
-            <vShortEn>0</vShortEn>
-            <vShortWch>0</vShortWch>
+            <v6Lang>3</v6Lang>
+            <v6LangP>3</v6LangP>
+            <vShortEn>1</vShortEn>
+            <vShortWch>1</vShortWch>
             <v6Lto>0</v6Lto>
             <v6WtE>0</v6WtE>
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls>--c99</MiscControls>
-              <Define>LPC802 __VTOR_PRESENT</Define>
+              <Define>DEBUG LPC51U68</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\..\..\Libraries\startup\inc;..\..\..\..\Libraries\utilities\inc;..\..\..\..\Libraries\devices\inc;..\src;..\src\config;..\..\..\..\Libraries\utilities\mcuboot;..\..\..\..\Libraries\utilities\kptl;..\..\src;..\..\lpc804_driver\inc</IncludePath>
+              <IncludePath>..\..\..\..\Libraries\startup\inc;..\..\..\..\Libraries\drivers_lpc\inc;..\..\..\..\Libraries\utilities\mcuboot;..\..\..\..\Libraries\utilities\kptl;..\src\config</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -352,10 +352,10 @@
             <NoWarn>0</NoWarn>
             <uSurpInc>0</uSurpInc>
             <useXO>0</useXO>
-            <ClangAsOpt>4</ClangAsOpt>
+            <ClangAsOpt>2</ClangAsOpt>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>RAM_TARGET</Define>
+              <Define></Define>
               <Undefine></Undefine>
               <IncludePath></IncludePath>
             </VariousControls>
@@ -381,17 +381,22 @@
       </TargetOption>
       <Groups>
         <Group>
-          <GroupName>startup_lpc8xx</GroupName>
+          <GroupName>startup_lpc51u68</GroupName>
           <Files>
             <File>
-              <FileName>startup_LPC804.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>..\..\..\..\Libraries\startup\src\mdk\startup_LPC804.s</FilePath>
+              <FileName>system_LPC51U68.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\Libraries\startup\src\system_LPC51U68.c</FilePath>
             </File>
             <File>
-              <FileName>system_LPC804.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\Libraries\startup\src\system_LPC804.c</FilePath>
+              <FileName>startup_LPC51U68.S</FileName>
+              <FileType>2</FileType>
+              <FilePath>..\..\..\..\Libraries\startup\src\mdk\startup_LPC51U68.S</FilePath>
+            </File>
+            <File>
+              <FileName>keil_lib_power_m0.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\..\..\..\Libraries\startup\src\mdk\powerlib\lpc51u68\keil_lib_power_m0.lib</FilePath>
             </File>
           </Files>
         </Group>
@@ -403,11 +408,6 @@
               <FileType>1</FileType>
               <FilePath>..\src\main.c</FilePath>
             </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>user\config</GroupName>
-          <Files>
             <File>
               <FileName>bl_cfg.h</FileName>
               <FileType>5</FileType>
@@ -416,42 +416,32 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>drivers_lpc800</GroupName>
+          <GroupName>drivers</GroupName>
           <Files>
             <File>
               <FileName>common.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\lpc804_driver\src\common.c</FilePath>
+              <FilePath>..\..\..\..\Libraries\drivers_lpc\src\common.c</FilePath>
             </File>
             <File>
               <FileName>flash.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\lpc804_driver\src\flash.c</FilePath>
+              <FilePath>..\..\..\..\Libraries\drivers_lpc\src\flash.c</FilePath>
             </File>
             <File>
               <FileName>gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\lpc804_driver\src\gpio.c</FilePath>
+              <FilePath>..\..\..\..\Libraries\drivers_lpc\src\gpio.c</FilePath>
             </File>
             <File>
               <FileName>syscon.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\lpc804_driver\src\syscon.c</FilePath>
+              <FilePath>..\..\..\..\Libraries\drivers_lpc\src\syscon.c</FilePath>
             </File>
             <File>
               <FileName>uart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\lpc804_driver\src\uart.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>utilities\mcuboot</GroupName>
-          <Files>
-            <File>
-              <FileName>mcuboot.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\Libraries\utilities\mcuboot\mcuboot.c</FilePath>
+              <FilePath>..\..\..\..\Libraries\drivers_lpc\src\uart.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -465,6 +455,16 @@
             </File>
           </Files>
         </Group>
+        <Group>
+          <GroupName>utilities\mcuboot</GroupName>
+          <Files>
+            <File>
+              <FileName>mcuboot.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\Libraries\utilities\mcuboot\mcuboot.c</FilePath>
+            </File>
+          </Files>
+        </Group>
       </Groups>
     </Target>
   </Targets>
@@ -474,5 +474,14 @@
     <components/>
     <files/>
   </RTE>
+
+  <LayerInfo>
+    <Layers>
+      <Layer>
+        <LayName>twr_ke18_bl</LayName>
+        <LayPrjMark>1</LayPrjMark>
+      </Layer>
+    </Layers>
+  </LayerInfo>
 
 </Project>
