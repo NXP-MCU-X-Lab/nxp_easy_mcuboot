@@ -7,7 +7,7 @@
 
   <Targets>
     <Target>
-      <TargetName>lpcxpresso51u68_bl</TargetName>
+      <TargetName>lpcxpresso51u68_hid_bl</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pCCUsed>5060960::V5.06 update 7 (build 960)::ARMCC</pCCUsed>
@@ -48,8 +48,8 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>.\lpcxpresso51u68_bl\</OutputDirectory>
-          <OutputName>lpcxpresso51u68_bl</OutputName>
+          <OutputDirectory>.\lpcxpresso51u68_hid_bl\</OutputDirectory>
+          <OutputName>lpcxpresso51u68_hid_bl</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -464,9 +464,34 @@
           <GroupName>utilities\mcuboot</GroupName>
           <Files>
             <File>
-              <FileName>mcuboot.c</FileName>
+              <FileName>hid_mcuboot.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\Libraries\utilities\mcuboot\mcuboot.c</FilePath>
+              <FilePath>..\..\..\..\Libraries\utilities\mcuboot\hid_mcuboot.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>utilities\chusb</GroupName>
+          <Files>
+            <File>
+              <FileName>usbd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\Libraries\utilities\chusb\src\usbd.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbd_hid.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\Libraries\utilities\chusb\src\usbd_hid.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbd_lpc_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\Libraries\utilities\chusb\src\usbd_lpc_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbd_descriptor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\Libraries\utilities\chusb\src\usbd_descriptor.c</FilePath>
             </File>
           </Files>
         </Group>

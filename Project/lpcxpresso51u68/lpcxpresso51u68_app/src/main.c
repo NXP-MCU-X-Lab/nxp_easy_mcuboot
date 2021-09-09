@@ -28,8 +28,9 @@ int main(void)
     GPIO_Init(HW_GPIO0, 29, kGPIO_OPPH);
     while(1)
     {
+        printf("I am application, main1 address:0x%X\r\n", main);
         GPIO_PinToggle(HW_GPIO0, 29);
-        DelayMs(1000);
+        DelayMs(200);
     }
     
 }
@@ -38,7 +39,7 @@ int main(void)
 
 void HardFault_Handler(void)
 {
-    NVIC_SystemReset();
+    printf("HardFault_Handler\r\n");
     
     while(1)
     {
