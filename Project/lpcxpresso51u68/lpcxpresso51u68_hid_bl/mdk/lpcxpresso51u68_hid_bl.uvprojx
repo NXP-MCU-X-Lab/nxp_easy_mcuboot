@@ -451,16 +451,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>utilities\kptl</GroupName>
-          <Files>
-            <File>
-              <FileName>kptl.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\Libraries\utilities\kptl\kptl.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>utilities\mcuboot</GroupName>
           <Files>
             <File>
