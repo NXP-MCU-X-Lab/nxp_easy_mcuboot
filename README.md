@@ -13,18 +13,19 @@ NXP官方 [MCUBOOT](https://www.nxp.com/support/developer-resources/software-dev
 
 ## 支持PART列表
 
-| PART       | APP起始地址 |
-| ---------- | ----------- |
-| K64        | 0x8000      |
-| KE02       | 0x8000      |
-| KE15       | 0x8000      |
-| LPC802     | 0x1000      |
-| LPC804     | 0x1000      |
-| KL26       | 0x8000      |
-| KE18F      | 0x8000      |
-| i.MXRT1021 | 0x40000     |
-| i.MXRT1052 | 0x40000     |
-| i.MXRT1062 | 0x40000     |
+| PART                                       | APP起始地址 |
+| ------------------------------------------ | ----------- |
+| K64                                        | 0x8000      |
+| KE02                                       | 0x8000      |
+| KE15                                       | 0x8000      |
+| LPC802                                     | 0x1000      |
+| LPC804                                     | 0x1000      |
+| KL26                                       | 0x8000      |
+| KE18F                                      | 0x8000      |
+| i.MXRT1021                                 | 0x40000     |
+| i.MXRT1052                                 | 0x40000     |
+| i.MXRT1062                                 | 0x40000     |
+| LPC51U68(支持UART和USB_HID两种boot loader) | 0x8000      |
 
 
 
