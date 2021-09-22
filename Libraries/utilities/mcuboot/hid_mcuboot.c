@@ -257,8 +257,6 @@ void hid_mcuboot_proc(hid_mcuboot_t *ctx)
                 ctx->op_mem_write(ctx->mem_cur_addr, ctx->_rx_report.buf, len);
                 ctx->mem_cur_addr += len;
                             
-                hid_report_t tx_report; 
-                
                 /* send final generic resp packet */
                 if(ctx->mem_cur_addr >= (ctx->mem_start_addr + ctx->mem_len))
                 {

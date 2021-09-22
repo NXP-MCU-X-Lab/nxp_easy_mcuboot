@@ -23,6 +23,12 @@ static struct usbd_t usbd;
 void ch_usb_init(struct usbd_t *h);
 
 
+void USBD_Connect (bool con);
+void USBD_Init (void);
+
+
+
+
 static int memory_erase(uint32_t start_addr, uint32_t byte_cnt)
 {
     int addr;

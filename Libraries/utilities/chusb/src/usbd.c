@@ -155,6 +155,7 @@ void data_out_stage(void)
 static uint32_t _get_descriptor(struct urequest* setup)
 {
     struct ustring_descriptor ustr;
+    struct uconfig_descriptor *uconfig;
     uint8_t string_index;
     uint8_t language_str_buf[] = {0x04, 0x03, 0x09, 0x04};
     desc_t d;
@@ -171,8 +172,8 @@ static uint32_t _get_descriptor(struct urequest* setup)
                 USBD_TRACE("configuration_descriptor\r\n");
                 get_descriptor_data("configuration_descriptor", &d);
             
-                struct uconfig_descriptor *p = (struct uconfig_descriptor*)d.buf;
-                d.len = p->wTotalLength;
+                uconfig = (struct uconfig_descriptor*)d.buf;
+                d.len = uconfig->wTotalLength;
 
                 break;
             case USB_DESC_TYPE_DEVICEQUALIFIER:

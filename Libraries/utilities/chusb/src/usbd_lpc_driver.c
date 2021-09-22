@@ -489,8 +489,8 @@ uint32_t set_addr(uint8_t addr)
 uint32_t usbd_config_ep(struct uendpoint_descriptor* d)
 {
     uint8_t num =  d->bEndpointAddress;
-    uint32_t size =  d->wMaxPacketSize;
-    uint8_t type = d->bmAttributes;
+//    uint32_t size =  d->wMaxPacketSize;
+//    uint8_t type = d->bmAttributes;
     //USBD_TRACE("ConfigEP:0x%X %d %d\r\n", num, size, type);
     USBD_ConfigEP(num);
     USBD_EnableEP(num);
