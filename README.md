@@ -57,7 +57,8 @@ nxp_easy_mcuboot
 │    ├─ evk_imxrt1052_HyperFlash 基于evk_imxrt1052(HyperFlash)的 bootloader示例工程
 │    ├─ evk_imxrt1052_QspiFlash 基于evk_imxrt1052(QSPIFlash)的 bootloader示例工程
 │    ├─ evk_imxrt1021 基于evk_imxrt1021的 bootloader示例工程
-│    └─ evk_imxrt1062 基于evk_imxrt1062的 bootloader示例工程
+│    ├─ evk_imxrt1062 基于evk_imxrt1062的 bootloader示例工程
+│    └─ evk_imxrt1064 基于evk_imxrt1064的 bootloader示例工程
 ├─ pc_tool - PC工具
 │    ├─ KinetisFlashTool.exe  GUI工具，直接使用这个下载程序
 │    ├─ KinetisFlashTool.ini
