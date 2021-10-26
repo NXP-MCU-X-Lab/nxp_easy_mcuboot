@@ -25,6 +25,7 @@ NXP官方 [MCUBOOT](https://www.nxp.com/support/developer-resources/software-dev
 | i.MXRT1021                                 | 0x40000     |
 | i.MXRT1052                                 | 0x40000     |
 | i.MXRT1062                                 | 0x40000     |
+| i.MXRT1064                                 | 0x40000     |
 | LPC51U68(支持UART和USB_HID两种boot loader) | 0x8000      |
 
 
