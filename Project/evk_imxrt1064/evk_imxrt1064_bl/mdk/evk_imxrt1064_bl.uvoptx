@@ -22,7 +22,7 @@
   </DaveTm>
 
   <Target>
-    <TargetName>imxrt1052</TargetName>
+    <TargetName>imxrt1064</TargetName>
     <ToolsetNumber>0x4</ToolsetNumber>
     <ToolsetName>ARM-ADS</ToolsetName>
     <TargetOption>
@@ -103,7 +103,7 @@
         <bEvRecOn>1</bEvRecOn>
         <bSchkAxf>0</bSchkAxf>
         <bTchkAxf>0</bTchkAxf>
-        <nTsel>4</nTsel>
+        <nTsel>3</nTsel>
         <sDll></sDll>
         <sDllPa></sDllPa>
         <sDlgDll></sDlgDll>
@@ -113,24 +113,24 @@
         <tDllPa></tDllPa>
         <tDlgDll></tDlgDll>
         <tDlgPa></tDlgPa>
-        <tIfile>.\evkbimxrt1050_flexspi_nor.ini</tIfile>
-        <pMon>Segger\JL2CM3.dll</pMon>
+        <tIfile>.\evkbimxrt1064_flexspi_nor.ini</tIfile>
+        <pMon>BIN\CMSIS_AGDI.dll</pMon>
       </DebugOpt>
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
+          <Key>UL2CM3</Key>
+          <Name>-U -O142 -S0 -C0 -P00 -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO15  -FN1 -FC8000 -FD20000000 -FF0MIMXRT1064_QSPI_4KB_SEC -FL0400000 -FS070000000 -FP0($$Device:MIMXRT1064DVL6A$arm\MIMXRT1064_QSPI_4KB_SEC.FLM)</Name>
+        </SetRegEntry>
+        <SetRegEntry>
+          <Number>0</Number>
+          <Key>CMSIS_AGDI</Key>
+          <Name>-X"CMSIS-DAP" -U022900000708e4a30000000000000000 -O206 -S8 -C0 -P00000000 -N00("ARM CoreSight SW-DP") -D00(0BD11477) -L00(0) -TO65554 -TC10000000 -TT10000000 -TP20 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO15 -FD20000000 -FC8000 -FN1 -FF0MIMXRT1064_QSPI_4KB_SEC.FLM -FS070000000 -FL0400000 -FP0($$Device:MIMXRT1064DVL6A$arm\MIMXRT1064_QSPI_4KB_SEC.FLM)</Name>
+        </SetRegEntry>
+        <SetRegEntry>
+          <Number>0</Number>
           <Key>DLGUARM</Key>
           <Name>d</Name>
-        </SetRegEntry>
-        <SetRegEntry>
-          <Number>0</Number>
-          <Key>JL2CM3</Key>
-          <Name>-U728081087 -O206 -S2 -ZTIFSpeedSel5000 -A0 -C0 -JU1 -JI127.0.0.1 -JP0 -RST1 -N00("ARM CoreSight SW-DP") -D00(0BD11477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -TB1 -TFE0 -FO7 -FD20000000 -FC8000 -FN1 -FF0MIMXRT105x_HYPER_256KB_SEC.FLM -FS060000000 -FL04000000 -FP0($$Device:MIMXRT1052DVL6B$arm\MIMXRT105x_HYPER_256KB_SEC.FLM)</Name>
-        </SetRegEntry>
-        <SetRegEntry>
-          <Number>0</Number>
-          <Key>UL2CM3</Key>
-          <Name>-U -O142 -S0 -C0 -P00 -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO15  -FN1 -FC8000 -FD20000000 -FF0MIMXRT105x_HYPER_256KB_SEC -FL04000000 -FS060000000 -FP0($$Device:MIMXRT1052DVL6B$arm\MIMXRT105x_HYPER_256KB_SEC.FLM)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -228,7 +228,7 @@
   </Target>
 
   <Group>
-    <GroupName>startup_imxrt1052</GroupName>
+    <GroupName>startup_imxrt1064</GroupName>
     <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
@@ -236,24 +236,24 @@
     <File>
       <GroupNumber>1</GroupNumber>
       <FileNumber>1</FileNumber>
-      <FileType>1</FileType>
+      <FileType>2</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\Libraries\startup\src\system_MIMXRT1052.c</PathWithFileName>
-      <FilenameWithoutPath>system_MIMXRT1052.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\Libraries\startup\src\mdk\startup_MIMXRT1064.s</PathWithFileName>
+      <FilenameWithoutPath>startup_MIMXRT1064.s</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>1</GroupNumber>
       <FileNumber>2</FileNumber>
-      <FileType>2</FileType>
+      <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\Libraries\startup\src\mdk\startup_MIMXRT1052.s</PathWithFileName>
-      <FilenameWithoutPath>startup_MIMXRT1052.s</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\Libraries\startup\src\system_MIMXRT1064.c</PathWithFileName>
+      <FilenameWithoutPath>system_MIMXRT1064.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -325,7 +325,7 @@
 
   <Group>
     <GroupName>drivers</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -336,8 +336,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\Libraries\drivers_rt1052\src\fsl_gpio.c</PathWithFileName>
-      <FilenameWithoutPath>fsl_gpio.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\Libraries\drivers_rt1062\src\common.c</PathWithFileName>
+      <FilenameWithoutPath>common.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -348,8 +348,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\Libraries\drivers_rt1052\src\fsl_lpuart.c</PathWithFileName>
-      <FilenameWithoutPath>fsl_lpuart.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\Libraries\drivers_rt1062\src\flash.c</PathWithFileName>
+      <FilenameWithoutPath>flash.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -360,8 +360,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\Libraries\drivers_rt1052\src\fsl_romapi.c</PathWithFileName>
-      <FilenameWithoutPath>fsl_romapi.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\Libraries\drivers_rt1062\src\fsl_clock.c</PathWithFileName>
+      <FilenameWithoutPath>fsl_clock.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -372,8 +372,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\Libraries\drivers_rt1052\src\common.c</PathWithFileName>
-      <FilenameWithoutPath>common.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\Libraries\drivers_rt1062\src\fsl_gpio.c</PathWithFileName>
+      <FilenameWithoutPath>fsl_gpio.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -384,8 +384,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\Libraries\drivers_rt1052\src\fsl_clock.c</PathWithFileName>
-      <FilenameWithoutPath>fsl_clock.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\Libraries\drivers_rt1062\src\fsl_lpuart.c</PathWithFileName>
+      <FilenameWithoutPath>fsl_lpuart.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -396,8 +396,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\Libraries\drivers_rt1052\src\flash.c</PathWithFileName>
-      <FilenameWithoutPath>flash.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\Libraries\drivers_rt1062\src\fsl_romapi.c</PathWithFileName>
+      <FilenameWithoutPath>fsl_romapi.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -408,7 +408,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\Libraries\drivers_rt1052\inc\fsl_clock.h</PathWithFileName>
+      <PathWithFileName>..\..\..\..\Libraries\drivers_rt1062\inc\fsl_clock.h</PathWithFileName>
       <FilenameWithoutPath>fsl_clock.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -468,8 +468,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\src\xip\evkbimxrt1050_flexspi_nor_config.c</PathWithFileName>
-      <FilenameWithoutPath>evkbimxrt1050_flexspi_nor_config.c</FilenameWithoutPath>
+      <PathWithFileName>..\src\xip\evkmimxrt1064_flexspi_nor_config.c</PathWithFileName>
+      <FilenameWithoutPath>evkmimxrt1064_flexspi_nor_config.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -480,8 +480,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\src\xip\fsl_flexspi_nor_boot.c</PathWithFileName>
-      <FilenameWithoutPath>fsl_flexspi_nor_boot.c</FilenameWithoutPath>
+      <PathWithFileName>..\src\xip\evkmimxrt1064_sdram_ini_dcd.c</PathWithFileName>
+      <FilenameWithoutPath>evkmimxrt1064_sdram_ini_dcd.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -492,8 +492,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\src\xip\evkbimxrt1050_sdram_ini_dcd.c</PathWithFileName>
-      <FilenameWithoutPath>evkbimxrt1050_sdram_ini_dcd.c</FilenameWithoutPath>
+      <PathWithFileName>..\src\xip\fsl_flexspi_nor_boot.c</PathWithFileName>
+      <FilenameWithoutPath>fsl_flexspi_nor_boot.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

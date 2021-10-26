@@ -73,7 +73,7 @@
  */
 
 #include <stdint.h>
-#include "fsl_device_registers.h"
+#include "common.h"
 
 #define NVALMAX (0x100)
 #define PVALMAX (0x20)

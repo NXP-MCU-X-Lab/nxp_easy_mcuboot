@@ -63,6 +63,9 @@
 #include "MK26F18.h"
 #elif  MKE18F16
 #include "MKE18F16.h"
+#elif  LPC51U68
+#include "LPC51U68.h"
+#include "LPC51U68_features.h"
 #elif  MIMXRT1052
 #include "MIMXRT1052.h"
 #include "MIMXRT1052_features.h"
@@ -72,6 +75,9 @@
 #elif  MIMXRT1062
 #include "MIMXRT1062.h"
 #include "MIMXRT1062_features.h"
+#elif  MIMXRT1064
+#include "MIMXRT1064.h"
+#include "MIMXRT1064_features.h"
 #else
 #error "No CPU defined!"
 #endif
