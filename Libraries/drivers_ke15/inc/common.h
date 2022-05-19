@@ -65,6 +65,8 @@
 #include "MKE18F16.h"
 #elif  MKE15Z7
 #include "MKE15Z7.h"
+#elif  MKE17Z7
+#include "MKE17Z7.h"
 #else
 #error "No CPU defined!"
 #endif
