@@ -18,6 +18,7 @@ NXP官方 [MCUBOOT](https://www.nxp.com/support/developer-resources/software-dev
 | K64                                        | 0x8000      |
 | KE02                                       | 0x8000      |
 | KE15                                       | 0x8000      |
+| KE17                                       | 0x8000      |
 | LPC802                                     | 0x1000      |
 | LPC804                                     | 0x1000      |
 | KL26                                       | 0x8000      |
@@ -50,6 +51,7 @@ nxp_easy_mcuboot
 │    ├─ frdm_k64 基于FRDM-K64的 bootloader示例工程
 │    ├─ frdm_ke02 基于FRDM-ke02的 bootloader示例工程
 │    ├─ frdm_ke15 基于FRDM-ke15Z的 bootloader示例工程
+│    ├─ frdm_ke17 基于FRDM-ke17Z的 bootloader示例工程
 │    ├─ lpc802 基于LPC802的 bootloader示例工程
 │    ├─ lpc804 基于LPC804的 bootloader示例工程
 │    ├─ frdm_kl26 基于frdm_kl26的 bootloader示例工程
