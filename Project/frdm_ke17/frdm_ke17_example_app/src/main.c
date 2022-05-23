@@ -24,10 +24,10 @@ int main(void)
     SetPinMux(HW_GPIOB, 1, 2);
     LPUART_Init(HW_LPUART0, 115200);
 
-    GPIO_Init(HW_GPIOD, 0, kGPIO_OPPH);
+    GPIO_Init(HW_GPIOD, 10, kGPIO_OPPH);
     while(1)
     {
-        GPIO_PinToggle(HW_GPIOD, 0);
+        GPIO_PinToggle(HW_GPIOD, 10);
         DelayMs(500);
     }
     

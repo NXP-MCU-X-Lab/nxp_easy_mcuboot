@@ -14,16 +14,16 @@
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
-          <Device>MKE15Z256VLL7</Device>
+          <Device>MKE17Z256VLL7</Device>
           <Vendor>NXP</Vendor>
-          <PackID>NXP.MKE15Z7_DFP.14.0.0</PackID>
+          <PackID>NXP.MKE17Z7_DFP.14.0.0</PackID>
           <PackURL>https://mcuxpresso.nxp.com/cmsis_pack/repo/</PackURL>
-          <Cpu>IRAM(0x14000000,0x0800) IRAM2(0x1fffe000,0x8000) IROM(0x10000000,0x8000) IROM2(0x00000000,0x040000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ELITTLE</Cpu>
+          <Cpu>IRAM(0x1fffc000,0xc000) IROM(0x00000000,0x040000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
-          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD1FFFE000 -FC1000 -FN2 -FF0MKE1x_D32_2KB_SEC -FS010000000 -FL08000 -FF1MKE1x_P256_2KB_SEC -FS10 -FL140000 -FP0($$Device:MKE15Z256VLL7$arm\MKE1x_D32_2KB_SEC.FLM) -FP1($$Device:MKE15Z256VLL7$arm\MKE1x_P256_2KB_SEC.FLM))</FlashDriverDll>
+          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD1FFFC000 -FC1000 -FN1 -FF0MKE1x_P256_2KB_SEC -FS00 -FL040000 -FP0($$Device:MKE17Z256VLL7$arm\MKE1x_P256_2KB_SEC.FLM))</FlashDriverDll>
           <DeviceId>0</DeviceId>
-          <RegisterFile>$$Device:MKE15Z256VLL7$fsl_device_registers.h</RegisterFile>
+          <RegisterFile>$$Device:MKE17Z256VLL7$fsl_device_registers.h</RegisterFile>
           <MemoryEnv></MemoryEnv>
           <Cmp></Cmp>
           <Asm></Asm>
@@ -33,7 +33,7 @@
           <SLE66CMisc></SLE66CMisc>
           <SLE66AMisc></SLE66AMisc>
           <SLE66LinkerMisc></SLE66LinkerMisc>
-          <SFDFile>$$Device:MKE15Z256VLL7$MKE15Z7.xml</SFDFile>
+          <SFDFile>$$Device:MKE17Z256VLL7$MKE17Z7.xml</SFDFile>
           <bCustSvd>0</bCustSvd>
           <UseEnv>0</UseEnv>
           <BinPath></BinPath>
@@ -48,8 +48,8 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>.\frdm_k64_bl\</OutputDirectory>
-          <OutputName>frdm_ke15z_example_app</OutputName>
+          <OutputDirectory>.\frdm_ke17_app\</OutputDirectory>
+          <OutputName>frdm_ke17z_example_app</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -138,7 +138,7 @@
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3>"" ()</Flash3>
+          <Flash3></Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -186,15 +186,15 @@
             <RvdsVP>0</RvdsVP>
             <RvdsMve>0</RvdsMve>
             <RvdsCdeCp>0</RvdsCdeCp>
-            <hadIRAM2>1</hadIRAM2>
-            <hadIROM2>1</hadIROM2>
-            <StupSel>16</StupSel>
+            <hadIRAM2>0</hadIRAM2>
+            <hadIROM2>0</hadIROM2>
+            <StupSel>8</StupSel>
             <useUlib>1</useUlib>
             <EndSel>0</EndSel>
             <uLtcg>0</uLtcg>
             <nSecure>0</nSecure>
-            <RoSelD>4</RoSelD>
-            <RwSelD>4</RwSelD>
+            <RoSelD>3</RoSelD>
+            <RwSelD>3</RwSelD>
             <CodeSel>0</CodeSel>
             <OptFeed>0</OptFeed>
             <NoZi1>0</NoZi1>
@@ -205,13 +205,13 @@
             <Ro1Chk>0</Ro1Chk>
             <Ro2Chk>0</Ro2Chk>
             <Ro3Chk>0</Ro3Chk>
-            <Ir1Chk>0</Ir1Chk>
-            <Ir2Chk>1</Ir2Chk>
+            <Ir1Chk>1</Ir1Chk>
+            <Ir2Chk>0</Ir2Chk>
             <Ra1Chk>0</Ra1Chk>
             <Ra2Chk>0</Ra2Chk>
             <Ra3Chk>0</Ra3Chk>
             <Im1Chk>1</Im1Chk>
-            <Im2Chk>1</Im2Chk>
+            <Im2Chk>0</Im2Chk>
             <OnChipMemories>
               <Ocm1>
                 <Type>0</Type>
@@ -245,13 +245,13 @@
               </Ocm6>
               <IRAM>
                 <Type>0</Type>
-                <StartAddress>0x14000000</StartAddress>
-                <Size>0x800</Size>
+                <StartAddress>0x1fffc000</StartAddress>
+                <Size>0xc000</Size>
               </IRAM>
               <IROM>
                 <Type>1</Type>
-                <StartAddress>0x10000000</StartAddress>
-                <Size>0x8000</Size>
+                <StartAddress>0x0</StartAddress>
+                <Size>0x40000</Size>
               </IROM>
               <XRAM>
                 <Type>0</Type>
@@ -275,13 +275,13 @@
               </OCR_RVCT3>
               <OCR_RVCT4>
                 <Type>1</Type>
-                <StartAddress>0x10000000</StartAddress>
-                <Size>0x8000</Size>
+                <StartAddress>0x0</StartAddress>
+                <Size>0x40000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
                 <Type>1</Type>
-                <StartAddress>0x8000</StartAddress>
-                <Size>0x40000</Size>
+                <StartAddress>0x0</StartAddress>
+                <Size>0x0</Size>
               </OCR_RVCT5>
               <OCR_RVCT6>
                 <Type>0</Type>
@@ -300,13 +300,13 @@
               </OCR_RVCT8>
               <OCR_RVCT9>
                 <Type>0</Type>
-                <StartAddress>0x14000000</StartAddress>
-                <Size>0x800</Size>
+                <StartAddress>0x1fffc000</StartAddress>
+                <Size>0xc000</Size>
               </OCR_RVCT9>
               <OCR_RVCT10>
                 <Type>0</Type>
-                <StartAddress>0x1fffe000</StartAddress>
-                <Size>0x8000</Size>
+                <StartAddress>0x0</StartAddress>
+                <Size>0x0</Size>
               </OCR_RVCT10>
             </OnChipMemories>
             <RvctStartVector></RvctStartVector>
@@ -336,7 +336,7 @@
             <v6WtE>0</v6WtE>
             <v6Rtti>0</v6Rtti>
             <VariousControls>
-              <MiscControls></MiscControls>
+              <MiscControls>-fno-common  -fdata-sections  -ffreestanding  -fno-builtin  -mthumb</MiscControls>
               <Define>DEBUG MKE17Z7</Define>
               <Undefine></Undefine>
               <IncludePath>..\..\..\..\Libraries\startup\inc;..\..\..\..\Libraries\drivers_ke15\inc;..\..\..\..\Libraries\utilities\mcuboot;..\..\..\..\Libraries\utilities\kptl;..\src\config</IncludePath>
@@ -370,7 +370,7 @@
             <TextAddressRange>0x00000000</TextAddressRange>
             <DataAddressRange>0x1FFF8000</DataAddressRange>
             <pXoBase></pXoBase>
-            <ScatterFile>..\..\frdm_ke17_bl\mdk\MKE17Z256xxx7_flash.scf</ScatterFile>
+            <ScatterFile>.\MKE17Z256xxx7_flash_0x8000.scf</ScatterFile>
             <IncludeLibs></IncludeLibs>
             <IncludeLibsPath></IncludeLibsPath>
             <Misc></Misc>

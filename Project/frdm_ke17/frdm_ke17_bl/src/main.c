@@ -93,11 +93,11 @@ int main(void)
     uint8_t c;
     DelayInit();
     
-    SCG->FIRCDIV =   SCG_FIRCDIV_FIRCDIV2(1);
+    SCG->FIRCDIV = SCG_FIRCDIV_FIRCDIV2(1);
     SetPinMux(HW_GPIOB, 0, 2);
     SetPinMux(HW_GPIOB, 1, 2);
     LPUART_Init(HW_LPUART0, 115200);
-
+	
     /* config the mcuboot */
     mcuboot.op_send = mcuboot_send;
     mcuboot.op_reset = mcuboot_reset;
@@ -111,8 +111,8 @@ int main(void)
     mcuboot.cfg_flash_start = APPLICATION_BASE; 
     mcuboot.cfg_flash_size = TARGET_FLASH_SIZE;
     mcuboot.cfg_flash_sector_size = FLASH_GetSectorSize();
-    mcuboot.cfg_ram_start = 0x20000000;
-    mcuboot.cfg_ram_size = 128*1024;
+    mcuboot.cfg_ram_start = 0x1FFFC000;
+    mcuboot.cfg_ram_size = 48*1024;
     mcuboot.cfg_device_id = 0x12345678;
     mcuboot.cfg_uuid = GetUID();
     

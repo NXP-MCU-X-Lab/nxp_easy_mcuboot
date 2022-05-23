@@ -24,13 +24,13 @@
 ** ###################################################################
 */
 
-#define m_interrupts_start             0x00000000
+#define m_interrupts_start             0x00008000
 #define m_interrupts_size              0x00000200
 
-#define m_flash_config_start           0x00000400
+#define m_flash_config_start           0x00008400
 #define m_flash_config_size            0x00000010
 
-#define m_text_start                   0x00000410
+#define m_text_start                   0x00008410
 #define m_text_size                    0x0003FBF0
 
 #define m_data_start                   0x1FFFC000

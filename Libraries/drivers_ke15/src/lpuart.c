@@ -21,8 +21,8 @@ static uint8_t UART_DebugInstance;
 #if defined(PCC_LPUART0_INDEX)
 static const Reg_t LPUARTClkGate[] =
 {
-    {(void*)&(PCC->CLKCFG[PCC_LPUART0_INDEX]), PCC_CLKCFG_CGC_MASK},
-    {(void*)&(PCC->CLKCFG[PCC_LPUART1_INDEX]), PCC_CLKCFG_CGC_MASK},
+    {(void*)&(PCC->CLKCFG[PCC_LPUART0_INDEX]), PCC_CLKCFG_CGC_MASK, PCC_CLKCFG_CGC_SHIFT},
+    {(void*)&(PCC->CLKCFG[PCC_LPUART1_INDEX]), PCC_CLKCFG_CGC_MASK, PCC_CLKCFG_CGC_SHIFT},
 };
 #else
 static const Reg_t LPUARTClkGate[] =
@@ -101,8 +101,8 @@ uint32_t LPUART_SetClock(uint32_t instance, uint32_t opt)
 #if defined(SCG)
     /* All PD functional clock fixed to FIRC 48M, FIRC must be opened */
     REG_CLR(LPUARTClkGate, instance);
-    *((uint32_t*)LPUARTClkGate[instance].addr) = PCC_CLKCFG_PCS(3);
-    REG_SET(LPUARTClkGate, instance);
+    *((volatile uint32_t*)LPUARTClkGate[instance].addr) = PCC_CLKCFG_PCS(3);
+	  REG_SET(LPUARTClkGate, instance);
     clk = (48*1000*1000);
 
 #elif defined(MCG)
