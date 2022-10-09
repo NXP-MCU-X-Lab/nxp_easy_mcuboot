@@ -22,7 +22,7 @@
   </DaveTm>
 
   <Target>
-    <TargetName>imxrt1064</TargetName>
+    <TargetName>imxrt1062</TargetName>
     <ToolsetNumber>0x4</ToolsetNumber>
     <ToolsetName>ARM-ADS</ToolsetName>
     <TargetOption>
@@ -113,19 +113,19 @@
         <tDllPa></tDllPa>
         <tDlgDll></tDlgDll>
         <tDlgPa></tDlgPa>
-        <tIfile>.\evkbimxrt1064_flexspi_nor.ini</tIfile>
+        <tIfile>.\evkbimxrt1060_flexspi_nor.ini</tIfile>
         <pMon>BIN\CMSIS_AGDI.dll</pMon>
       </DebugOpt>
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
-          <Key>UL2CM3</Key>
-          <Name>-U -O142 -S0 -C0 -P00 -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO15  -FN1 -FC8000 -FD20000000 -FF0MIMXRT1064_QSPI_4KB_SEC -FL0400000 -FS070000000 -FP0($$Device:MIMXRT1064DVL6A$arm\MIMXRT1064_QSPI_4KB_SEC.FLM)</Name>
+          <Key>CMSIS_AGDI</Key>
+          <Name>-X"" -U-O142 -O206 -S8 -C0 -P00000000 -N00("") -D00(00000000) -L00(0) -TO65554 -TC10000000 -TT10000000 -TP20 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO15 -FD20000000 -FC8000 -FN1 -FF0MIMXRT106x_QSPI_4KB_SEC.FLM -FS060000000 -FL0800000 -FP0($$Device:MIMXRT1062DVL6A$arm\MIMXRT106x_QSPI_4KB_SEC.FLM)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
-          <Key>CMSIS_AGDI</Key>
-          <Name>-X"CMSIS-DAP" -U022900000708e4a30000000000000000 -O206 -S8 -C0 -P00000000 -N00("ARM CoreSight SW-DP") -D00(0BD11477) -L00(0) -TO65554 -TC10000000 -TT10000000 -TP20 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO15 -FD20000000 -FC8000 -FN1 -FF0MIMXRT1064_QSPI_4KB_SEC.FLM -FS070000000 -FL0400000 -FP0($$Device:MIMXRT1064DVL6A$arm\MIMXRT1064_QSPI_4KB_SEC.FLM)</Name>
+          <Key>UL2CM3</Key>
+          <Name>-U -O142 -S0 -C0 -P00 -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO15  -FN1 -FC8000 -FD20000000 -FF0MIMXRT106x_QSPI_4KB_SEC -FL0800000 -FS060000000 -FP0($$Device:MIMXRT1062DVL6A$arm\MIMXRT106x_QSPI_4KB_SEC.FLM)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -228,7 +228,7 @@
   </Target>
 
   <Group>
-    <GroupName>startup_imxrt1064</GroupName>
+    <GroupName>startup_imxrt1062</GroupName>
     <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
@@ -236,24 +236,24 @@
     <File>
       <GroupNumber>1</GroupNumber>
       <FileNumber>1</FileNumber>
-      <FileType>2</FileType>
+      <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\Libraries\startup\src\mdk\startup_MIMXRT1064.s</PathWithFileName>
-      <FilenameWithoutPath>startup_MIMXRT1064.s</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\Libraries\startup\src\system_MIMXRT1062.c</PathWithFileName>
+      <FilenameWithoutPath>system_MIMXRT1062.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>1</GroupNumber>
       <FileNumber>2</FileNumber>
-      <FileType>1</FileType>
+      <FileType>2</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\Libraries\startup\src\system_MIMXRT1064.c</PathWithFileName>
-      <FilenameWithoutPath>system_MIMXRT1064.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\Libraries\startup\src\mdk\startup_MIMXRT1062.s</PathWithFileName>
+      <FilenameWithoutPath>startup_MIMXRT1062.s</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -468,8 +468,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\src\xip\evkmimxrt1064_flexspi_nor_config.c</PathWithFileName>
-      <FilenameWithoutPath>evkmimxrt1064_flexspi_nor_config.c</FilenameWithoutPath>
+      <PathWithFileName>..\src\xip\evkmimxrt1060_flexspi_nor_config.c</PathWithFileName>
+      <FilenameWithoutPath>evkmimxrt1060_flexspi_nor_config.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -480,8 +480,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\src\xip\evkmimxrt1064_sdram_ini_dcd.c</PathWithFileName>
-      <FilenameWithoutPath>evkmimxrt1064_sdram_ini_dcd.c</FilenameWithoutPath>
+      <PathWithFileName>..\src\xip\evkmimxrt1060_sdram_ini_dcd.c</PathWithFileName>
+      <FilenameWithoutPath>evkmimxrt1060_sdram_ini_dcd.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

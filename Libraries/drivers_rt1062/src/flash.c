@@ -11,7 +11,7 @@
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
-
+ #define HYPER_FLASH
 
 /*******************************************************************************
  * Prototypes
@@ -65,8 +65,8 @@ void FLEXSPI_NorFlash_GetConfig(flexspi_nor_config_t *config)
 	  config->memConfig.lutCustomSeqEnable  = true;
 	  config->memConfig.busyOffset          = 15U;
     config->memConfig.busyBitPolarity     = 1U;
-	  config->memConfig.serialClkFreq       = kFLEXSPISerialClk_30MHz; //Safe Serial Flash Frequencey
-	  config->ipcmdSerialClkFreq            = kFLEXSPISerialClk_30MHz; //Safe Clock frequency for IP command
+//	  config->memConfig.serialClkFreq       = kFLEXSPISerialClk_30MHz; //Safe Serial Flash Frequencey
+//	  config->ipcmdSerialClkFreq            = kFLEXSPISerialClk_30MHz; //Safe Clock frequency for IP command
     config->serialNorType                 = kSerialNorType_HyperBus;
     // Read Status
     // 0
