@@ -228,9 +228,10 @@ enum _flexspi_serial_clk_freq
     kFLEXSPISerialClk_75MHz    = 4U,
     kFLEXSPISerialClk_80MHz    = 5U,
     kFLEXSPISerialClk_100MHz   = 6U,
-    kFLEXSPISerialClk_133MHz   = 7U,
-    kFLEXSPISerialClk_166MHz   = 8U,
-    kFLEXSPISerialClk_200MHz   = 9U,
+	kFLEXSPISerialClk_120MHz   = 7U,
+    kFLEXSPISerialClk_133MHz   = 8U,
+    kFLEXSPISerialClk_166MHz   = 9U,
+    kFLEXSPISerialClk_200MHz   = 10U,
 };
 
 /*! @brief Misc feature bit definitions */
