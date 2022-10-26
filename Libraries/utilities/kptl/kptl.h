@@ -10,7 +10,7 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-#include "bl_cfg.h"
+
 
 #ifndef MAX_PACKET_LEN
 #define MAX_PACKET_LEN          (64)

@@ -17,15 +17,23 @@ const void* UARTBases[] = UART_BASES;
 static const Reg_t UARTClkGate[] =
 {
     {(void*)&(SIM->SCGC), SIM_SCGC_UART0_MASK, SIM_SCGC_UART0_SHIFT},
+#ifdef SIM_SCGC_UART1_MASK
     {(void*)&(SIM->SCGC), SIM_SCGC_UART1_MASK, SIM_SCGC_UART1_SHIFT},
+#endif
+#ifdef SIM_SCGC_UART2_MASK
     {(void*)&(SIM->SCGC), SIM_SCGC_UART2_MASK, SIM_SCGC_UART2_SHIFT},
+#endif
 };
 
 static const IRQn_Type UART_IRQTbl[] =
 {
     (IRQn_Type)(UART0_IRQn),
+#ifdef SIM_SCGC_UART1_MASK
     (IRQn_Type)(UART1_IRQn),
+#endif
+#ifdef SIM_SCGC_UART2_MASK
     (IRQn_Type)(UART2_IRQn),
+#endif
 };
 
 static inline int Getc(void)
