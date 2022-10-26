@@ -65,6 +65,8 @@
 #include "MKE18F16.h"
 #elif  MKE02Z4
 #include "MKE02Z4.h"
+#elif  MKE04Z4
+#include "MKE04Z4.h"
 #elif  KEA128
 #include "SKEAZ1284.h"
 #else

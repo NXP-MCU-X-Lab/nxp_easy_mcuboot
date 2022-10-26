@@ -22,7 +22,7 @@
   </DaveTm>
 
   <Target>
-    <TargetName>mke02</TargetName>
+    <TargetName>mke04</TargetName>
     <ToolsetNumber>0x4</ToolsetNumber>
     <ToolsetName>ARM-ADS</ToolsetName>
     <TargetOption>
@@ -119,21 +119,6 @@
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
-          <Key>DLGUARM</Key>
-          <Name></Name>
-        </SetRegEntry>
-        <SetRegEntry>
-          <Number>0</Number>
-          <Key>JL2CM3</Key>
-          <Name>-U621000000 -O206 -S2 -ZTIFSpeedSel5000 -A0 -C0 -JU1 -JI127.0.0.1 -JP0 -RST0 -N00("ARM CoreSight SW-DP") -D00(0BC11477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -TB1 -TFE0 -FO15 -FD1FFFFC00 -FC1000 -FN2 -FF0MKE02Zxxx_EE256B.FLM -FS010000000 -FL0100 -FP0($$Device:MKE02Z64VLH4$arm\MKE02Zxxx_EE256B.FLM) -FF1MKE02Zxxx_P64KB.FLM -FS10 -FL110000 -FP1($$Device:MKE02Z64VLH4$arm\MKE02Zxxx_P64KB.FLM)</Name>
-        </SetRegEntry>
-        <SetRegEntry>
-          <Number>0</Number>
-          <Key>UL2CM3</Key>
-          <Name>-U -O142 -S0 -C0 -P00 -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO15  -FN2 -FC1000 -FD1FFFFC00 -FF0MKE02Zxxx_EE256B -FF1MKE02Zxxx_P64KB -FL0100 -FL110000 -FS010000000 -FS10 -FP0($$Device:MKE02Z64VLH4$arm\MKE02Zxxx_EE256B.FLM) -FP1($$Device:MKE02Z64VLH4$arm\MKE02Zxxx_P64KB.FLM)</Name>
-        </SetRegEntry>
-        <SetRegEntry>
-          <Number>0</Number>
           <Key>ARMRTXEVENTFLAGS</Key>
           <Name>-L70 -Z18 -C0 -M0 -T1</Name>
         </SetRegEntry>
@@ -146,6 +131,21 @@
           <Number>0</Number>
           <Key>ARMDBGFLAGS</Key>
           <Name></Name>
+        </SetRegEntry>
+        <SetRegEntry>
+          <Number>0</Number>
+          <Key>DLGUARM</Key>
+          <Name>繧?	</Name>
+        </SetRegEntry>
+        <SetRegEntry>
+          <Number>0</Number>
+          <Key>JL2CM3</Key>
+          <Name>-U621000000 -O78 -S2 -ZTIFSpeedSel5000 -A0 -C0 -JU1 -JI127.0.0.1 -JP0 -RST0 -N00("ARM CoreSight SW-DP") -D00(0BC11477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -TB1 -TFE0 -FO7 -FD1FFFFF00 -FC400 -FN1 -FF0MKE04Zxxx_P8KB.FLM -FS00 -FL02000 -FP0($$Device:MKE04Z8VFK4$arm\MKE04Zxxx_P8KB.FLM)</Name>
+        </SetRegEntry>
+        <SetRegEntry>
+          <Number>0</Number>
+          <Key>UL2CM3</Key>
+          <Name>UL2CM3(-S0 -C0 -P0 -FD1FFFFF00 -FC400 -FN1 -FF0MKE04Zxxx_P8KB -FS00 -FL02000 -FP0($$Device:MKE04Z8VFK4$arm\MKE04Zxxx_P8KB.FLM))</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
       <Breakpoint/>
@@ -191,11 +191,21 @@
       <pszMrulep></pszMrulep>
       <pSingCmdsp></pSingCmdsp>
       <pMultCmdsp></pMultCmdsp>
+      <SystemViewers>
+        <Entry>
+          <Name>System Viewer\ICS</Name>
+          <WinId>35904</WinId>
+        </Entry>
+        <Entry>
+          <Name>System Viewer\SIM</Name>
+          <WinId>35905</WinId>
+        </Entry>
+      </SystemViewers>
     </TargetOption>
   </Target>
 
   <Group>
-    <GroupName>startup_mke02</GroupName>
+    <GroupName>startup_mke04</GroupName>
     <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
@@ -207,8 +217,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\Libraries\startup\src\system_MKE02Z4.c</PathWithFileName>
-      <FilenameWithoutPath>system_MKE02Z4.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\Libraries\startup\src\system_MKE04Z4.c</PathWithFileName>
+      <FilenameWithoutPath>system_MKE04Z4.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -219,8 +229,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\Libraries\startup\src\mdk\startup_MKE02Z4.s</PathWithFileName>
-      <FilenameWithoutPath>startup_MKE02Z4.s</FilenameWithoutPath>
+      <PathWithFileName>..\src\startup_MKE04Z4_optimzed.s</PathWithFileName>
+      <FilenameWithoutPath>startup_MKE04Z4_optimzed.s</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -336,7 +346,7 @@
 
   <Group>
     <GroupName>utilities\mcuboot</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

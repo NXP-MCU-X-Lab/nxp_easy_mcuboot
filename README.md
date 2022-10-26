@@ -17,6 +17,7 @@ NXP官方 [MCUBOOT](https://www.nxp.com/support/developer-resources/software-dev
 | ------------------------------------------ | ----------- |
 | K64                                        | 0x8000      |
 | KE02                                       | 0x8000      |
+| KE04                                       | 0xC00       |
 | KE15                                       | 0x8000      |
 | KE17                                       | 0x8000      |
 | LPC802                                     | 0x1000      |

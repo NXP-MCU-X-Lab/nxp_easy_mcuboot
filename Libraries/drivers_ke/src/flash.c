@@ -19,6 +19,12 @@
 #define FTFx_SSD_FSTAT_FPVIOL                   (8)
 
 
+#ifdef FTMRE_FSEC_KEYEN_MASK
+#define FTMRX   FTMRE
+#elif FTMRH_FSEC_KEYEN_MASK
+#define FTMRX   FRMRH
+#endif
+
  /**
  * @brief  获得扇区大小
  * @note   None
@@ -39,7 +45,7 @@ uint32_t FLASH_GetSectorSize(void)
  */
 void FLASH_Init(void)
 {
-    FTMRH->FCLKDIV = 0x1F;
+    FTMRX->FCLKDIV = 0x1F;
     MCM->PLACR = 0x1BC00; /* Disable flash cache */
 }
 
@@ -47,58 +53,58 @@ void FLASH_Init(void)
 uint8_t FLASH_EEP_EraseSector(uint32_t addr)
 {
     // Clear error flags
-    FTMRH->FSTAT = 0x30;
+    FTMRX->FSTAT = 0x30;
     
     // Write index to specify the command code to be loaded
-    FTMRH->FCCOBIX = 0;
+    FTMRX->FCCOBIX = 0;
     // Write command code and memory address bits[23:16]	
-    FTMRH->FCCOBHI = 0x12;
+    FTMRX->FCCOBHI = 0x12;
 
-    FTMRH->FCCOBLO = (uint8_t)((addr >> 16)&0x007f);   // memory address bits[17:16]
+    FTMRX->FCCOBLO = (uint8_t)((addr >> 16)&0x007f);   // memory address bits[17:16]
     // Write index to specify the lower byte memory address bits[15:0] to be loaded
-    FTMRH->FCCOBIX = 0x1;
+    FTMRX->FCCOBIX = 0x1;
     // Write the lower byte memory address bits[15:0]
     //FTMRH_FCCOB = (uint16_t)adr;
-    FTMRH->FCCOBHI = (uint8_t)(addr >>  8);
-    FTMRH->FCCOBLO = (uint8_t)(addr);
+    FTMRX->FCCOBHI = (uint8_t)(addr >>  8);
+    FTMRX->FCCOBLO = (uint8_t)(addr);
 
     // Launch the command
-    FTMRH->FSTAT = 0x80;
+    FTMRX->FSTAT = 0x80;
     
     // Wait till command is completed
-    while (!(FTMRH->FSTAT & FTMRH_FSTAT_CCIF_MASK));
+    while (!(FTMRX->FSTAT & FTMRH_FSTAT_CCIF_MASK));
 
-    if (FTMRH->FSTAT & FTMRH_FSTAT_FPVIOL_MASK)  return(FTFx_SSD_FSTAT_FPVIOL);
-    if (FTMRH->FSTAT & FTMRH_ERROR)              return(1);
+    if (FTMRX->FSTAT & FTMRH_FSTAT_FPVIOL_MASK)  return(FTFx_SSD_FSTAT_FPVIOL);
+    if (FTMRX->FSTAT & FTMRH_ERROR)              return(1);
     return (0);
 }
 
 uint8_t FLASH_EraseSector(uint32_t addr)
 {
     // Clear error flags
-    FTMRH->FSTAT = 0x30;
+    FTMRX->FSTAT = 0x30;
     
     // Write index to specify the command code to be loaded
-    FTMRH->FCCOBIX = 0;
+    FTMRX->FCCOBIX = 0;
     // Write command code and memory address bits[23:16]	
-    FTMRH->FCCOBHI = 0x0A;                            // Flash Sector Erase command
+    FTMRX->FCCOBHI = 0x0A;                            // Flash Sector Erase command
 
-    FTMRH->FCCOBLO = (uint8_t)((addr >> 16)&0x007f);   // memory address bits[17:16]
+    FTMRX->FCCOBLO = (uint8_t)((addr >> 16)&0x007f);   // memory address bits[17:16]
     // Write index to specify the lower byte memory address bits[15:0] to be loaded
-    FTMRH->FCCOBIX = 0x1;
+    FTMRX->FCCOBIX = 0x1;
     // Write the lower byte memory address bits[15:0]
     //FTMRH_FCCOB = (uint16_t)adr;
-    FTMRH->FCCOBHI = (uint8_t)(addr >>  8);
-    FTMRH->FCCOBLO = (uint8_t)(addr);
+    FTMRX->FCCOBHI = (uint8_t)(addr >>  8);
+    FTMRX->FCCOBLO = (uint8_t)(addr);
 
     // Launch the command
-    FTMRH->FSTAT = 0x80;
+    FTMRX->FSTAT = 0x80;
     
     // Wait till command is completed
-    while (!(FTMRH->FSTAT & FTMRH_FSTAT_CCIF_MASK));
+    while (!(FTMRX->FSTAT & FTMRH_FSTAT_CCIF_MASK));
 
-    if (FTMRH->FSTAT & FTMRH_FSTAT_FPVIOL_MASK)  return(FTFx_SSD_FSTAT_FPVIOL);
-    if (FTMRH->FSTAT & FTMRH_ERROR)              return(1);
+    if (FTMRX->FSTAT & FTMRH_FSTAT_FPVIOL_MASK)  return(FTFx_SSD_FSTAT_FPVIOL);
+    if (FTMRX->FSTAT & FTMRH_ERROR)              return(1);
     return (0);
 }
 
@@ -109,33 +115,33 @@ uint8_t FLASH_EEP_WriteSector(uint32_t addr, const uint8_t *buf, uint32_t len)
 
   for (i = 0; i < ((len+1)/2); i++)  {
     // Clear error flags
-    FTMRH->FSTAT = 0x30;
+    FTMRX->FSTAT = 0x30;
     
     // Write index to specify the command code to be loaded
-    FTMRH->FCCOBIX = 0;
+    FTMRX->FCCOBIX = 0;
     // Write command code and memory address bits[17:16]	
-    FTMRH->FCCOBHI = 0x11;// program EEPROM command
-    FTMRH->FCCOBLO = (uint8_t) ((addr >> 16));// Addr[22:16] always 0
+    FTMRX->FCCOBHI = 0x11;// program EEPROM command
+    FTMRX->FCCOBLO = (uint8_t) ((addr >> 16));// Addr[22:16] always 0
     // Write index to specify the lower byte memory address bits[15:0] to be loaded
-    FTMRH->FCCOBIX = 0x1;
+    FTMRX->FCCOBIX = 0x1;
     // Write the lower byte memory address bits[15:0]
-    FTMRH->FCCOBHI = (uint8_t)(addr >>  8);
-    FTMRH->FCCOBLO = (uint8_t)(addr);
+    FTMRX->FCCOBHI = (uint8_t)(addr >>  8);
+    FTMRX->FCCOBLO = (uint8_t)(addr);
 
     // Write index to specify the word0 (MSB word) to be programmed
-    FTMRH->FCCOBIX = 0x2;
-    FTMRH->FCCOBLO =  buf[0];
+    FTMRX->FCCOBIX = 0x2;
+    FTMRX->FCCOBLO =  buf[0];
     // Write index to specify the word1 (LSB word) to be programmed
-    FTMRH->FCCOBIX = 0x3;
-    FTMRH->FCCOBLO =  buf[1];
+    FTMRX->FCCOBIX = 0x3;
+    FTMRX->FCCOBLO =  buf[1];
     
     // Launch the command
-    FTMRH->FSTAT = 0x80;
+    FTMRX->FSTAT = 0x80;
     // Wait till command is completed
-    while (!(FTMRH->FSTAT & FTMRH_FSTAT_CCIF_MASK))
+    while (!(FTMRX->FSTAT & FTMRH_FSTAT_CCIF_MASK))
      ;
     // Check error status
-    if (FTMRH->FSTAT & FTMRH_ERROR) return(1);
+    if (FTMRX->FSTAT & FTMRH_ERROR) return(1);
     buf += 2;
     addr += 2;
 
@@ -150,46 +156,46 @@ uint8_t FLASH_WriteSector(uint32_t addr, const uint8_t *buf, uint32_t len)
     for (i = 0; i < ((len+7)/8); i++)
     {
         // Clear error flags
-        FTMRH->FSTAT = 0x30;
+        FTMRX->FSTAT = 0x30;
     
         // Write index to specify the command code to be loaded
-        FTMRH->FCCOBIX = 0;
+        FTMRX->FCCOBIX = 0;
         // Write command code and memory address bits[17:16]	
-        FTMRH->FCCOBHI = 0x06;// program P-FLASH command
-        FTMRH->FCCOBLO = (uint8_t) ((addr >> 16));// Addr[22:16] always 0
+        FTMRX->FCCOBHI = 0x06;// program P-FLASH command
+        FTMRX->FCCOBLO = (uint8_t) ((addr >> 16));// Addr[22:16] always 0
         // Write index to specify the lower byte memory address bits[15:0] to be loaded
-        FTMRH->FCCOBIX = 0x1;
+        FTMRX->FCCOBIX = 0x1;
         // Write the lower byte memory address bits[15:0]
-        FTMRH->FCCOBHI = (uint8_t)(addr >>  8);
-        FTMRH->FCCOBLO = (uint8_t)(addr);
+        FTMRX->FCCOBHI = (uint8_t)(addr >>  8);
+        FTMRX->FCCOBLO = (uint8_t)(addr);
 
         // Write index to specify the word0 (MSB word) to be programmed
-        FTMRH->FCCOBIX = 0x2;
+        FTMRX->FCCOBIX = 0x2;
         // Write the word0
-        FTMRH->FCCOBHI =  buf[1];
-        FTMRH->FCCOBLO =  buf[0];
+        FTMRX->FCCOBHI =  buf[1];
+        FTMRX->FCCOBLO =  buf[0];
         // Write index to specify the word1 (LSB word) to be programmed
-        FTMRH->FCCOBIX = 0x3;
+        FTMRX->FCCOBIX = 0x3;
         // Write the word1
-        FTMRH->FCCOBHI =  buf[3];
-        FTMRH->FCCOBLO =  buf[2];
+        FTMRX->FCCOBHI =  buf[3];
+        FTMRX->FCCOBLO =  buf[2];
     
         // Write the word2
-		FTMRH->FCCOBIX = 0x4;
-        FTMRH->FCCOBHI =  buf[5];
-        FTMRH->FCCOBLO =  buf[4];
+		FTMRX->FCCOBIX = 0x4;
+        FTMRX->FCCOBHI =  buf[5];
+        FTMRX->FCCOBLO =  buf[4];
 
         // Write the word3
-        FTMRH->FCCOBIX = 0x5;
-        FTMRH->FCCOBHI =  buf[7];
-        FTMRH->FCCOBLO =  buf[6];
+        FTMRX->FCCOBIX = 0x5;
+        FTMRX->FCCOBHI =  buf[7];
+        FTMRX->FCCOBLO =  buf[6];
     
         // Launch the command
-        FTMRH->FSTAT = 0x80;
+        FTMRX->FSTAT = 0x80;
         // Wait till command is completed
-        while (!(FTMRH->FSTAT & FTMRH_FSTAT_CCIF_MASK));
+        while (!(FTMRX->FSTAT & FTMRH_FSTAT_CCIF_MASK));
         // Check error status
-        if (FTMRH->FSTAT & FTMRH_ERROR) return(1);
+        if (FTMRX->FSTAT & FTMRH_ERROR) return(1);
         buf += 8;
         addr += 8;
 

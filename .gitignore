@@ -8,12 +8,16 @@
 *.dbgdt
 *.tra
 *.iex
+*scvd
 *.sim
 *.pbd
 *.browse
 *.tmp
 *.ewt
 *.db
+*._2i
+*.l2p
+*.fed
 *.__ia
 *.dni
 *.wsdt

@@ -66,7 +66,7 @@ static void handle_cmd(mcuboot_t *ctx, frame_packet_t *pkt)
                     break;
                 case 0x0C:  /* ReservedRegions */
                     tx_param[1] = 0;
-                    tx_param[2] = APPLICATION_BASE&0x0FFFFFFF;
+                    tx_param[2] = 0;
                     tx_param[3] = 0;
                     tx_param[4] = 0;
                     tx_param_cnt = 5;
