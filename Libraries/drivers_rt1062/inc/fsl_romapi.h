@@ -97,6 +97,16 @@
 #define FLEXSPI_4PAD 2U
 #define FLEXSPI_8PAD 3U
 
+/* Lookup table related defintions */
+#define NOR_CMD_INDEX_READ        0U
+#define NOR_CMD_INDEX_READSTATUS  1U
+#define NOR_CMD_INDEX_WRITEENABLE 2U
+#define NOR_CMD_INDEX_ERASESECTOR 3U
+#define NOR_CMD_INDEX_PAGEPROGRAM 4U
+#define NOR_CMD_INDEX_CHIPERASE   5U
+#define NOR_CMD_INDEX_DUMMY       6U
+#define NOR_CMD_INDEX_ERASEBLOCK  7U
+
 /*!
  * NOR LUT sequence index used for default LUT assignment
  * NOTE:
@@ -218,9 +228,10 @@ enum _flexspi_serial_clk_freq
     kFLEXSPISerialClk_75MHz    = 4U,
     kFLEXSPISerialClk_80MHz    = 5U,
     kFLEXSPISerialClk_100MHz   = 6U,
-    kFLEXSPISerialClk_133MHz   = 7U,
-    kFLEXSPISerialClk_166MHz   = 8U,
-    kFLEXSPISerialClk_200MHz   = 9U,
+	kFLEXSPISerialClk_120MHz   = 7U,
+    kFLEXSPISerialClk_133MHz   = 8U,
+    kFLEXSPISerialClk_166MHz   = 9U,
+    kFLEXSPISerialClk_200MHz   = 10U,
 };
 
 /*! @brief Misc feature bit definitions */
@@ -234,6 +245,15 @@ enum
     kFLEXSPIMiscOffset_PadSettingOverrideEnable = 5U, /*!< Bit for Pad setting override enable */
     kFLEXSPIMiscOffset_DdrModeEnable            = 6U, /*!< Bit for DDR clock confiuration indication. */
     kFLEXSPIMiscOffset_UseValidTimeForAllFreq   = 7U, /*!< Bit for DLLCR settings under all modes */
+};
+
+enum
+{
+    kSerialNorType_StandardSPI, /*!< Device that support Standard SPI and Extended SPI mode */
+    kSerialNorType_HyperBus,    /*!< Device that supports HyperBus only */
+    kSerialNorType_XPI,         /*!< Device that works under DPI, QPI or OPI mode */
+    kSerialNorType_NoCmd,       /*!< Device that works under No command mode (XIP mode/Performance Enhance
+                                     mode/continous read mode) */
 };
 
 /*! @brief Manufacturer ID */
