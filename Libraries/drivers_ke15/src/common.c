@@ -440,6 +440,7 @@ uint32_t GetResetCause(void)
 #elif RCM_SRS_WAKEUP_MASK
     return RCM->SRS;
 #endif
+	  return 0;
 }
 
  /**

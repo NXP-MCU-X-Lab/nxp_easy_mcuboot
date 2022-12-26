@@ -24,17 +24,17 @@
 ** ###################################################################
 */
 
-#define m_interrupts_start             0x00008000
+#define m_interrupts_start             0x00000000
 #define m_interrupts_size              0x00000200
 
-#define m_flash_config_start           0x00008400
+#define m_flash_config_start           0x00000400
 #define m_flash_config_size            0x00000010
 
-#define m_text_start                   0x00008410
-#define m_text_size                    0x00037BF0
+#define m_text_start                   0x00000410
+#define m_text_size                    0x00007BF0 /* reserve 0x8000 for bootloader */
 
-#define m_data_start                   0x1FFFC000
-#define m_data_size                    0x0000C000
+#define m_data_start                   0x1FFFE000 /* to compatible KE12/13/17 */
+#define m_data_size                    0x00008000 
 
 /* Sizes */
 #if (defined(__stack_size__))
@@ -63,7 +63,7 @@ LR_m_text m_interrupts_start m_text_start+m_text_size-m_interrupts_start { ; loa
 
   RW_m_data m_data_start m_data_size-Stack_Size-Heap_Size { ; RW data
     .ANY (+RW +ZI)
-    * (RamFunction)
+    ;* (RamFunction)
   }
   ARM_LIB_HEAP +0 EMPTY Heap_Size {    ; Heap region growing up
   }
