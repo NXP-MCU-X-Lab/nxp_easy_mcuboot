@@ -5,6 +5,7 @@
 *.uvgui.*
 *.bat
 *.__i
+DebugConfig
 *.dbgdt
 *.tra
 *.iex

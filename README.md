@@ -22,6 +22,7 @@ NXP官方 [MCUBOOT](https://www.nxp.com/support/developer-resources/software-dev
 | KE17                                       | 0x8000      |
 | LPC802                                     | 0x1000      |
 | LPC804                                     | 0x1000      |
+| LPC86x                                     | 0x1000      |
 | KL26                                       | 0x8000      |
 | KE18F                                      | 0x8000      |
 | i.MXRT1021                                 | 0x40000     |

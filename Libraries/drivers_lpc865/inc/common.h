@@ -145,6 +145,7 @@ void SetFlexCommClk(uint32_t instance, uint32_t val);
 void JumpToImage(uint32_t addr);
 void SetPinPull(uint32_t instance, uint32_t pin, uint32_t val);
 void CLOCK_SetFroOscFreq(int freq);
+
 #ifdef __cplusplus
 }
 #endif
