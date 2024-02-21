@@ -105,8 +105,7 @@ int main(void)
 {
     uint8_t c;
     
-    /* it seems this fucking API is wrong, I put 36000U, but the FRO is 48Mhz */
-    CLOCK_SetFroOscFreq(36000U);
+    CLOCK_SetFroOscFreq(48000U);
     SystemCoreClock = 24*1000*1000;
     
 //    SYSCON->CLKOUTDIV = 1;

@@ -22,7 +22,7 @@ int main(void)
     
     SYSCON->SYSAHBCLKCTRL0 |= (1<<7) | (1<<14) | (1<<18);
     
-    CLOCK_SetFroOscFreq(36000U);
+    CLOCK_SetFroOscFreq(48000U);
     SystemCoreClock = 24*1000*1000;
     
     DelayInit();
