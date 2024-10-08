@@ -16,7 +16,7 @@
         <TargetCommonOption>
           <Device>MCXA153VLH</Device>
           <Vendor>NXP</Vendor>
-          <PackID>NXP.MCXA153_DFP.17.0.0</PackID>
+          <PackID>NXP.MCXA153_DFP.19.0.0</PackID>
           <PackURL>https://mcuxpresso.nxp.com/cmsis_pack/repo/</PackURL>
           <Cpu>IRAM(0x20000000,0x6000) IRAM2(0x04000000,0x2000) IROM(0x03000000,0x2000) IROM2(0x00000000,0x020000) XRAM(0x04002000,0x1000) CPUTYPE("Cortex-M33") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>

@@ -268,12 +268,14 @@ void JumpToImage(uint32_t addr)
 
     s_application = (app_entry_t)pc;
 
-    // Change MSP and PSP
-    __set_MSP(sp);
-    __set_PSP(sp);
-    
     SCB->VTOR = addr;
+    // Change MSP and PSP
+   // __set_MSP(sp);
+   // __set_PSP(sp);
     
+    __ASM volatile ("MSR msp, %0" : : "r" (sp) : );
+    __ASM volatile ("MSR psp, %0" : : "r" (sp) : );
+
     // Jump to application
     s_application();
 
