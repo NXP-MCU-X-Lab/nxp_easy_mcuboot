@@ -51,6 +51,10 @@ lib_html
 d4d
 net_5000
 
+# MCUXpresso / Eclipse generated metadata
+.settings/
+.metadata/
+
 # Libraries
 *.a
 
