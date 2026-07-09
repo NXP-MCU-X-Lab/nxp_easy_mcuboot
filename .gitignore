@@ -51,6 +51,11 @@ lib_html
 d4d
 net_5000
 
+!Project/frdm_mcxc162/tools/
+!Project/frdm_mcxc162/tools/mcxc162_patch_image.py
+__pycache__/
+*.py[cod]
+
 # MCUXpresso / Eclipse generated metadata
 .settings/
 .metadata/

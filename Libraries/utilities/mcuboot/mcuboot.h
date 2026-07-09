@@ -46,6 +46,7 @@ typedef struct
     uint32_t mem_start_addr;
     uint32_t mem_len;
     uint32_t mem_cur_addr;
+    uint32_t mem_status;
     uint32_t is_connected;
 }mcuboot_t;
 

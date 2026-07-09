@@ -103,18 +103,20 @@ static void handle_cmd(mcuboot_t *ctx, frame_packet_t *pkt)
         case kCommandTag_FlashEraseRegion:
             ctx->mem_start_addr = rx_cp.param[0];
             ctx->mem_len = rx_cp.param[1];
-            ctx->op_mem_erase(ctx->mem_start_addr, ctx->mem_len);
-            kptl_create_generic_resp_packet(&ctx->tx_pkt, 0, kCommandTag_FlashEraseRegion);
+            ctx->mem_status = (ctx->op_mem_erase(ctx->mem_start_addr, ctx->mem_len) == 0) ? 0U : 1U;
+            kptl_create_generic_resp_packet(&ctx->tx_pkt, ctx->mem_status, kCommandTag_FlashEraseRegion);
             ctx->op_send((uint8_t*)&ctx->tx_pkt, kptl_frame_packet_get_size(&ctx->tx_pkt));
             break;
-        case kCommandTag_FlashEraseAll: /* not support */
-            kptl_create_generic_resp_packet(&ctx->tx_pkt, 0, kCommandTag_FlashEraseAll);
+        case kCommandTag_FlashEraseAll:
+            ctx->mem_status = (ctx->op_mem_erase(ctx->cfg_flash_start, ctx->cfg_flash_size) == 0) ? 0U : 1U;
+            kptl_create_generic_resp_packet(&ctx->tx_pkt, ctx->mem_status, kCommandTag_FlashEraseAll);
             ctx->op_send((uint8_t*)&ctx->tx_pkt, kptl_frame_packet_get_size(&ctx->tx_pkt));
             break;
         case kCommandTag_WriteMemory:
             ctx->mem_start_addr = rx_cp.param[0];
             ctx->mem_len = rx_cp.param[1];
             ctx->mem_cur_addr = ctx->mem_start_addr;
+            ctx->mem_status = 0U;
 
             kptl_create_generic_resp_packet(&ctx->tx_pkt, 0x00000000, kCommandTag_WriteMemory);
             ctx->op_send((uint8_t*)&ctx->tx_pkt, kptl_frame_packet_get_size(&ctx->tx_pkt));
@@ -179,7 +181,10 @@ void mcuboot_proc(mcuboot_t *ctx)
                 int len;
                 len = ARRAY2INT16(ctx->rx_pkt.len);
                 
-                ctx->op_mem_write(ctx->mem_cur_addr, ctx->rx_pkt.payload, len);
+                if(ctx->mem_status == 0U)
+                {
+                    ctx->mem_status = (ctx->op_mem_write(ctx->mem_cur_addr, ctx->rx_pkt.payload, len) == 0) ? 0U : 1U;
+                }
                 ctx->mem_cur_addr += len;
                 
                 /* reply ack */
@@ -190,11 +195,14 @@ void mcuboot_proc(mcuboot_t *ctx)
                 
                 if(ctx->mem_cur_addr >= (ctx->mem_start_addr + ctx->mem_len))
                 {
-                    kptl_create_generic_resp_packet(&ctx->tx_pkt, 0x00000000, kCommandTag_WriteMemory);
-                    ctx->op_send((uint8_t*)&ctx->tx_pkt, kptl_frame_packet_get_size(&ctx->tx_pkt));
-                    
                     /* callback: complete */
-                    ctx->op_complete();
+                    if((ctx->mem_status == 0U) && (ctx->op_complete != 0))
+                    {
+                        ctx->op_complete();
+                    }
+
+                    kptl_create_generic_resp_packet(&ctx->tx_pkt, ctx->mem_status, kCommandTag_WriteMemory);
+                    ctx->op_send((uint8_t*)&ctx->tx_pkt, kptl_frame_packet_get_size(&ctx->tx_pkt));
                 }
                 break;
             }
@@ -225,6 +233,7 @@ void mcuboot_init(mcuboot_t *ctx)
     ctx->dec.cb = dec_cb;
     kptl_decode_init(&ctx->dec);
     ctx->is_connected = 0;
+    ctx->mem_status = 0U;
     evt = 0;
 }
 
