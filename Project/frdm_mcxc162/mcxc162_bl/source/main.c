@@ -84,13 +84,38 @@ static void bl_log_image(const char *name, bool valid, const bl_image_info_t *in
     bl_log_raw("\r\n");
 }
 
+static void bl_log_region(const char *name, uint32_t base, uint32_t size)
+{
+    bl_log_raw("layout ");
+    bl_log_raw(name);
+    bl_log_raw(" base=");
+    bl_log_hex32(base);
+    bl_log_raw(" size=");
+    bl_log_hex32(size);
+    bl_log_raw("\r\n");
+}
+
+static void bl_log_layout(void)
+{
+    bl_log_region("boot", BL_BOOT_BASE, BL_BOOT_SIZE);
+    bl_log_region("app", BL_APP_BASE, BL_SLOT_SIZE);
+    bl_log_region("backup", BL_BACKUP_BASE, BL_SLOT_SIZE);
+    bl_log_raw("layout header offset=");
+    bl_log_hex32(BL_IMAGE_HEADER_OFFSET);
+    bl_log_raw(" addr=");
+    bl_log_hex32(BL_APP_BASE + BL_IMAGE_HEADER_OFFSET);
+    bl_log_raw("\r\n");
+}
+
 #define BL_LOG_RAW(text)       bl_log_raw(text)
 #define BL_LOG_HEX32(value)    bl_log_hex32(value)
 #define BL_LOG_IMAGE(n, v, i)  bl_log_image((n), (v), (i))
+#define BL_LOG_LAYOUT()        bl_log_layout()
 #else
 #define BL_LOG_RAW(text)       do { } while (0)
 #define BL_LOG_HEX32(value)    do { } while (0)
 #define BL_LOG_IMAGE(n, v, i)  do { } while (0)
+#define BL_LOG_LAYOUT()        do { } while (0)
 #endif
 
 static bool range_is_inside(uint32_t base, uint32_t size, uint32_t addr, uint32_t len)
@@ -474,15 +499,11 @@ int main(void)
     flash_ready = boot_init();
     uart_init();
     BL_LOG_RAW("\r\nMCXC162 BL\r\n");
-    BL_LOG_RAW("Flash ");
-    BL_LOG_RAW(flash_ready ? "ok\r\n" : "init failed\r\n");
-    BL_LOG_RAW("A=");
-    BL_LOG_HEX32(BL_APP_BASE);
-    BL_LOG_RAW(" B=");
-    BL_LOG_HEX32(BL_BACKUP_BASE);
-    BL_LOG_RAW(" size=");
-    BL_LOG_HEX32(BL_SLOT_SIZE);
-    BL_LOG_RAW("\r\n");
+    if (!flash_ready)
+    {
+        BL_LOG_RAW("Flash init failed\r\n");
+    }
+    BL_LOG_LAYOUT();
     promote_backup_if_needed();
     mcuboot_config();
     phrase_cache_start(0u);
