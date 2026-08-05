@@ -290,6 +290,7 @@
 									<listOptionValue builtIn="false" value="-print-memory-usage"/>
 									<listOptionValue builtIn="false" value="--sort-section=alignment"/>
 									<listOptionValue builtIn="false" value="--cref"/>
+									<listOptionValue builtIn="false" value="-T${ProjDirPath}/source/bl_size_assert.ld"/>
 								</option>
 								<option id="gnu.c.link.option.userobjs.1348104680" name="Other objects" superClass="gnu.c.link.option.userobjs"/>
 								<option id="gnu.c.link.option.shared.39713107" name="Shared (-shared)" superClass="gnu.c.link.option.shared"/>
@@ -625,6 +626,7 @@
 									<listOptionValue builtIn="false" value="-print-memory-usage"/>
 									<listOptionValue builtIn="false" value="--sort-section=alignment"/>
 									<listOptionValue builtIn="false" value="--cref"/>
+									<listOptionValue builtIn="false" value="-T${ProjDirPath}/source/bl_size_assert.ld"/>
 								</option>
 								<option id="gnu.c.link.option.userobjs.732605046" name="Other objects" superClass="gnu.c.link.option.userobjs"/>
 								<option id="gnu.c.link.option.shared.17298039" name="Shared (-shared)" superClass="gnu.c.link.option.shared"/>

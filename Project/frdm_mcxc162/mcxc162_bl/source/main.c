@@ -28,6 +28,8 @@ static volatile uint32_t s_ticks;
 static volatile bool s_timeout_jump;
 static bool s_app_valid;
 static bool s_flash_ready;
+static bool s_backup_prepared;
+static bool s_app_erased;
 
 typedef struct
 {
@@ -38,6 +40,8 @@ typedef struct
 
 static phrase_cache_t s_phrase_cache;
 static int s_flash_status;
+
+static bool prepare_backup_once(void);
 
 #if BL_ENABLE_BOOT_LOG
 static void bl_log_raw(const char *text)
@@ -120,7 +124,7 @@ static void bl_log_layout(void)
 
 static bool range_is_inside(uint32_t base, uint32_t size, uint32_t addr, uint32_t len)
 {
-    if ((len == 0u) || (addr < base))
+    if ((len == 0u) || (addr < base) || (addr >= (base + size)))
     {
         return false;
     }
@@ -131,22 +135,6 @@ static bool range_is_inside(uint32_t base, uint32_t size, uint32_t addr, uint32_
 static uint32_t align_down(uint32_t value, uint32_t align)
 {
     return value & ~(align - 1u);
-}
-
-static uint32_t align_up(uint32_t value, uint32_t align)
-{
-    return (value + align - 1u) & ~(align - 1u);
-}
-
-static bool logical_to_backup(uint32_t addr, uint32_t len, uint32_t *mapped)
-{
-    if (!range_is_inside(BL_APP_BASE, BL_SLOT_SIZE, addr, len))
-    {
-        return false;
-    }
-
-    *mapped = BL_BACKUP_BASE + (addr - BL_APP_BASE);
-    return true;
 }
 
 static int flash_verify_readback(uint32_t addr, const uint8_t *data, uint32_t len)
@@ -268,31 +256,26 @@ static int phrase_cache_write(uint32_t addr, const uint8_t *data, uint32_t len)
 
 static int memory_erase(uint32_t start_addr, uint32_t byte_cnt)
 {
-    uint32_t mapped_start;
-    uint32_t mapped_end;
-    uint32_t erase_start;
-    uint32_t erase_end;
-
     if (phrase_cache_flush() != 0)
     {
         return -1;
     }
 
-    if (!logical_to_backup(start_addr, byte_cnt, &mapped_start))
+    s_app_erased = false;
+
+    if (!BL_ImageEraseRequestIsValid(start_addr, byte_cnt))
     {
         return -1;
     }
 
-    mapped_end = mapped_start + byte_cnt;
-    erase_start = align_down(mapped_start, BL_FLASH_SECTOR_SIZE);
-    erase_end = align_up(mapped_end, BL_FLASH_SECTOR_SIZE);
-
-    if (!range_is_inside(BL_BACKUP_BASE, BL_SLOT_SIZE, erase_start, erase_end - erase_start))
+    if (!prepare_backup_once())
     {
+        s_flash_status = -1;
         return -1;
     }
 
-    s_flash_status = flash_erase_aligned(erase_start, erase_end - erase_start);
+    s_flash_status = flash_erase_aligned(BL_APP_BASE, BL_SLOT_SIZE);
+    s_app_erased = (s_flash_status == 0);
     phrase_cache_start(0u);
 
     return s_flash_status;
@@ -300,33 +283,29 @@ static int memory_erase(uint32_t start_addr, uint32_t byte_cnt)
 
 static int memory_write(uint32_t start_addr, uint8_t *buf, uint32_t byte_cnt)
 {
-    uint32_t mapped_addr;
-
-    if (s_flash_status != 0)
+    if ((s_flash_status != 0) || !s_backup_prepared || !s_app_erased)
     {
         return -1;
     }
 
-    if (!logical_to_backup(start_addr, byte_cnt, &mapped_addr))
+    if (!range_is_inside(BL_APP_BASE, BL_SLOT_SIZE, start_addr, byte_cnt))
     {
         s_flash_status = -1;
         return -1;
     }
 
-    s_flash_status = phrase_cache_write(mapped_addr, buf, byte_cnt);
+    s_flash_status = phrase_cache_write(start_addr, buf, byte_cnt);
     return s_flash_status;
 }
 
 static int memory_read(uint32_t addr, uint8_t *buf, uint32_t len)
 {
-    uint32_t mapped_addr;
-
-    if (!logical_to_backup(addr, len, &mapped_addr))
+    if (!range_is_inside(BL_APP_BASE, BL_SLOT_SIZE, addr, len))
     {
         return -1;
     }
 
-    memcpy(buf, (const void *)mapped_addr, len);
+    memcpy(buf, (const void *)addr, len);
     return 0;
 }
 
@@ -343,7 +322,10 @@ static void mcuboot_reset(void)
 
 static void mcuboot_complete(void)
 {
-    (void)phrase_cache_flush();
+    if (phrase_cache_flush() != 0)
+    {
+        s_mcuboot.mem_status = 1u;
+    }
 }
 
 static void jump_to_image(uint32_t storage_base)
@@ -369,11 +351,19 @@ static void jump_to_image(uint32_t storage_base)
 
 static void mcuboot_jump(uint32_t addr, uint32_t arg, uint32_t sp)
 {
+    bl_image_info_t app;
+    bl_image_info_t backup;
+    bool app_valid;
+    bool backup_valid;
+
     (void)addr;
     (void)arg;
     (void)sp;
 
-    if (BL_ImageValidate(BL_APP_BASE, BL_APP_BASE, BL_SLOT_SIZE, BL_SRAM_BASE, BL_SRAM_SIZE, NULL))
+    app_valid = BL_ImageValidate(BL_APP_BASE, BL_APP_BASE, BL_SLOT_SIZE, BL_SRAM_BASE, BL_SRAM_SIZE, &app);
+    backup_valid = BL_ImageValidate(BL_BACKUP_BASE, BL_APP_BASE, BL_SLOT_SIZE, BL_SRAM_BASE, BL_SRAM_SIZE, &backup);
+
+    if (BL_ImageSelectAction(app_valid, &app, backup_valid, &backup) == kBL_ImageActionBootApp)
     {
         BL_LOG_RAW("Jump A\r\n");
         jump_to_image(BL_APP_BASE);
@@ -382,61 +372,92 @@ static void mcuboot_jump(uint32_t addr, uint32_t arg, uint32_t sp)
     BL_LOG_RAW("Jump A blocked\r\n");
 }
 
-static bool copy_backup_to_app(const bl_image_info_t *backup)
+static bool copy_image(uint32_t source_base, uint32_t destination_base, const bl_image_info_t *image)
 {
     uint8_t page[BL_FLASH_PAGE_SIZE];
     uint32_t offset;
 
-    if (flash_erase_aligned(BL_APP_BASE, BL_SLOT_SIZE) != 0)
+    if (flash_erase_aligned(destination_base, BL_SLOT_SIZE) != 0)
     {
-        BL_LOG_RAW("Promote erase failed\r\n");
         return false;
     }
 
-    for (offset = 0u; offset < backup->image_size; offset += sizeof(page))
+    for (offset = 0u; offset < image->image_size; offset += sizeof(page))
     {
-        uint32_t len = backup->image_size - offset;
+        uint32_t len = image->image_size - offset;
         if (len > sizeof(page))
         {
             len = sizeof(page);
         }
 
-        memcpy(page, (const void *)(BL_BACKUP_BASE + offset), len);
-        if (flash_program_aligned(BL_APP_BASE + offset, page, len) != 0)
+        memcpy(page, (const void *)(source_base + offset), len);
+        if (flash_program_aligned(destination_base + offset, page, len) != 0)
         {
-            BL_LOG_RAW("Promote program failed\r\n");
             return false;
         }
     }
 
-    if (memcmp((const void *)BL_APP_BASE, (const void *)BL_BACKUP_BASE, backup->image_size) != 0)
+    if (memcmp((const void *)destination_base, (const void *)source_base, image->image_size) != 0)
     {
-        BL_LOG_RAW("Promote verify failed\r\n");
         return false;
     }
 
-    return BL_ImageValidate(BL_APP_BASE, BL_APP_BASE, BL_SLOT_SIZE, BL_SRAM_BASE, BL_SRAM_SIZE, NULL);
+    return BL_ImageValidate(destination_base, BL_APP_BASE, BL_SLOT_SIZE, BL_SRAM_BASE, BL_SRAM_SIZE, NULL);
 }
 
-static void promote_backup_if_needed(void)
+static bool prepare_backup_once(void)
+{
+    bl_image_info_t app;
+    bool app_valid;
+
+    if (s_backup_prepared)
+    {
+        return true;
+    }
+
+    app_valid = BL_ImageValidate(BL_APP_BASE, BL_APP_BASE, BL_SLOT_SIZE, BL_SRAM_BASE, BL_SRAM_SIZE, &app);
+
+    if (app_valid)
+    {
+        if (!copy_image(BL_APP_BASE, BL_BACKUP_BASE, &app))
+        {
+            return false;
+        }
+    }
+
+    s_backup_prepared = true;
+    return true;
+}
+
+static void select_or_restore_app(void)
 {
     bl_image_info_t app;
     bl_image_info_t backup;
-    bool app_valid = BL_ImageValidate(BL_APP_BASE, BL_APP_BASE, BL_SLOT_SIZE, BL_SRAM_BASE, BL_SRAM_SIZE, &app);
-    bool backup_valid = BL_ImageValidate(BL_BACKUP_BASE, BL_APP_BASE, BL_SLOT_SIZE, BL_SRAM_BASE, BL_SRAM_SIZE, &backup);
+    bool app_valid;
+    bool backup_valid;
+    bl_image_action_t action;
+
+    app_valid = BL_ImageValidate(BL_APP_BASE, BL_APP_BASE, BL_SLOT_SIZE, BL_SRAM_BASE, BL_SRAM_SIZE, &app);
+    backup_valid = BL_ImageValidate(BL_BACKUP_BASE, BL_APP_BASE, BL_SLOT_SIZE, BL_SRAM_BASE, BL_SRAM_SIZE, &backup);
 
     BL_LOG_IMAGE("A", app_valid, &app);
     BL_LOG_IMAGE("B", backup_valid, &backup);
 
-    if (backup_valid && ((!app_valid) || (backup.version > app.version)))
+    action = BL_ImageSelectAction(app_valid, &app, backup_valid, &backup);
+    if (action == kBL_ImageActionRestoreBackup)
     {
-        BL_LOG_RAW("Promote B to A\r\n");
-        app_valid = copy_backup_to_app(&backup);
-        BL_LOG_RAW(app_valid ? "Promote ok\r\n" : "Promote failed\r\n");
+        BL_LOG_RAW("Restore B to A\r\n");
+        app_valid = copy_image(BL_BACKUP_BASE, BL_APP_BASE, &backup);
+        BL_LOG_RAW(app_valid ? "Restore ok\r\n" : "Restore failed\r\n");
+    }
+    else if (action == kBL_ImageActionBootApp)
+    {
+        BL_LOG_RAW("Keep A\r\n");
     }
     else
     {
-        BL_LOG_RAW("Keep A\r\n");
+        app_valid = false;
+        BL_LOG_RAW("No valid image\r\n");
     }
 
     s_app_valid = app_valid;
@@ -504,7 +525,7 @@ int main(void)
         BL_LOG_RAW("Flash init failed\r\n");
     }
     BL_LOG_LAYOUT();
-    promote_backup_if_needed();
+    select_or_restore_app();
     mcuboot_config();
     phrase_cache_start(0u);
 

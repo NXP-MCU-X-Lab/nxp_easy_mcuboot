@@ -141,3 +141,41 @@ bool BL_ImageValidate(uint32_t storage_base,
 
     return true;
 }
+
+bl_image_action_t BL_ImageSelectAction(bool app_valid,
+                                      const bl_image_info_t *app,
+                                      bool backup_valid,
+                                      const bl_image_info_t *backup)
+{
+    if (!app_valid)
+    {
+        return backup_valid ? kBL_ImageActionRestoreBackup : kBL_ImageActionStayInBootloader;
+    }
+
+    if (!backup_valid)
+    {
+        return kBL_ImageActionBootApp;
+    }
+
+    if (app->version > backup->version)
+    {
+        return kBL_ImageActionBootApp;
+    }
+
+    if (app->version < backup->version)
+    {
+        return kBL_ImageActionRestoreBackup;
+    }
+
+    if ((app->image_size == backup->image_size) && (app->image_crc32 == backup->image_crc32))
+    {
+        return kBL_ImageActionBootApp;
+    }
+
+    return kBL_ImageActionRestoreBackup;
+}
+
+bool BL_ImageEraseRequestIsValid(uint32_t start_addr, uint32_t byte_cnt)
+{
+    return (start_addr == BL_APP_BASE) && (byte_cnt == BL_SLOT_SIZE);
+}

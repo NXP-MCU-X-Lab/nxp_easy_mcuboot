@@ -36,6 +36,13 @@ typedef struct
     bool valid;
 } bl_image_info_t;
 
+typedef enum
+{
+    kBL_ImageActionStayInBootloader = 0,
+    kBL_ImageActionBootApp,
+    kBL_ImageActionRestoreBackup,
+} bl_image_action_t;
+
 uint32_t BL_Crc32Update(uint32_t crc, const uint8_t *data, uint32_t length);
 uint32_t BL_Crc32Finish(uint32_t crc);
 uint32_t BL_ImageCalcCrc32(uint32_t storage_base, uint32_t image_size);
@@ -45,5 +52,10 @@ bool BL_ImageValidate(uint32_t storage_base,
                       uint32_t sram_base,
                       uint32_t sram_size,
                       bl_image_info_t *info);
+bl_image_action_t BL_ImageSelectAction(bool app_valid,
+                                      const bl_image_info_t *app,
+                                      bool backup_valid,
+                                      const bl_image_info_t *backup);
+bool BL_ImageEraseRequestIsValid(uint32_t start_addr, uint32_t byte_cnt);
 
 #endif /* BL_IMAGE_H_ */

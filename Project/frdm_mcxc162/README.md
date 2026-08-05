@@ -2,9 +2,9 @@
 
 ## 项目概述
 
-本目录提供面向 FRDM-MCXC162 的 UART bootloader 方案。bootloader 保持 NXP KBOOT/MCUBOOT 串口协议，PC 端可使用 `blhost` 下载应用固件。MCU 端在写 Flash 时将主应用区地址映射到备份区，启动时再根据镜像完整性和版本号决定是否升级到主应用区。
+本目录提供面向 FRDM-MCXC162 的 UART bootloader 方案。bootloader 保持 NXP KBOOT/MCUBOOT 串口协议，PC 端可使用 `blhost` 下载应用固件。升级时 bootloader 先把当前 A 面完整备份到 B 面，确认备份有效后才允许主机直接擦写 A 面。
 
-该方案的目标是提高现场升级可靠性：固件下载阶段不会直接覆盖当前正在运行的 A 面应用。新的 image 先写入 B 面备份区，只有在 B 面 CRC 校验通过且版本更高，或 A 面无有效 image 时，bootloader 才会把 B 面复制到 A 面并启动。
+该方案的目标是让升级过程中始终至少保留一份有效应用：备份期间 A 面保持完整，A 面擦写期间 B 面保存旧版本，恢复期间 B 面保持完整。如果 A 面在升级中断后无效，bootloader 会从 B 面恢复。第一阶段尚未实现 watchdog、trial/confirm 或针对业务故障的自动回退。
 
 ## 目录结构
 
@@ -45,9 +45,9 @@ FRDM-MCXC162 当前按 64 KB P-Flash 进行三分区：
 | --- | --- | --- | --- |
 | Bootloader | `0x00000000-0x00003FFF` | 16 KB | bootloader 固件和 KBOOT 串口协议处理。 |
 | App A | `0x00004000-0x00009FFF` | 24 KB | 实际运行的应用程序区域。 |
-| Backup B | `0x0000A000-0x0000FFFF` | 24 KB | 升级下载暂存区。 |
+| Backup B | `0x0000A000-0x0000FFFF` | 24 KB | 最近一次升级前的有效 A 面备份。 |
 
-PC 端升级时仍按 A 面地址下载，即擦写和写入地址使用 `0x00004000`。bootloader 内部会把 A 面地址映射到 B 面，所以下载阶段实际写入 `0x0000A000` 起始的备份区。
+PC 端升级时擦除和写入地址仍使用 A 面范围 `0x00004000-0x00009FFF`。第一次合法擦除请求会先触发 A→B 备份；备份成功后，主机数据直接写入 A 面。不要直接访问 `0x0000A000`，该地址不在 bootloader 对主机暴露的下载范围内。
 
 ## Image 格式
 
@@ -74,12 +74,12 @@ bootloader 校验 image 时会检查 vector table、header、image size 和 CRC�
 
 1. 初始化时钟、UART 和 Flash 驱动。
 2. 校验 A 面 image 和 B 面 image。
-3. 如果 B 面有效，并且 A 面无效或 B 面版本号更高，则擦除 A 面并把 B 面复制到 A 面。
-4. 复制完成后重新校验 A 面。
+3. 如果 A 面无效而 B 面有效，则把 B 面恢复到 A 面。
+4. 如果 A/B 都有效，则优先启动严格更高版本；同版本只有 size 和 CRC 相同时才视为同一 image，否则恢复 B 面。
 5. 如果 A 面有效，bootloader 等待约 300 ms 的 KBOOT 连接窗口；窗口内没有收到主机连接数据，则跳转到 A 面应用。
 6. 如果 A 面无效，则停留在 bootloader，等待 `blhost` 下载新的固件。
 
-版本号只用于判断 B 面是否应该覆盖 A 面。CRC 和 vector/header 校验用于判断 image 是否完整、可启动。
+版本号用于阻止低版本或同版本不同内容替换最近一次备份。CRC 和 vector/header 校验用于判断 image 是否完整、可启动。
 
 ## 启动日志
 
@@ -111,9 +111,11 @@ Jump A
 | `A valid ...` | A 面 image 校验通过，并打印 version、size、crc。 |
 | `B valid ...` | B 面 image 校验通过，并打印 version、size、crc。 |
 | `A invalid` / `B invalid` | 对应 image 无效，可能是空白、header 错误、size 错误、CRC 错误或 vector table 不合法。 |
-| `Promote B to A` | B 面满足升级条件，开始复制到 A 面。 |
-| `Promote ok` | B 面复制到 A 面并重新校验成功。 |
-| `Keep A` | 不需要升级，继续保留当前 A 面。 |
+| `Restore B to A` | A 面无效、版本更低或同版本内容不同，开始从 B 面恢复。 |
+| `Restore ok` | B 面恢复到 A 面并重新校验成功。 |
+| `Restore failed` | 恢复失败；B 面保持不变，bootloader 不会跳转到无效 A 面。 |
+| `Keep A` | A 面是应启动的有效 image。 |
+| `No valid image` | A/B 都无效，停留在 bootloader 等待下载。 |
 | `Jump A` | 跳转到 A 面应用。 |
 
 当 image 无效时，bootloader 不打印该 image 的 size/crc，因为这些字段不能作为可信信息。
@@ -181,7 +183,7 @@ post-build 命令中的输出文件名使用 `{version}` 占位符：
 | 1.1.0 | `0x00010100` |
 | 2.0.0 | `0x00020000` |
 
-升级判断规则是数值比较。只有 B 面 image 有效，并且版本号大于 A 面版本号时，bootloader 才会把 B 面复制到 A 面。如果 A 面无效，只要 B 面有效即可恢复到 A 面。
+升级版本必须严格递增。A 面版本高于 B 面时启动 A；A 面版本低于 B 面时恢复 B。同版本只有 image size 和 CRC 都相同时才直接启动 A，同版本不同内容会恢复 B。
 
 修改版本号后需要重新构建 app，并使用重新生成的 `*_vXXXXXXXX_upgrade.hex` 升级。
 
@@ -205,13 +207,15 @@ blhost -p COMx,115200 -- get-property 1
 
 该命令用于确认 `blhost` 能和 bootloader 正常通信。
 
-### 擦除升级暂存区
+### 备份并擦除 A 面
 
 ```sh
 blhost -p COMx,115200 -- flash-erase-region 0x4000 0x6000
 ```
 
-命令地址写的是 A 面地址，但 bootloader 会映射到 B 面执行擦除。不要直接使用 `0xA000`，否则会超出 bootloader 对主机暴露的下载地址范围。
+bootloader 只接受 `0x4000/0x6000` 的完整 A 槽擦除，局部、错位或越界 erase 都会失败。第一次执行该命令时，bootloader 先校验 A 面。如果 A 有效，则擦除 B、复制 A→B，并对 B 做读回比较和完整 image 校验；只有备份成功后才擦除 A。如果 A 无效但 B 有效，则保留 B 并直接准备修复 A；两面都无效时按首次安装处理。没有成功执行完整 erase 前，`write-memory` 会被拒绝。
+
+A→B 备份发生在 KBOOT erase 命令处理期间。为避免在二进制协议帧中插入 ASCII 数据，bootloader 不在该阶段输出裸串口日志；备份成功或失败由 `flash-erase-region` 的标准 KBOOT 响应返回。
 
 ### 写入升级文件
 
@@ -219,15 +223,15 @@ blhost -p COMx,115200 -- flash-erase-region 0x4000 0x6000
 blhost -p COMx,115200 -- write-memory 0x4000 mcxc162_example_app_v00010002_upgrade.hex
 ```
 
-写入地址同样使用 A 面起始地址 `0x4000`。bootloader 会把写入数据映射到 B 面。
+写入地址使用 A 面起始地址 `0x4000`，数据直接写入 A 面。B 面保留升级前的旧版本。
 
-### 复位并升级
+### 复位并校验
 
 ```sh
 blhost -p COMx,115200 -- reset
 ```
 
-复位后 bootloader 会重新校验 A/B 两面。如果 B 面 image 完整且版本更高，bootloader 会复制 B 到 A，然后跳转到 A 面应用。
+复位后 bootloader 会重新校验 A/B 两面。新 A 完整且版本严格高于 B 时直接启动 A；A 无效、版本更低或同版本内容不同时，从 B 恢复 A。
 
 ## 示例应用行为
 
@@ -261,7 +265,7 @@ MCXC162 app counter=0x00000003
 完成 `blhost reset` 后，可按以下现象判断升级成功：
 
 1. bootloader 日志最终打印 `Jump A`。
-2. 如果 B 面版本更高，日志中会出现 `Promote B to A` 和 `Promote ok`。
+2. 日志显示 A 为新版本、B 为升级前版本，并打印 `Keep A`。
 3. app 启动后打印 `MCXC162 Example App`。
 4. app counter 每秒递增。
 5. 红色 LED 以约 500 ms 周期翻转。
@@ -296,13 +300,13 @@ MCXC162 app counter=0x00000003
 
 raw HEX 没有 image header 和 CRC。必须使用 post-build 生成的 `*_vXXXXXXXX_upgrade.hex`。
 
-### B 面下载成功但没有覆盖 A 面
+### write-memory 被拒绝
 
-常见原因是 B 面版本号不大于 A 面版本号。升级时应递增 `source/app_version.h` 中的 `APP_IMAGE_VERSION`。
+必须先在同一次 bootloader 会话中成功执行 `flash-erase-region`。该命令负责备份 A 并准备直接写 A；备份失败时不会擦 A，后续写入也会被拒绝。
 
 ### 启动日志显示 B invalid
 
-表示 B 面 image 校验失败。请确认下载文件是 `*_vXXXXXXXX_upgrade.hex`，下载地址是 `0x4000`，下载过程没有中断。
+如果 A 有效，表示当前没有可用旧版备份，下一次 erase 会先重新建立 B 面备份。如果 A 也无效，则设备会留在 bootloader，需使用 `*_vXXXXXXXX_upgrade.hex` 重新安装。
 
 ### App 工程直接链接到 0x00000000
 
