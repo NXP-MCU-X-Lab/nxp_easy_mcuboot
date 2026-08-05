@@ -59,6 +59,10 @@ __pycache__/
 # MCUXpresso / Eclipse generated metadata
 .settings/
 .metadata/
+Project/frdm_mcxc162/**/*.launch
+
+# Local bootloader logs
+pc_tool/*.log
 
 # Libraries
 *.a
