@@ -9,11 +9,13 @@
 
 #include "app.h"
 #include "app_version.h"
+#include "bl_trial.h"
 #include "board.h"
 #include "clock_config.h"
 #include "fsl_clock.h"
 #include "fsl_common.h"
 #include "fsl_lpuart.h"
+#include "fsl_wwdt.h"
 #include "pin_mux.h"
 
 #define APP_SLOT_BASE            (0x00004000u)
@@ -28,6 +30,12 @@
 #define APP_LED_TICK_COUNT       (APP_LED_PERIOD_MS / APP_SYSTICK_MS)
 #define APP_LOG_PERIOD_MS        (1000u)
 #define APP_LOG_TICK_COUNT       (APP_LOG_PERIOD_MS / APP_SYSTICK_MS)
+#define APP_WWDT_TIMEOUT_MS      (5000u)
+#define APP_WWDT_FEED_PERIOD_MS  (1000u)
+#define APP_WWDT_FEED_TICK_COUNT (APP_WWDT_FEED_PERIOD_MS / APP_SYSTICK_MS)
+#define APP_TRIAL_HEALTHY_MS     (30000u)
+#define APP_TRIAL_HEALTHY_TICKS  (APP_TRIAL_HEALTHY_MS / APP_SYSTICK_MS)
+#define APP_WWDT_CLOCK_DIVISOR   (4u)
 
 typedef struct
 {
@@ -43,7 +51,11 @@ typedef struct
 
 static volatile uint32_t s_led_ticks;
 static volatile uint32_t s_log_ticks;
+static volatile uint32_t s_wwdt_feed_ticks;
+static volatile uint32_t s_trial_healthy_ticks;
 static volatile bool s_log_pending;
+static volatile bool s_wwdt_feed_pending;
+static volatile bool s_trial_healthy_pending;
 static uint32_t s_log_counter;
 
 static void app_uart_write(const char *text)
@@ -139,6 +151,18 @@ static void app_start_systick(void)
     }
 }
 
+static void app_wwdt_init(void)
+{
+    wwdt_config_t config;
+    uint32_t clock_hz = CLOCK_GetWwdtClkFreq();
+
+    WWDT_GetDefaultConfig(&config);
+    config.enableWatchdogReset = true;
+    config.timeoutValue = (clock_hz / APP_WWDT_CLOCK_DIVISOR) * (APP_WWDT_TIMEOUT_MS / 1000u);
+    config.clockFreq_Hz = clock_hz;
+    WWDT_Init(WWDT0, &config);
+}
+
 void SysTick_Handler(void)
 {
     s_led_ticks++;
@@ -154,23 +178,73 @@ void SysTick_Handler(void)
         s_log_ticks = 0u;
         s_log_pending = true;
     }
+
+    s_wwdt_feed_ticks++;
+    if (s_wwdt_feed_ticks >= APP_WWDT_FEED_TICK_COUNT)
+    {
+        s_wwdt_feed_ticks = 0u;
+        s_wwdt_feed_pending = true;
+    }
+
+    if (s_trial_healthy_ticks < APP_TRIAL_HEALTHY_TICKS)
+    {
+        s_trial_healthy_ticks++;
+        if (s_trial_healthy_ticks == APP_TRIAL_HEALTHY_TICKS)
+        {
+            s_trial_healthy_pending = true;
+        }
+    }
 }
 
 int main(void)
 {
+    const app_image_header_t *header = (const app_image_header_t *)APP_IMAGE_HEADER_ADDR;
+    uint32_t image_crc32 = header->image_crc32;
+
     BOARD_InitHardware();
     app_uart_init();
 
     app_print_banner();
+    app_uart_write("Send F to simulate WWDT failure\r\n");
 
     app_start_systick();
+    app_wwdt_init();
 
     while (1)
     {
+        if ((LPUART_GetStatusFlags(LPUART0) & kLPUART_RxDataRegFullFlag) != 0u)
+        {
+            uint8_t ch = LPUART_ReadByte(LPUART0);
+            if (ch == (uint8_t)'F')
+            {
+                BL_TrialEnableDemoFault(BL_TRIAL_STATE, image_crc32);
+                app_uart_write("WWDT fault enabled\r\n");
+            }
+        }
+
         if (s_log_pending)
         {
             s_log_pending = false;
             app_print_counter();
+        }
+
+        if (s_wwdt_feed_pending)
+        {
+            s_wwdt_feed_pending = false;
+            if (!BL_TrialDemoFaultEnabled(BL_TRIAL_STATE, image_crc32))
+            {
+                WWDT_Refresh(WWDT0);
+            }
+        }
+
+        if (s_trial_healthy_pending)
+        {
+            s_trial_healthy_pending = false;
+            if (!BL_TrialDemoFaultEnabled(BL_TRIAL_STATE, image_crc32) &&
+                BL_TrialMarkHealthy(BL_TRIAL_STATE, image_crc32))
+            {
+                app_uart_write("Trial healthy\r\n");
+            }
         }
     }
 }

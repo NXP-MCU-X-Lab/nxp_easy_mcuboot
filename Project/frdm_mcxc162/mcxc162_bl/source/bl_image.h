@@ -10,6 +10,8 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#include "bl_trial.h"
+
 #define BL_IMAGE_MAGIC         (0x4D435831u)
 #define BL_IMAGE_HEADER_OFFSET (0x200u)
 #define BL_IMAGE_HEADER_VER    (1u)
@@ -57,5 +59,10 @@ bl_image_action_t BL_ImageSelectAction(bool app_valid,
                                       bool backup_valid,
                                       const bl_image_info_t *backup);
 bool BL_ImageEraseRequestIsValid(uint32_t start_addr, uint32_t byte_cnt);
+
+bool BL_TrialShouldRestore(bool trial_active,
+                           bool watchdog_reset,
+                           uint32_t image_crc32,
+                           volatile bl_trial_state_t *state);
 
 #endif /* BL_IMAGE_H_ */

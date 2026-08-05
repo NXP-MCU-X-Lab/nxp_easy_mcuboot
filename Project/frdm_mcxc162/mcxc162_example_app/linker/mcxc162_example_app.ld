@@ -180,6 +180,10 @@ SECTIONS
     _image_start = LOADADDR(.text);
     _image_end = LOADADDR(.data) + SIZEOF(.data);
     _image_size = _image_end - _image_start;
+
+    ASSERT((_pvHeapLimit + _StackSize) <= 0x20001000, "App low RAM overlaps trial state")
+    ASSERT(_vStackBase >= 0x20001010, "App stack overlaps trial state")
+    g_bl_trial_state = ABSOLUTE(0x20001000);
 }
 
 GROUP (

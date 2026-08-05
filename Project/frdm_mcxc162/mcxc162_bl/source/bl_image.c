@@ -177,5 +177,48 @@ bl_image_action_t BL_ImageSelectAction(bool app_valid,
 
 bool BL_ImageEraseRequestIsValid(uint32_t start_addr, uint32_t byte_cnt)
 {
-    return (start_addr == BL_APP_BASE) && (byte_cnt == BL_SLOT_SIZE);
+    return (start_addr == BL_APP_BASE) && (byte_cnt > 0u) && (byte_cnt <= BL_SLOT_SIZE);
+}
+
+static void trial_clear(volatile bl_trial_state_t *state)
+{
+    state->magic = 0u;
+    state->image_crc32 = 0u;
+    state->watchdog_reset_count = 0u;
+    state->demo_fault = 0u;
+}
+
+bool BL_TrialShouldRestore(bool trial_active,
+                           bool watchdog_reset,
+                           uint32_t image_crc32,
+                           volatile bl_trial_state_t *state)
+{
+    if (!trial_active)
+    {
+        trial_clear(state);
+        return false;
+    }
+
+    if (!BL_TrialStateMatches(state, image_crc32))
+    {
+        trial_clear(state);
+        state->magic = BL_TRIAL_MAGIC;
+        state->image_crc32 = image_crc32;
+    }
+
+    if (!watchdog_reset)
+    {
+        state->watchdog_reset_count = 0u;
+        state->demo_fault = 0u;
+        return false;
+    }
+
+    state->watchdog_reset_count++;
+    if (state->watchdog_reset_count < BL_TRIAL_RESET_LIMIT)
+    {
+        return false;
+    }
+
+    trial_clear(state);
+    return true;
 }

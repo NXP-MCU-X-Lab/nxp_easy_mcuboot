@@ -7,6 +7,6 @@
 #ifndef APP_VERSION_H_
 #define APP_VERSION_H_
 
-#define APP_IMAGE_VERSION (0x00010002u)
+#define APP_IMAGE_VERSION (0x00010007u)
 
 #endif /* APP_VERSION_H_ */

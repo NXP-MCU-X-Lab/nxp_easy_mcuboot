@@ -429,12 +429,14 @@ static bool prepare_backup_once(void)
     return true;
 }
 
-static void select_or_restore_app(void)
+static void select_or_restore_app(uint32_t reset_status)
 {
     bl_image_info_t app;
     bl_image_info_t backup;
     bool app_valid;
     bool backup_valid;
+    bool trial_active;
+    bool watchdog_reset;
     bl_image_action_t action;
 
     app_valid = BL_ImageValidate(BL_APP_BASE, BL_APP_BASE, BL_SLOT_SIZE, BL_SRAM_BASE, BL_SRAM_SIZE, &app);
@@ -444,6 +446,28 @@ static void select_or_restore_app(void)
     BL_LOG_IMAGE("B", backup_valid, &backup);
 
     action = BL_ImageSelectAction(app_valid, &app, backup_valid, &backup);
+    trial_active = app_valid && backup_valid && (app.version > backup.version);
+    watchdog_reset = (reset_status & (CMC_SRS_WWDT0_MASK | CMC_SRS_WWDT1_MASK)) != 0u;
+
+    if ((action == kBL_ImageActionBootApp) && trial_active)
+    {
+        if (BL_TrialShouldRestore(true, watchdog_reset, app.image_crc32, BL_TRIAL_STATE))
+        {
+            BL_LOG_RAW("Trial rollback 3/3\r\n");
+            action = kBL_ImageActionRestoreBackup;
+        }
+        else if (watchdog_reset)
+        {
+            BL_LOG_RAW((BL_TRIAL_STATE->watchdog_reset_count == 1u) ?
+                       "Trial WWDT reset 1/3\r\n" :
+                       "Trial WWDT reset 2/3\r\n");
+        }
+    }
+    else
+    {
+        (void)BL_TrialShouldRestore(false, false, 0u, BL_TRIAL_STATE);
+    }
+
     if (action == kBL_ImageActionRestoreBackup)
     {
         BL_LOG_RAW("Restore B to A\r\n");
@@ -516,16 +540,20 @@ int main(void)
 {
     uint8_t c;
     bool flash_ready;
+    uint32_t reset_status = CMC->SRS;
 
     flash_ready = boot_init();
     uart_init();
-    BL_LOG_RAW("\r\nMCXC162 BL\r\n");
+    BL_LOG_RAW("\r\nMCXC162 BL V2\r\n");
+    BL_LOG_RAW("Reset cause=");
+    BL_LOG_HEX32(reset_status);
+    BL_LOG_RAW("\r\n");
     if (!flash_ready)
     {
         BL_LOG_RAW("Flash init failed\r\n");
     }
     BL_LOG_LAYOUT();
-    select_or_restore_app();
+    select_or_restore_app(reset_status);
     mcuboot_config();
     phrase_cache_start(0u);
 
