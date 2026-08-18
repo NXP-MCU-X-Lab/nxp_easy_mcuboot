@@ -18,7 +18,7 @@
 | `mcxc162_bl` | Bootloader 工程，烧录到 `0x00000000`。 |
 | `mcxc162_example_app` | 示例 APP，链接到 A 面 `0x00004000`。 |
 | `common/bl_trial.h` | Bootloader 与 APP 共用的 WWDT trial 状态定义。 |
-| `tools/mcxc162_patch_image.py` | 生成带 header、version、size 和 CRC 的升级 HEX。 |
+| `tools/mcxc162_patch_image.py` | 生成带 header、version、size 和 CRC 的升级 HEX/BIN。 |
 
 ## Flash 分区
 
@@ -76,9 +76,16 @@ APP 工程已配置 post-build，构建后会生成：
 mcxc162_example_app.axf
 mcxc162_example_app.raw.hex
 mcxc162_example_app_vXXXXXXXX_upgrade.hex
+mcxc162_example_app_vXXXXXXXX_upgrade.bin
 ```
 
-升级必须使用 `*_vXXXXXXXX_upgrade.hex`。`raw.hex` 没有有效 image header 和 CRC，不能用于 bootloader 升级。
+HEX 和 BIN 来自同一个 patched image，header、version、size 和 CRC 完全相同。BIN 的第 0 字节对应 A 面地址 `0x4000`，文件长度等于 image header 中的 `image_size`。
+
+- KinetisFlashTool 使用 `*_upgrade.hex`。
+- `blhost write-memory` 使用 `*_upgrade.bin`。
+- `blhost flash-image` 使用 `*_upgrade.hex`。
+
+`raw.hex` 没有有效 image header 和 CRC，不能用于升级。构建成功不能只看 IDE 的 `0 errors`；还应看到 `patched ...hex and ...bin` 日志，并确认两个版本化文件都已生成。
 
 提交或交付前检查 map：
 
@@ -96,12 +103,25 @@ python tools/mcxc162_patch_image.py --self-test
 
 UART 参数为 `115200 8N1`。A 面有效时，bootloader 等待主机连接约 300 ms，因此建议先准备好命令，再复位板卡并立即执行。
 
+### blhost 推荐流程：BIN + write-memory
+
 ```sh
 blhost -p COMx,115200 -- get-property 1
 blhost -p COMx,115200 -- flash-erase-region 0x4000 0x6000
-blhost -p COMx,115200 -- write-memory 0x4000 mcxc162_example_app_vXXXXXXXX_upgrade.hex
+blhost -p COMx,115200 -- write-memory 0x4000 mcxc162_example_app_vXXXXXXXX_upgrade.bin
 blhost -p COMx,115200 -- reset
 ```
+
+`write-memory` 将输入文件作为原始二进制数据发送，不能直接传入 Intel HEX。否则 HEX 文本会被写入 A 面，导致 vector/header 校验失败。
+
+### blhost 备选流程：HEX + flash-image
+
+```sh
+blhost -p COMx,115200 -- flash-image mcxc162_example_app_vXXXXXXXX_upgrade.hex erase
+blhost -p COMx,115200 -- reset
+```
+
+`flash-image` 由 blhost 在主机端解析 Intel HEX，并通过 erase/write 命令完成升级。KinetisFlashTool 同样使用版本化 HEX。
 
 将 `COMx` 和升级文件名替换为实际值。协议约束：
 
@@ -172,9 +192,13 @@ Restore ok
 
 必须在同一次 bootloader 会话中先成功执行 erase。备份失败、地址越界或未执行 erase 都会拒绝写入。
 
+### 下载后显示 `A invalid`
+
+确认 `write-memory` 使用的是 `*_upgrade.bin`，而不是 HEX。使用 HEX 时应改用 `flash-image ... erase` 或 KinetisFlashTool。
+
 ### 下载后仍是旧版本
 
-检查实际选择的 HEX 文件及启动日志中的 version、size、CRC。不要使用旧的版本化 HEX 或 `raw.hex`。
+检查实际选择的版本化 HEX/BIN 及启动日志中的 version、size、CRC。不要使用旧产物或 `raw.hex`。
 
 ### A 面升级中断
 
